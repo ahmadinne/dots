@@ -189,24 +189,21 @@ overwrite (){
 }
 
 list (){
-    check=$(ls $dotfile_path/.config)
-    if [ "$check" ]; then
-        list=$(ls -la $dotfile_path/.config | awk '{print $9}' | grep -vE '^\.$|^\.\.$' | grep -v '^$')
-        number=1
-        echo "List of Configuration inside dotfiles:"
-        echo "No. Configuration"
-        for folder in $list; do
-            if [ "$number" -lt 10 ]; then
-                echo " ${number}. $folder"
-                number=$(($number + 1))
-            else
-                echo "${number}. $folder"
-                number=$(($number + 1))
-            fi
-        done
-    else
-        echo "there's nothing in your dotfiles($dotfile_path)."
-    fi
+    check="${dotfile_path}/.config"
+    # list=$(ls -la $dotfile_path/.config | awk '{print $9}' | grep -vE '^\.$|^\.\.$' | grep -v '^$')
+    BLUE="\033[0;34m"
+    BLACK="\033[0;30m"
+    NONE="\033[0m"
+    echo "List of Configuration inside dotfiles:"
+    for folder in $(ls $check); do
+        if [ -d "$check/$folder" ]; then
+                printf "${BLACK}-- ${BLUE} $folder${NONE}\n"
+        elif [ -f "$check/$folder" ]; then
+                printf "${BLACK}-- ${NONE} $folder\n"
+        else
+            echo "there's nothing in your dotfiles($dotfile_path)."
+        fi
+    done
 }
 
 
