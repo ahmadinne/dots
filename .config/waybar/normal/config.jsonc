@@ -247,7 +247,7 @@
   "custom/volume": {
     "format": "",
     "tooltip": false,
-    "on-click": "pavucontrol"
+    "on-click": "pkill -x pavucontrol || pavucontrol"
   },
   "pulseaudio": {
     "scroll-step": 5, // %, can be a float
@@ -266,7 +266,7 @@
       "car": "",
       "default": ["", "", ""],
     },
-    "on-click": "pavucontrol",
+    "on-click": "pkill -x pavucontrol || pavucontrol",
     "on-scroll-up": "$HOME/.config/bash/volume --up",
     "on-scroll-down": "$HOME/.config/bash/volume --down",
   },
