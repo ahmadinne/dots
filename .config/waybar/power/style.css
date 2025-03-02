@@ -22,7 +22,7 @@ window#waybar > box {
     background-color: @background;
     border-radius: 3;
     /*border: 1px solid @module-bg;*/
-    box-shadow: 1 1 2 2 alpha(@foreground, 0.2);
+    /* box-shadow: 1 1 2 2 alpha(@foreground, 0.2); */
     padding: 5px;
 }
 

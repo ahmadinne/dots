@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "position": "top",
+  "position": "bottom",
   // "height": 767,
   //"width": 1031,
   "spacing": 0,
@@ -193,9 +193,9 @@
         ]
     },
     "custom/title": {
-        "format": "{}",
+        "format": "{text}",
         "return-type": "json",
-        "exec": "$HOME/.config/waybar/normal/media.sh title",
+        "exec": "python3 -u $HOME/.config/waybar/normal/scrolling-title.py",
         "tooltip": false,
         "on-click": "playerctl play-pause"
     },
@@ -232,16 +232,6 @@
   "tray": {
     "icon-size": 16,
     "spacing": 3
-  },
-
-  "network": {
-    "format": "{icon}, {ifname}",
-    "format-wifi": "",
-    "format-ethernet": "",
-    "format-disconnected": "",
-    //"format-disabled": "",
-    "format-icons": [],
-    "justify": true
   },
 
   "group/volume": {
@@ -384,12 +374,14 @@
     },
   },
   "network": {
-    "format-wifi": " Ntw : {signalStrength}% ",
+    "format-wifi": "{icon}",
     "tooltip-format": "{essid} ({signalStrength}%) ",
     "format-ethernet": "{ipaddr}/{cidr} ",
     // "tooltip-format": "{ifname} via {gwaddr} ",
     "format-linked": "{ifname} (No IP) ",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
-  },
+    "format-alt": "{essid} ({signalStrength}%) 󰤨",
+    "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ],
+    "justify": true
+  }
 }
