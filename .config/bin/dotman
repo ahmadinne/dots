@@ -167,6 +167,22 @@ remove (){
     fi
 }
 
+apply (){
+    confirmation
+    if [ "$confirm" = yes ]; then
+        for folders in $(ls -a $dotfile_path); do
+            cp -rf $folders $HOME
+            if [ $? -eq 0 ]; then
+                echo "dotfiles applied succesfully"
+            else
+                echo "dotfiles failed to apply"
+            fi
+        done
+    else
+        echo "Process cancelled."
+    fi
+}
+
 overwrite (){
     check=$(ls $config_path/$choice)
     if [ "$check" ]; then
@@ -222,6 +238,7 @@ case $1 in
     -[sS]|--sync|sync) sync ;;
     -[sS][uU]|-[sS][aA]|-[sS][yY][uU]|--syncall|syncall) syncall ;;
     -[rR]|--remove|remove) remove ;;
+    -[aA]|--apply|apply) apply ;;
     -[oO]|--overwrite|overwrite) overwrite ;;
     -[lL]|--list|list) list ;;
     -[hH]|--help|help) help ;;
