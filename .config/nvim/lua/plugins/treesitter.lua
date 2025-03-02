@@ -1,0 +1,21 @@
+require("nvim-treesitter.configs").setup({
+	highlight = { enable = true },
+	indent = { enable = true },
+	ensure_installed = {
+        "rasi",
+        "yuck",
+		"bash",
+		"lua",
+		"vim",
+		"css",
+		"cpp",
+		"html",
+		"json",
+		"jsonc",
+		"python",
+		"markdown",
+		"javascript",
+		"typescript",
+		"markdown_inline",
+	},
+})

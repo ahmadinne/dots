@@ -1,0 +1,53 @@
+(defsrc
+    esc
+    caps
+    a
+    /
+)
+
+(defcfg
+   process-unmapped-keys yes
+)
+
+(defvar
+    tekan 250
+    tahan 250
+)
+
+(defalias
+    escapers (multi f24 (tap-hold           $tekan $tahan esc grv))
+    capslock (multi f24 (tap-hold           $tekan $tahan esc lctl))
+    a-extend (multi f24 (tap-hold-release   $tekan $tahan a (layer-while-held extend)))
+    /-shifts (multi f24 (tap-hold-press     180 180 / lsft))
+)
+
+
+(deflayer base
+    @escapers
+    @capslock
+    @a-extend
+    @/-shifts
+)
+
+(deflayermap (extend)
+    ;; arrow keys using hjkl
+    h C-left
+    j down
+    k up
+    l C-right
+
+    ;; Copy and paste but with shift
+    c C-S-c
+    v C-S-v
+
+    ;; backspace and ctl+bs
+    n C-bspc
+    m bspc
+
+    ;; Enter
+    ; return
+
+    ;; home and end
+    , Home
+    . End
+)

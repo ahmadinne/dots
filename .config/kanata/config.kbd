@@ -1,0 +1,19 @@
+(defsrc
+    esc
+    caps
+)
+
+(defvar
+    tekan 150
+    tahan 150
+)
+
+(defalias
+    escapers grv
+    capslock (multi f24 (tap-hold           $tekan $tahan esc lctl))
+)
+
+(deflayer base
+    @escapers
+    @capslock
+)

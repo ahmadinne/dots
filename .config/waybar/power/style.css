@@ -1,0 +1,186 @@
+* {
+  font-family: "Symbols Nerd Font", "MonaspiceNe Nerd Font";
+  font-size: 11;
+}
+
+@import "../colors.css";
+
+window#waybar {
+    background-color: transparent;
+    color: @foreground;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+window#waybar > box {
+    background-color: transparent;
+    border-radius: 3;
+    margin: 5;
+}
+
+.modules-right {
+    background-color: @background;
+    border-radius: 3;
+    /*border: 1px solid @module-bg;*/
+    box-shadow: 1 1 2 2 alpha(@foreground, 0.2);
+    padding: 5px;
+}
+
+/* Left Modules */
+#left {
+    background-color: @module-bg;
+    border-radius: 3;
+    padding: 5;
+    margin-right: 5;
+}
+
+#wifies {
+    background-color: inherit;
+    padding: 5;
+    border-radius: 3;
+    transition: all .3s ease-in-out;
+}
+#wifies:hover {
+    background-color: @module-hover;
+}
+#network {
+    background-color: @background;
+    border-radius: 3;
+    padding: 5;
+    margin-right: 5;
+}
+
+#bluetoothies {
+    background-color: inherit;
+    padding: 5;
+    border-radius: 3;
+    transition: all .3s ease-in-out;
+}
+#bluetoothies:hover {
+    background-color: @module-hover;
+}
+#bluetooth {
+    background-color: @background;
+    border-radius: 3;
+    padding: 5;
+    margin-right: 5;
+}
+
+#audiooutput {
+    background-color: inherit;
+    padding: 5;
+    border-radius: 3;
+    transition: all .3s ease-in-out;
+}
+#audiooutput:hover {
+    background-color: @module-hover;
+}
+#custom-audiologo {
+    background-color: @background;
+    border-radius: 3;
+    padding: 5;
+    margin-right: 5;
+}
+
+#wifies, #bluetoothies, #audiooutput {
+    margin: 2.5 0;
+}
+
+
+/* Middle Modules */
+#mid {}
+#midtop {
+    background-color: @module-bg;
+    border-radius: 3;
+    padding: 6 15;
+}
+/* #batterybox { */
+/*     background-color: @module-bg; */
+/*     border-radius: 3; */
+/*     padding: 5 15; */
+/* } */
+#custom-batkosong {
+    padding: 0 40;
+    margin: -5 0;
+    color: transparent;
+}
+#battery {
+    font-size: 32;
+    margin: 0 0 0 12;
+    /* background-color: @module-hover; */
+    /* padding: 0 10; */
+}
+#custom-batpercentage {
+    padding: 5 0 0 0;
+    margin: 0 0 0 15;
+    font-size: 26;
+    font-weight: bold;
+}
+
+#screenshot, #screencapt {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 5 0 0 0;
+    padding: 11 12;
+    transition: all 0.3s ease-in-out;
+}
+#screencapt { margin: 5 0 0 5; }
+#custom-ssicon, #custom-scicon {
+    font-size: 24;
+    margin-bottom: 10;
+}
+#custom-sstext, #custom-sstexts, #custom-sctext, #custom-sctexts {
+    font-size: 11;
+}
+
+#screenshot:hover {
+    background-color: @module-hover;
+    transition: all 0.3s ease-in-out;
+}
+
+
+/* memory box */
+#custom-memkosong {
+    margin: -5 0;
+    padding: 1 30;
+    color: transparent;
+}
+#memorys {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 5 0 0 5;
+}
+#memorys:hover {
+    background-color: @module-hover;
+    transition: all 0.3s ease-in-out;
+}
+#disks {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 5 0 0 5;
+}
+#disks:hover {
+    background-color: @module-hover;
+    transition: all 0.3s ease-in-out;
+}
+
+/* button */
+#custom-lock,
+#custom-suspend,
+#custom-reboot,
+#custom-logout,
+#custom-poweroff {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 0 0 5 5;
+    padding: 10 15;
+    transition: all 0.3s ease-in-out;
+}
+
+#custom-lock:hover,
+#custom-suspend:hover,
+#custom-reboot:hover,
+#custom-logout:hover,
+#custom-poweroff:hover {
+    background-color: @module-hover;
+}
