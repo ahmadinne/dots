@@ -168,12 +168,18 @@ window#waybar > box {
 #custom-lock,
 #custom-suspend,
 #custom-reboot,
-#custom-logout,
-#custom-poweroff {
+#custom-logout {
     background-color: @module-bg;
     border-radius: 3;
     margin: 0 0 5 5;
     padding: 10 15;
+    transition: all 0.3s ease-in-out;
+}
+#custom-poweroff {
+    background-color: @module-bg;
+    border-radius: 3;
+    margin: 0 0 0 5;
+    padding: 12 15;
     transition: all 0.3s ease-in-out;
 }
 
