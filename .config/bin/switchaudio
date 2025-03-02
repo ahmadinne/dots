@@ -3,7 +3,8 @@
 grepSink=$(pactl list sinks | grep -e "Sink #" | cut -d '#' -f 2)
 grepUsed=$(pactl get-default-sink analog-output)
 
-if [[ "$grepSink" -gt 1 ]]; then
+checking=$(pactl list sinks | grep -e "Sink #" | cut -d '#' -f 2 | grep -c .)
+if [[ "$checking" -gt 1 ]]; then
     if [[ "$grepUsed" == *pci* ]]; then
         for sinkList in $grepSink; do
             pactl set-sink-port $sinkList analog-output-headphones && notify-send \
@@ -40,4 +41,9 @@ if [[ "$grepSink" -gt 1 ]]; then
 
     echo 
     echo "$grepUsed"
+else
+    notify-send \
+      --hint=string:x-dunst-stack-tag:wallpaper \
+      --hint=string:synchronous:wallpaper \
+      "$@" --urgency=low --transient "There's No Other Devices connected."
 fi
