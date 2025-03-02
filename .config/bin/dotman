@@ -12,6 +12,7 @@ confirmation (){
     case $whatisit in
         remove) echo -n ":: Are you sure to remove ($choice) from dotfiles? [Y/n] " ;;
         syncall) echo -n ":: Syncing all will overwrite the folder/file(s) in the dotfiles. Are you sure? [Y/n] " ;;
+        apply) echo -n ":: Applying will overwrite existing folder/files if there are. Are you sure? [Y/n] " ;;
         overwrite) echo -n ":: Are you sure to overwrite ($choice)? [Y/n] " ;;
         *) echo -n "Are you sure [Y/n] " ;;
     esac
@@ -41,6 +42,7 @@ operations:
     dotman {-S sync} [package(s)]           Copy your config into dotfiles
     dotman {-Su syncall} [package(s)]       Update all your config inside dotfiles
     dotman {-r remove} [package(s)]         Remove your config from dotfiles
+    dotman {-a apply}                       Applying dotfiles into $HOME directory
     dotman {-o overwrite} [package(s)]      Copy and Overwrite the original one with symlinks from dotfiles
 
 use 'dotman {-h --help}' to show this."
@@ -168,6 +170,7 @@ remove (){
 }
 
 apply (){
+    whatisit="apply"
     confirmation
     if [ "$confirm" = yes ]; then
         for folders in $(ls -a $dotfile_path); do
