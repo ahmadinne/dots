@@ -9,6 +9,13 @@ configuration {
     display-window:             "";
 	drun-display-format:        "{name}";
 	window-format:              "{w} · {c} · {t}";
+
+    kb-row-up:                      "Up,Control+k,Shift+Tab";
+    kb-row-down:                    "Down,Control+j";
+    kb-accept-entry:                "Control+m,Return";
+    terminal:                       "foot";
+    kb-remove-to-eol:               "Control+Shift+e";
+    kb-remove-char-back:            "BackSpace";
 }
 
 /*****----- Global Properties -----*****/
