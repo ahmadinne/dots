@@ -75,6 +75,8 @@
         "class<equibop>": "",
         "class<vesktop>": "",
         "class<telegram>": "",
+        "title<.*pomodoro.*>": "",
+        "title<.*solanum.*>": "",
         "title<.*youtube.*>": "󰗃",
         "title<.*minecraft.*>": "󰍳",
         "title<.*notesnook.*>": "󰠮",
