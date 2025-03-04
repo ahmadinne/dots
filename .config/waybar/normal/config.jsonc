@@ -76,6 +76,7 @@
         "class<vesktop>": "",
         "class<telegram>": "",
         "title<.*youtube.*>": "󰗃",
+        "title<.*minecraft.*>": "󰍳",
         "title<.*notesnook.*>": "󰠮",
         "title<.*whatsapp.*>": "󰖣",
         "title<.*NVIM.*>": "",

@@ -1,42 +1,63 @@
 -- Veillain's Neovim init.lua
 local global = vim.g
+local remap = vim.keymap.set
+local setopt = vim.opt
+local default = { noremap = true, silent = true }
+
+---- Remaps ----
+-- leader
+remap("n", " ", "<nop>", { silent = true, remap = false })
+remap("n", "<bs>", "<nop>", { silent = true, remap = false })
+vim.g.mapleader = " "
+-- leader + / remove highlight
+remap("n", "<leader>/", "<cmd>noh<cr>")
+remap("n", "gh", "<cmd>noh<cr>")
+-- p doesn't override clipboard
+remap("x", "<leader>p", '"_dP')
+-- x doesn't override clipboard
+remap("n", "x", '"_x')
+remap("n", "X", '"_X')
+-- Unmap ctrl+q (visual block, same as ctrl+v)
+remap("n", "<c-q>", "", default)
+-- Escape to Esc-l
+remap("i", "<esc>", "<esc>l", default)
 
 -- Basic Settings
-vim.opt.mouse = "a"
-vim.opt.title = true
-vim.opt.ruler = true
-vim.opt.hidden = true
-vim.opt.syntax = "on"
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.hlsearch = true
-vim.opt.laststatus = 2
-vim.opt.cursorline = true
+setopt.mouse = "a"
+setopt.title = true
+setopt.ruler = true
+setopt.hidden = true
+setopt.syntax = "on"
+setopt.number = true
+setopt.relativenumber = true
+setopt.hlsearch = true
+setopt.laststatus = 2
+setopt.cursorline = true
 vim.g.have_nerd_font = true
-vim.opt.termguicolors = true
+setopt.termguicolors = true
 vim.schedule(function()
-	vim.opt.clipboard = "unnamedplus"
+	setopt.clipboard = "unnamedplus"
 end)
-vim.opt.splitright = true
+setopt.splitright = true
 
 -- Indentation Settings
-vim.opt.wrap = true
-vim.opt.smarttab = true
-vim.opt.autoindent = true
-vim.opt.cindent = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+setopt.wrap = true
+setopt.smarttab = true
+setopt.autoindent = true
+setopt.cindent = true
+setopt.tabstop = 4
+setopt.softtabstop = 4
+setopt.shiftwidth = 4
 -- Use space instead of tab chars.
-vim.opt.expandtab = true
-vim.opt.breakindent = true
-vim.opt.textwidth = 0
-vim.opt.autochdir = true
+setopt.expandtab = true
+setopt.breakindent = true
+setopt.textwidth = 0
+setopt.autochdir = true
 
 vim.opt_local.conceallevel = 2
 
 -- colorscheme then Lazy.nvim
-require("config.lazy")
+require("lazy")
 vim.cmd([[
 	augroup transparentbackground
 	autocmd!
@@ -44,4 +65,4 @@ vim.cmd([[
 	autocmd colorscheme * highlight normal ctermbg=none guibg=none
 	augroup end
 ]])
-vim.cmd("colorscheme everblush")
+-- vim.cmd("colorscheme everblush")
