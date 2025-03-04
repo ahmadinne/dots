@@ -47,6 +47,7 @@ alias grep='grep --color=auto'
 alias bashrc='nvim $HOME/.config/bashrc'
 alias init.lua='nvim $HOME/.config/nvim/init.lua'
 alias init.remap='nvim $HOME/.config/nvim/lua/config/remap.lua'
+alias kanata-reload='sudo systemctl stop kanata; sudo systemctl start kanata; systemctl status kanata'
 function init.plugin(){
     if [ -n "$1" ]; then
         nvim $HOME/.config/nvim/lua/plugins/${1}.lua

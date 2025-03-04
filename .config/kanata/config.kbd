@@ -1,19 +1,57 @@
+;;(defcfg
+;;    process-unmapped-keys yes
+;;)
+
 (defsrc
     esc
+    spc
     caps
+    lsft
+    rsft
 )
 
 (defvar
-    tekan 150
-    tahan 150
+    tap 200
+    hld 200
 )
 
 (defalias
     escapers grv
-    capslock (multi f24 (tap-hold           $tekan $tahan esc lctl))
+    spaciers (multi f24 (tap-hold $tap $hld spc (layer-while-held extend)))
+    capslock (multi f24 (tap-hold $tap $hld esc lctl))
+    clicksft (one-shot 300 lsft)
+    clocksft (one-shot 300 rsft)
 )
 
 (deflayer base
     @escapers
+    @spaciers
     @capslock
+    @clicksft
+    @clocksft
+)
+
+(deflayermap (extend)
+    q 1
+    w 2
+    e 3
+    r 4
+    t 5
+    y 6
+    u 7
+    i 8
+    o 9
+    p 0
+
+    h left
+    j down
+    k up
+    l right
+
+    c C-S-c
+    v C-S-v
+    n C-bspc
+    m bspc
+    prev home
+    next end
 )
