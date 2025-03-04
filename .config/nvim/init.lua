@@ -1,26 +1,6 @@
 -- Veillain's Neovim init.lua
 local global = vim.g
-local remap = vim.keymap.set
 local setopt = vim.opt
-local default = { noremap = true, silent = true }
-
----- Remaps ----
--- leader
-remap("n", " ", "<nop>", { silent = true, remap = false })
-remap("n", "<bs>", "<nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
--- leader + / remove highlight
-remap("n", "<leader>/", "<cmd>noh<cr>")
-remap("n", "gh", "<cmd>noh<cr>")
--- p doesn't override clipboard
-remap("x", "<leader>p", '"_dP')
--- x doesn't override clipboard
-remap("n", "x", '"_x')
-remap("n", "X", '"_X')
--- Unmap ctrl+q (visual block, same as ctrl+v)
-remap("n", "<c-q>", "", default)
--- Escape to Esc-l
-remap("i", "<esc>", "<esc>l", default)
 
 -- Basic Settings
 setopt.mouse = "a"
@@ -57,7 +37,8 @@ setopt.autochdir = true
 vim.opt_local.conceallevel = 2
 
 -- colorscheme then Lazy.nvim
-require("lazy")
+require("config.lazy")
+require("config.remap")
 vim.cmd([[
 	augroup transparentbackground
 	autocmd!
@@ -65,4 +46,4 @@ vim.cmd([[
 	autocmd colorscheme * highlight normal ctermbg=none guibg=none
 	augroup end
 ]])
--- vim.cmd("colorscheme everblush")
+vim.cmd("colorscheme everblush")

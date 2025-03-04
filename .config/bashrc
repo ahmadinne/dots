@@ -47,7 +47,9 @@ alias grep='grep --color=auto'
 alias .bashrc='nvim $HOME/.config/bashrc'
 alias init.lua='nvim $HOME/.config/nvim/init.lua'
 alias init.remap='nvim $HOME/.config/nvim/lua/config/remap.lua'
-alias init.plugin='nvim $HOME/.config/nvim/lua/plugins/'
+function init.plugin(){
+    nvim $HOME/.config/nvim/lua/plugins/$1
+}
 
 alias mem='free --mega'
 alias memory='free --mega'
@@ -87,6 +89,3 @@ _fzf_comprun() {
         *)              fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
     esac
 }
-
-# ---- Bat Setup ----
-export BAT_THEME=Everblush
