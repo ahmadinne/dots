@@ -44,12 +44,17 @@ alias neovim='nvim'
 alias bf='bunnyfetch'
 alias boottime='systemd-analyze'
 alias grep='grep --color=auto'
-alias .bashrc='nvim $HOME/.config/bashrc'
+alias bashrc='nvim $HOME/.config/bashrc'
 alias init.lua='nvim $HOME/.config/nvim/init.lua'
 alias init.remap='nvim $HOME/.config/nvim/lua/config/remap.lua'
 function init.plugin(){
-    nvim $HOME/.config/nvim/lua/plugins/$1
+    if [ -n "$1" ]; then
+        nvim $HOME/.config/nvim/lua/plugins/${1}.lua
+    else
+        nvim $HOME/.config/nvim/lua/plugins/
+    fi
 }
+alias init.plugins=init.plugin
 
 alias mem='free --mega'
 alias memory='free --mega'
