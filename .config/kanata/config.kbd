@@ -4,7 +4,6 @@
 
 (defsrc
     esc
-    spc
     caps
     lsft
     rsft
@@ -17,41 +16,14 @@
 
 (defalias
     escapers grv
-    spaciers (multi f24 (tap-hold $tap $hld spc (layer-while-held extend)))
     capslock (multi f24 (tap-hold $tap $hld esc lctl))
-    clicksft (one-shot 300 lsft)
-    clocksft (one-shot 300 rsft)
+    clicksft (one-shot $tap lsft)
+    clocksft (one-shot $tap rsft)
 )
 
 (deflayer base
     @escapers
-    @spaciers
     @capslock
     @clicksft
     @clocksft
-)
-
-(deflayermap (extend)
-    q 1
-    w 2
-    e 3
-    r 4
-    t 5
-    y 6
-    u 7
-    i 8
-    o 9
-    p 0
-
-    h left
-    j down
-    k up
-    l right
-
-    c C-S-c
-    v C-S-v
-    n C-bspc
-    m bspc
-    prev home
-    next end
 )

@@ -66,6 +66,7 @@
         "class<google-chrome-beta>": "",
         "class<google-chrome> title<.*github.*>": "",
         "class<firefox>": "󰈹",
+        "class<midori>": "",
         "class<firefox> title<.*github.*>": "",
         "class<kitty>": "",
         "class<foot>": "",
@@ -197,9 +198,9 @@
         ]
     },
     "custom/title": {
-        "format": "{text}",
+        "format": "{}",
         "return-type": "json",
-        "exec": "python3 -u $HOME/.config/waybar/normal/scrolling-title.py",
+        "exec": "$HOME/.config/waybar/normal/media.sh scrolltitle",
         "tooltip": false,
         "on-click": "playerctl play-pause"
     },
