@@ -73,7 +73,7 @@ scrolltitle(){
 
             for ((i=0; i<${#teks}; i++)); do
                 echo "{\"text\": \"${teks_gabung:((i % ${#teks_gabung})):max_len}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
-                sleep 0.5
+                sleep 1
             done
         else
             echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
