@@ -72,17 +72,11 @@ scrolltitle(){
             teks_gabung="${teks} ${teks}"
 
             for ((i=0; i<${#teks}; i++)); do
-                # Menampilkan potongan teks sesuai dengan panjang maksimal
-                echo -n "{\"text\": \"${teks_gabung:((i % ${#teks_gabung})):max_len}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
-                echo -n -e "\r"  # Menggerakkan kursor kembali ke awal baris
-                sleep 0.5  # Delay agar gerakan terlihat
+                echo "{\"text\": \"${teks_gabung:((i % ${#teks_gabung})):max_len}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+                sleep 0.5
             done
         else
-            while true; do
-                echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
-                echo -n -e "\r"
-                sleep 2
-            done
+            echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
         fi
     done
 }
