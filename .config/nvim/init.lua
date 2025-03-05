@@ -45,5 +45,5 @@ vim.cmd([[
 	autocmd colorscheme * highlight nontext ctermbg=none guibg=none
 	autocmd colorscheme * highlight normal ctermbg=none guibg=none
 	augroup end
+    colorscheme everblush
 ]])
-vim.cmd("colorscheme everblush")
