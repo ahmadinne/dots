@@ -10,7 +10,7 @@ return {
 					bash = { "beautysh" },
 					json = { "jq", "fixjson" },
 					html = { "html_beautify" },
-					markdown = { "mdformat" },
+					-- markdown = { "mdformat" },
 					javascript = { "js_beautify" },
 				},
 				format_on_save = {

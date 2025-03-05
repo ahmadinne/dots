@@ -63,6 +63,7 @@ scrolltitle(){
             done
         else
             echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"\"}" | jq --unbuffered --compact-output .
+            sleep 2
         fi
     done
 }
