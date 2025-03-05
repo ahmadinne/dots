@@ -50,33 +50,19 @@ metadata(){
 
 scrolltitle(){
     while true; do
-        status=$(playerctl status)
         teks=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
         hitung=$(echo "$teks" | wc -m)
         max_len=25
-
-        if [[ "$status" == Playing ]]; then
-            class="normal"
-            sleep 0.5
-        elif [[ "$status" == Paused ]]; then
-            class="paused"
-            sleep 0.5
-        else
-            class="normal"
-            title=$(echo $HOSTNAME)
-            artist=$(whoami)
-            sleep 5
-        fi
 
         if [ "$hitung" -gt "$max_len" ]; then
             teks_gabung="${teks} ${teks}"
 
             for ((i=0; i<${#teks}; i++)); do
-                echo "{\"text\": \"${teks_gabung:((i % ${#teks_gabung})):max_len}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+                echo "{\"text\": \"${teks_gabung:((i % ${#teks_gabung})):max_len}\", \"class\": \"\"}" | jq --unbuffered --compact-output .
                 sleep 1
             done
         else
-            echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+            echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"\"}" | jq --unbuffered --compact-output .
         fi
     done
 }
