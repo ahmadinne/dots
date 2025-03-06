@@ -1,249 +1,135 @@
-#!/bin/bash
-#environments
-options=$1
-choice=$(echo $@ | grep -oP "(?<=$options ).*")
-config_path="$HOME/.config"
-dotman_config="$HOME/.config/dotman/config.sh"
-dotfile_path=$(cat $dotman_config | grep path | awk '{print $3}')
+#! /usr/bin/env bash
 
-confirm=""
-whatisit=""
-confirmation (){
-    case $whatisit in
-        remove) echo -n ":: Are you sure to remove ($choice) from dotfiles? [Y/n] " ;;
-        syncall) echo -n ":: Syncing all will overwrite the folder/file(s) in the dotfiles. Are you sure? [Y/n] " ;;
-        apply) echo -n ":: Applying will overwrite existing folder/files if there are. Are you sure? [Y/n] " ;;
-        overwrite) echo -n ":: Are you sure to overwrite ($choice)? [Y/n] " ;;
-        *) echo -n "Are you sure [Y/n] " ;;
-    esac
-    read answer
-    case $answer in
-        [yY]) confirm="yes" ;;
-        [nN]) confirm="no" ;;
-        *) confirm="yes" ;;
-    esac
-}
+# Checking config
+CONFIG_PATH="$HOME/.config"
+DOTMAN_PATH="$HOME/.config/dotman"
+DOTMAN_FILE="$HOME/.config/dotman/config.sh"
+DOTFILE_PATH=$(cat ${DOTMAN_FILE} | grep path | awk '{print $3}')
+if [ ! -d "$DOTMAN_PATH" ]; then
+    mkdir -p ${DOTMAN_PATH}
+    echo "path = $HOME/dotfiles" > ${DOTMAN_FILE}
+fi
 
-wrong_input (){
-    echo "wrong input. use 'dotman -h' for help."
-}
+# Prompt Variables
+option=$1
+choice=$(echo $@ | grep -oP "(?<=${option} ).*")
 
-path (){
-    echo "Your path is: '$dotfile_path'"
-}
+# Main Variables
+CONFIG_LIST=$(ls ${DOTFILE_PATH}/.config/${PKGS})
 
-help (){
-    echo "usage:  dotman <operation> [...]
-operations:
-    dotman {-h help}                        Show this help
-    dotman {-l list}                        Show List of Configuration included in dotfiles
-    dotman {--set set} [path/to/dotfiles]   Set your dotfiles path/directory
-    dotman {-p path}                        Check your dotfiles path
-    dotman {-S sync} [package(s)]           Copy your config into dotfiles
-    dotman {-Su syncall} [package(s)]       Update all your config inside dotfiles
-    dotman {-r remove} [package(s)]         Remove your config from dotfiles
-    dotman {-a apply}                       Applying dotfiles into $HOME directory
-    dotman {-o overwrite} [package(s)]      Copy and Overwrite the original one with symlinks from dotfiles
-
-use 'dotman {-h --help}' to show this."
-}
-
-set (){
-    if [ -z "$choice" ]; then
-        echo "Usage: dotman set </path/to/your/dotfiles>"
-    elif [[ "$choice" = . ]]; then
-        rn=$(pwd)
-        echo "path = $rn" > $dotman_config
-        if [ $? -eq 0 ]; then
-            echo "Dotfiles path changed to '$rn'"
-        else
-            echo "Failed to change the path"
-        fi
-    else
-        echo "path = $choice" > $dotman_config
-        if [ $? -eq 0 ]; then
-            echo "Dotfiles path changed to '$choice'"
-        else
-            echo "Failed to change the path"
-        fi
-    fi
-}
-
-sync (){
-    echo "resolving packages..."
-    echo "looking for conflicting packages in the dotfiles..."
-    numberpkg=1
-    for pkg in ${choice[@]}; do
-        check=$(ls $config_path/$pkg)
-        size=$(du -sh $config_path/$pkg | awk '{print $1}')
-        dotsize=$(du -sh $dotfile_path/.config/$pkg | awk '{print $1}')
-        if [ ! -d "$dotfile_path/.config/$pkg" ]; then
-            echo ""
-            echo "Packages ($numberpkg) $pkg"
-            echo ""
-            echo "Package Folder Size: $size"
-            echo "Net Upgrade Size: $size"
-            echo ""
-            read -p ":: Proceed to sync packages? [Y/n]" ansor
-            case $ansor in
-                [yY])
-                    mkdir -p ${dotfile_path}/.config/${pkg}
-                    ;;
-                [nN])
-                    echo "cancelled"
-                    ;;
-                *)
-                    mkdir -p $dotfile_path/.config/$pkg 
-                    ;;
-            esac
-        elif [ -d "$dotfile_path/.config/$pkg" ]; then
-            echo "warning: $pkg is already inside dotfiles -- syncing"
-            echo ""
-            echo "Packages ($numberpkg) $pkg"
-            echo ""
-            echo "Package Folder Size: $dotsize"
-            echo "Updated Folder Size: $size"
-            echo ""
-        fi
-        if [ "$check" ]; then
-            cp -rf $config_path/$pkg $dotfile_path/.config
+function remove() {
+    for PKGS in ${choice[@]}; do
+        if [ "$CONFIG_LIST" ]; then
+            rm -rf ${DOTFILE_PATH}/.config/${PKGS}
             if [ $? -eq 0 ]; then
-                echo "Copied $pkg Config files into dotfiles($dotfile_path)."
+                echo "$PKGS has been removed from dotfiles"
             else
-                echo "Failed to copy $pkg into dotfiles"
+                echo "failed to remove $PKGS from dotfiles"
             fi
         else
-            echo "$pkg is nowhere inside $config_path"
+            echo "there's no folder nor files named $PKGS in the dotfiles."
         fi
-        numberpkg=$(($numberpkg + 1))
     done
-    if true; then
-        echo ""
-        echo "Use 'dotman -l' to see all files inside dotfiles!"
-    fi
-}
-syncall (){
-    path=$(ls ${dotfile_path}/.config)
-    whatisit="syncall"
-    echo "resolving packages..."
-    echo "listing all packages folder in the dotfiles..."
-    confirmation
-    if [ "$confirm" = yes ]; then
-        for pkg in $path; do
-            cp -rf $config_path/$pkg $dotfile_path/.config &>/dev/null
-            if [ $? -eq 0 ]; then
-                echo "Updated $pkg files."
-            else
-                cp -f $config_path/$pkg $dotfile_path/.config &>/dev/null
-                if [ $? -eq 0 ]; then
-                    echo "Updated $pkg file."
-                else
-                    echo "Fail to update $pkg"
-                fi
-            fi
-        done
-    else
-        echo "Interrupt signal received"
-    fi
 }
 
-remove (){
-    whatisit="remove"
-    confirmation
-    if [[ "$confirm" == yes ]]; then
-        for pkg in ${choice[@]}; do
-            check=$(ls $dotfile_path/.config/$pkg)
-            if [ "$check" ]; then
-                    rm -rf $dotfile_path/.config/$pkg
-                    if [ $? -eq 0 ]; then
-                        echo "$pkg has been removed from dotfiles($dotfile_path)."
-                    else
-                        echo "failed to remove $pkg from dotfiles($dotfile_path)."
-                    fi
-            else
-                echo "$pkg is nowhere in dotfiles."
-            fi
-        done
-    else
-        echo "Interrupt signal received"
-    fi
-}
+function sync() {
+    for PKGS in ${choice[@]}; do
+        if [ "$CONFIG_LIST" ]; then remove &>/dev/null; fi
 
-apply (){
-    whatisit="apply"
-    confirmation
-    if [ "$confirm" = yes ]; then
-        for folders in $(ls -a $dotfile_path); do
-            cp -rf $folders $HOME
-            if [ $? -eq 0 ]; then
-                echo "dotfiles applied succesfully"
-            else
-                echo "dotfiles failed to apply"
-            fi
-        done
-    else
-        echo "Process cancelled."
-    fi
-}
-
-overwrite (){
-    check=$(ls $config_path/$choice)
-    if [ "$check" ]; then
-        whatisit="overwrite"
-        confirmation
-        if [[ "$confirm" == yes ]]; then
-            mv -f $config_path/$choice $dotfile_path
-            if true; then
-                ln -s $dotfile_path/$choice $config_path
-                if [ $? -eq 0 ]; then
-                    echo "Overwriting ($choice) success"
-                else
-                    echo "fail to Overwrite ($choice)"
-                fi
-            fi
+        if [ -d "${CONFIG_PATH}/${PKGS}" ]; then mkdir -p ${DOTFILE_PATH}/.config/${PKGS}; fi
+        cp -rf ${CONFIG_PATH}/$PKGS ${DOTFILE_PATH}/.config
+        if [ $? -eq 0 ]; then
+            echo "$PKGS succesfully copied into dotfiles"
         else
-            echo "process cancelled."
+            echo "failed to copy $PKGS into the dotfiles"
         fi
+    done
+
+}
+
+function syncall() {
+    echo -n ":: Are you sure to Sync All? it will overwrite all modified Configs [Y/n] "
+    read answer
+    case $answer in 
+        [yY]) confirm="yes" ;; 
+        [nN]) confirm="no" ;; 
+        *) confirm="yes" ;; 
+    esac
+
+    if [ "$confirm" = yes ]; then
+        for PKGS in $(command ls ${DOTFILE_PATH}/.config); do
+            rm -rf ${DOTFILE_PATH}/.config/${PKGS} && \
+            if [ -d "${CONFIG_PATH}/${PKGS}" ]; then mkdir -p ${DOTFILE_PATH}/.config/${PKGS}; fi
+            cp -rf ${CONFIG_PATH}/$PKGS ${DOTFILE_PATH}/.config/
+            if [ $? -eq 0 ]; then
+                echo "succesfully updated $PKGS"
+            else
+                echo "failed to update da $PKGS"
+            fi
+        done
+    else
+        echo "Process cancelled"
     fi
 }
 
-list (){
-    check="${dotfile_path}/.config"
-    # list=$(ls -la $dotfile_path/.config | awk '{print $9}' | grep -vE '^\.$|^\.\.$' | grep -v '^$')
+function list() {
+    JARAK=30
     BLUE="\033[0;34m"
     BLACK="\033[0;30m"
     NONE="\033[0m"
-    echo "List of Configuration inside dotfiles:"
-    for folder in $(ls $check); do
-        if [ -d "$check/$folder" ]; then
-                printf "${BLACK}-- ${BLUE} $folder${NONE}\n"
-        elif [ -f "$check/$folder" ]; then
-                printf "${BLACK}-- ${NONE} $folder\n"
+    printf "${BLACK}##${NONE}[${BLUE}List Of Configuration${NONE}]\n"
+    for list in $(ls ${DOTFILE_PATH}/.config); do
+        if [ -d "${DOTFILE_PATH}/.config/$list" ]; then
+                printf "${BLACK}-- ${BLUE} "
+                printf "$(printf "%-${JARAK}s" "$list")${NONE}\n"
+        elif [ -f "${DOTFILE_PATH}/.config/$list" ]; then
+                printf "${BLACK}-- ${NONE} "
+                printf "$(printf "%-${JARAK}s" "$list")\n"
         else
             echo "there's nothing in your dotfiles($dotfile_path)."
         fi
     done
 }
 
+function confirmation() {
+    if [ -n "$choice" ]; then
+        case $thingstodo in
+            remove) echo -n ":: Are you sure to remove ($choice) from dotfiles? [Y/n] " ;;
+            sync) echo -n ":: Proceed to sync (${choice}?) [Y/n] " ;;
+        esac
+        read answer
+        case $answer in
+            [yY]) confirm="yes" ;;
+            [nN]) confirm="no" ;;
+            *) confirm="yes" ;;
+        esac
+    else
+        echo "Please input the package name!"
+    fi
+}
 
-#first-time-run
-echo ""
+function help() {
+echo "usage:  dotman <operation> [...]
+operations:
+    dotman {-h --help help}
+    dotman {-l --list list}
+    dotman {-R --remove remove}     <package(s)>
+    dotman {-S --sync sync}         [package(s)]
+    dotman {-Syu --syncall syncall}
 
-check=$(ls $HOME/.config/dotman)
-if [ ! "$check" ]; then
-    mkdir -p $HOME/.config/dotman
-    echo "path = " > $dotman_config
+use 'dotman {-h --help help}' to show this page"
+}
+
+# Run it!
+if [ -n "$option" ]; then
+    case $option in
+        -[rR]|-[rR][mM]|--remove|remove) thingstodo="remove"; confirmation; if [ "$confirm" = yes ]; then remove; fi ;;
+        -[sS]|--sync|sync) thingstodo="sync"; confirmation; if [ "$confirm" = yes ]; then sync; fi ;;
+        -[sS][yY][uU]|-[sS][yY]|-[sS][uU]|--syncall|syncall) syncall ;;
+        -[lL]|--list|list) list ;;
+        -[hH]|--help|help) help ;;
+        *) echo "wrong input (use 'dotman help' for help)" ;;
+    esac
+else
+    echo "no operation specified (use 'dotman help' for help)"
 fi
-
-case $1 in
-    -p|--path|path|-d|--dir|dir) path ;;
-    --set|--set-path|--set-dir|set|set-path|set-dir) set ;;
-    -[sS]|--sync|sync) sync ;;
-    -[sS][uU]|-[sS][aA]|-[sS][yY][uU]|--syncall|syncall) syncall ;;
-    -[rR]|--remove|remove) remove ;;
-    -[aA]|--apply|apply) apply ;;
-    -[oO]|--overwrite|overwrite) overwrite ;;
-    -[lL]|--list|list) list ;;
-    -[hH]|--help|help) help ;;
-    *) wrong_input ;;
-esac
