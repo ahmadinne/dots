@@ -42,7 +42,7 @@ metadata(){
                 echo "{\"text\": \"${title}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
                 ;;
             artist)
-                echo "{\"text\": \"{artist}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
+                echo "{\"text\": \"${artist}\", \"class\": \"${class}\"}" | jq --unbuffered --compact-output .
                 ;;
         esac
     done
