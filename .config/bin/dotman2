@@ -1,0 +1,117 @@
+#! /usr/bin/env bash
+
+# Checking config
+CONFIG_PATH="$HOME/.config"
+DOTMAN_PATH="$HOME/.config/dotman"
+DOTMAN_FILE="$HOME/.config/dotman/config.sh"
+DOTFILE_PATH=$(cat ${DOTMAN_FILE} | grep path | awk '{print $3}')
+if [ ! -d "$DOTMAN_PATH" ]; then
+    mkdir -p ${DOTMAN_PATH}
+    echo "path = $HOME/dotfiles" > ${DOTMAN_FILE}
+fi
+
+# Prompt Variables
+option=$1
+choice=$(echo $@ | grep -oP "(?<=${option} ).*")
+
+# Main Variables
+CONFIG_LIST=$(ls ${DOTFILE_PATH}/.config/${PKGS})
+
+function remove() {
+    for PKGS in ${choice[@]}; do
+        if [ "$CONFIG_LIST" ]; then
+            rm -rf ${DOTFILE_PATH}/.config/${PKGS}
+            if [ $? -eq 0 ]; then
+                echo "$PKGS has been removed from dotfiles"
+            else
+                echo "failed to remove $PKGS from dotfiles"
+            fi
+        else
+            echo "there's no folder nor files named $PKGS in the dotfiles."
+        fi
+    done
+}
+
+function sync() {
+    for PKGS in ${choice[@]}; do
+        if [ "$CONFIG_LIST" ]; then remove &>/dev/null; fi
+
+        if [ -d "${CONFIG_PATH}/${PKGS}" ]; then mkdir -p ${DOTFILE_PATH}/.config/${PKGS}; fi
+        cp -rf ${CONFIG_PATH}/$PKGS ${DOTFILE_PATH}/.config
+        if [ $? -eq 0 ]; then
+            echo "$PKGS succesfully copied into dotfiles"
+        else
+            echo "failed to copy $PKGS into the dotfiles"
+        fi
+    done
+
+}
+
+function syncall() {
+    echo -n ":: Are you sure to Sync All? it will overwrite all modified Configs [Y/n] "
+    read answer
+    case $answer in 
+        [yY]) confirm="yes" ;; 
+        [nN]) confirm="no" ;; 
+        *) confirm="yes" ;; 
+    esac
+
+    if [ "$confirm" = yes ]; then
+        for PKGS in $(command ls ${DOTFILE_PATH}/.config); do
+            rm -rf ${DOTFILE_PATH}/.config/${PKGS} && \
+            if [ -d "${CONFIG_PATH}/${PKGS}" ]; then mkdir -p ${DOTFILE_PATH}/.config/${PKGS}; fi
+            cp -rf ${CONFIG_PATH}/$PKGS ${DOTFILE_PATH}/.config/
+            if [ $? -eq 0 ]; then
+                echo "succesfully updated $PKGS"
+            else
+                echo "failed to update da $PKGS"
+            fi
+        done
+    else
+        echo "Process cancelled"
+    fi
+}
+
+function list() {
+    JARAK=30
+    BLUE="\033[0;34m"
+    BLACK="\033[0;30m"
+    NONE="\033[0m"
+    printf "${BLACK}##${NONE}[${BLUE}List Of Configuration${NONE}]\n"
+    for list in $(ls ${DOTFILE_PATH}/.config); do
+        if [ -d "${DOTFILE_PATH}/.config/$list" ]; then
+                printf "${BLACK}-- ${BLUE} "
+                printf "$(printf "%-${JARAK}s" "$list")${NONE}\n"
+        elif [ -f "${DOTFILE_PATH}/.config/$list" ]; then
+                printf "${BLACK}-- ${NONE} "
+                printf "$(printf "%-${JARAK}s" "$list")\n"
+        else
+            echo "there's nothing in your dotfiles($dotfile_path)."
+        fi
+    done
+}
+
+function confirmation() {
+    if [ -n "$choice" ]; then
+        case $thingstodo in
+            remove) echo -n ":: Are you sure to remove ($choice) from dotfiles? [Y/n] " ;;
+            sync) echo -n ":: Proceed to sync (${choice}?) [Y/n] " ;;
+        esac
+        read answer
+        case $answer in
+            [yY]) confirm="yes" ;;
+            [nN]) confirm="no" ;;
+            *) confirm="yes" ;;
+        esac
+    else
+        echo "Please input the package name!"
+    fi
+}
+
+# Run it!
+case $option in
+    -[rR]|--remove|remove) thingstodo="remove"; confirmation; if [ "$confirm" = yes ]; then remove; fi ;;
+    -[sS]|--sync|sync) thingstodo="sync"; confirmation; if [ "$confirm" = yes ]; then sync; fi ;;
+    -[sS][yY][uU]|-[sS][yY]|-[sS][uU]|--syncall|syncall) syncall ;;
+    -[lL]|--list|list) list ;;
+esac
