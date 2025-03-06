@@ -82,7 +82,7 @@
         "title<.*minecraft.*>": "󰍳",
         "title<.*notesnook.*>": "󰠮",
         "title<.*whatsapp.*>": "󰖣",
-        "title<.*NVIM.*>": "",
+        "title<.*- NVIM.*>": "",
         "title<.*yazi.*": "",
         "title<.*roller.*": "",
         "title<.*monkeytype.*": "󰌌",

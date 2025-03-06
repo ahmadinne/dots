@@ -38,8 +38,6 @@ remap("n", "X", '"_X')
 
 -- Unmap ctrl+q (visual block, same as ctrl+v)
 remap("n", "<c-q>", "", default)
--- Escape to Esc-l
-remap("i", "<esc>", "<esc>l", default)
 
 -- Switch buffer and windows
 remap("n", "gb", "<cmd>bn<cr>")
