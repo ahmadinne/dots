@@ -10,8 +10,12 @@ prevchoice=${2}.md
 main (){
     if [ -z "$choice" ]; then
         echo "Use 'notes -h' for help"
+    elif [ "$choice" = todos ]; then
+        thedates=$(date +%F)
+        notesname=$(find $path \( -type d -name .git -o -name .obsidian \) -prune -o -print | grep $thedates)
+        nvim $notesname
     else
-	if $(ls $path/$choices &>/dev/null); then
+        if $(ls $path/$choices &>/dev/null); then
             nvim $path/$choices
         else
             echo "There's no Notes called '$choice' in Notes($path)"
