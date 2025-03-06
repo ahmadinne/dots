@@ -3,7 +3,10 @@
 echo -ne "username: "
 read username
 
-paru -S --noconfirm kanata-bin
+check=$(pacman -Qe kanata-bin)
+if [ ! "$check" ]; then
+    paru -S --noconfirm kanata-bin
+fi
 
 sudo groupadd uinput
 sudo usermod -aG input $username

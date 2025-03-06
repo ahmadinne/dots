@@ -34,7 +34,7 @@ metadata(){
             class="normal"
             title=$(echo $HOSTNAME)
             artist=$(whoami)
-            sleep 5
+            sleep 2
         fi
 
         case $1 in
@@ -51,6 +51,9 @@ metadata(){
 scrolltitle(){
     while true; do
         teks=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
+        if [ ! "$teks" ]; then
+            teks="Nothing played right now"
+        fi
         hitung=$(echo "$teks" | wc -m)
         max_len=25
 

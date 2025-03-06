@@ -90,7 +90,7 @@
         "title<.*discord.*": "",
         "title<.*legcord.*": "",
         "title<.*obsidian.*": "󰎞",
-        "title<.*obs.*": "",
+        "title<.*OBS.*": "",
         "title<.*spotify.*": "󰓇",
         "title<.*telegram.*": "",
         "code": "<U+F0A1E>",
