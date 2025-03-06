@@ -109,9 +109,14 @@ function confirmation() {
 }
 
 # Run it!
-case $option in
-    -[rR]|--remove|remove) thingstodo="remove"; confirmation; if [ "$confirm" = yes ]; then remove; fi ;;
-    -[sS]|--sync|sync) thingstodo="sync"; confirmation; if [ "$confirm" = yes ]; then sync; fi ;;
-    -[sS][yY][uU]|-[sS][yY]|-[sS][uU]|--syncall|syncall) syncall ;;
-    -[lL]|--list|list) list ;;
-esac
+if [ -n "$option" ]; then
+    case $option in
+        -[rR]|-[rR][mM]|--remove|remove) thingstodo="remove"; confirmation; if [ "$confirm" = yes ]; then remove; fi ;;
+        -[sS]|--sync|sync) thingstodo="sync"; confirmation; if [ "$confirm" = yes ]; then sync; fi ;;
+        -[sS][yY][uU]|-[sS][yY]|-[sS][uU]|--syncall|syncall) syncall ;;
+        -[lL]|--list|list) list ;;
+        *) echo "wrong input (use 'dotman help' for help)" ;;
+    esac
+else
+    echo "no operation specified (use 'dotman help' for help)"
+fi
