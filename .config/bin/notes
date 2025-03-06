@@ -48,9 +48,9 @@ operations:
     notes <filename>    read/edit notes
     notes {-t todos}    open daily todos
     notes {-h help}     print this help
-    notes {-c create}   Create new notes
     notes {-n new}      Create new notes
     notes {-a add}      Create new notes
+    notes {-c create}   Create new notes
     notes {-r remove}   Remove existing notes
     notes {-p preview}  Preview notes in browser
 
@@ -69,7 +69,7 @@ new (){
     if [ -z "$second" ]; then
         echo -e "\nPlease insert name for the Notes.\nexample: 'notes new todos'"
     else
-        if ls $path/$prevchoice; then
+        if $(ls $path/$prevchoice &>/dev/null); then
             echo "There's already notes called '$prevchoice'!"
         else
             touch $path/$prevchoice
@@ -79,7 +79,7 @@ new (){
 }
 
 remove (){
-    if ls $path/$prevchoice; then
+    if $(ls $path/$prevchoice &>/dev/null); then
         echo -n "Are you sure to remove '$prevchoice' from notes? (Y/n) "
         read answer
         case $answer in
