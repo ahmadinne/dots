@@ -51,8 +51,15 @@ function currento() {
         fi
     }
 
-    checklists
-}
+    history(){
+        LIST=$(cat "$CTHIST")
+        echo "$LIST"
+    }
 
+    case $1 in
+        -[hH]|--history) history ;;
+        *) checklists ;;
+    esac
+}
 alias ct=currento
 alias cd=currento
