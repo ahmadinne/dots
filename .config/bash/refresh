@@ -33,6 +33,7 @@
 if true; then
     killall waybar
     killall swaync
+    killall dunst
     notify-send --urgency=low --transient "Refreshed!" "What do you think?" -r 9001 -t 2000
     waybar -c $HOME/.config/waybar/normal/config.jsonc -s $HOME/.config/waybar/normal/style.css
 fi
