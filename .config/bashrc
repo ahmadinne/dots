@@ -3,6 +3,7 @@
 
 # ---- Source ----
 source $HOME/.config/bin/currento
+source $HOME/.config/bashprompt
 # source /usr/bin/currento
 
 # ---- Environments ----
@@ -25,7 +26,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 # Evals
 eval "$(fzf --bash)"
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 
 
 # ---- Settings ----
@@ -71,7 +72,7 @@ alias mem='free --mega'
 alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
 
-PS1='[\u@\h \W]\$ '
+# PROMPT_COMMAND='PS1_CMD1=$()'; PS1='\W\n; ${PS1_CMD1}'
 bunnyfetch
 
 
