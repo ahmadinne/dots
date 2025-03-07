@@ -44,6 +44,8 @@ remap("n", "gb", "<cmd>bn<cr>")
 remap("n", "gB", "<cmd>bp<cr>")
 remap("n", "gw", "<c-w>w")
 remap("n", "gW", "<c-w>W")
+remap("n", "<S-J>", "<cmd>bp<cr>")
+remap("n", "<S-K>", "<cmd>bn<cr>")
 
 -- control g to bottom of the file
 remap("n", "<c-g>", "<s-g>")
