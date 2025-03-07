@@ -26,7 +26,7 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 # Evals
 eval "$(fzf --bash)"
-# eval "$(starship init bash)"
+eval "$(starship init bash)"
 
 
 # ---- Settings ----
