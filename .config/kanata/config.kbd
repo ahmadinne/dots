@@ -3,7 +3,7 @@
 ;;)
 
 (defsrc
-    ;; esc
+    esc
     caps
     lsft
     rsft
@@ -15,16 +15,16 @@
 )
 
 (defalias
-    ;; escapers grv
-    capslock lctl
+    escapers grv
+    ;; capslock lctl
     ;; capslock (tap-dance $tap (lctl esc))
-    ;; capslock (multi f24 (tap-hold $tap $hld esc lctl))
+    capslock (multi f24 (tap-hold $tap $hld esc lctl))
     clicksft (one-shot $tap lsft)
     clocksft (one-shot $tap rsft)
 )
 
 (deflayer base
-    ;; @escapers
+    @escapers
     @capslock
     @clicksft
     @clocksft

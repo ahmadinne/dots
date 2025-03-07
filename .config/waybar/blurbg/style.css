@@ -1,6 +1,5 @@
-@import "../colors.css";
-
+@define-color blurbg #000000;
 window#waybar {
-  background-color: alpha(@background, 0.1);
+  background-color: alpha(@blurbg, 0.1);
   color: transparent;
 }

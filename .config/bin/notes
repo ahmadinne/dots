@@ -11,15 +11,16 @@ main (){
     if [ -z "$choice" ]; then
         echo "Use 'notes -h' for help"
     elif [ "$choice" = todos ] || [ "$choice" = "-t" ]; then
-        thedates=$(date +%F)
-        thenotes=$(find $path \( -type f -name .git -o -name .obsidian \) -prune -o -print | grep $thedates)
-        if $(ls $thenotes &>/dev/null); then
-            nvim $thenotes
-        else
-            echo "There's no Notes called '$choice' in Notes($path)"
-            echo "Use 'notes list' for showing all notes"
-            echo "or  'notes add' for adding new notes"
-        fi
+        # # thedates=$(date +%F)
+        # # thenotes=$(find $path \( -type f -name .git -o -name .obsidian \) -prune -o -print | grep $thedates)
+        # # if $(ls $thenotes &>/dev/null); then
+        # #     nvim $thenotes
+        # else
+        #     echo "There's no Notes called '$choice' in Notes($path)"
+        #     echo "Use 'notes list' for showing all notes"
+        #     echo "or  'notes add' for adding new notes"
+        # fi
+        obsidian
     else
         if $(ls $path/$choices &>/dev/null); then
             nvim $path/$choices

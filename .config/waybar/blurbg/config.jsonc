@@ -5,13 +5,12 @@
   "height": 1000,
   "width": 2000,
 
-
   "modules-center": [
     "custom/empty"
   ],
 
   "custom/empty": {
-    "format": "",
+    "format": "tai",
     "tooltip": false
   }
 }

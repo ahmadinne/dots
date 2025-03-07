@@ -5,10 +5,10 @@ shutdown='󰐥 Power Off'
 reboot='󰜉 Reboot'
 lock='󰌾 Lock'
 suspend='󰤄 Suspend'
-logout='󰍃 Log Out'
+logout='󰍃 Logout'
 close='Close'
 
-CHOSEN=$(printf "$lock\n$suspend\n$reboot\n$shutdown\n$logout\n$close" | rofi -dmenu -no-case-sensitive)
+CHOSEN=$(printf "$lock\n$suspend\n$reboot\n$shutdown\n$logout\n$close" | rofi -dmenu -i)
 
 case "$CHOSEN" in
 	"$lock") hyprlock ;;

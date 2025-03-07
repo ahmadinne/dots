@@ -2,7 +2,8 @@
 
 
 # ---- Source ----
-source $HOME/.config/bin/ct
+source $HOME/.config/bin/currento
+# source /usr/bin/currento
 
 # ---- Environments ----
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
