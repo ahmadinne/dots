@@ -1,5 +1,6 @@
 {
   "blink.cmp": { "branch": "main", "commit": "dcda20d3aa345025699a920c45b0a0603551f41d" },
+  "btw.nvim": { "branch": "master", "commit": "47f6419e90d3383987fd06e8f3e06a4bc032ac83" },
   "conform.nvim": { "branch": "master", "commit": "db8a4a9edb217067b1d7a2e0362c74bfe9cc944d" },
   "evergarden": { "branch": "mega", "commit": "283e001ba1580a92aa81839558f785a01b70ffa3" },
   "flash.nvim": { "branch": "main", "commit": "3c942666f115e2811e959eabbdd361a025db8b63" },
@@ -19,6 +20,5 @@
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "pomodoro.nvim": { "branch": "main", "commit": "04ea4152b1e1d0a42ac95f9f527a7cd9adec59f2" },
   "smear-cursor.nvim": { "branch": "main", "commit": "4f91b437757c3f8648be978602c079e7c718c807" },
-  "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "vim-suda": { "branch": "master", "commit": "9adda7d195222d4e2854efb2a88005a120296c47" }
 }

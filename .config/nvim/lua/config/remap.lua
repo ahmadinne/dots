@@ -20,8 +20,8 @@ vim.cmd([[
 
 -- leader
 remap("n", " ", "<nop>", { silent = true, remap = false })
+remap("n", ",", "<nop>", { silent = true, remap = false })
 remap("n", "<bs>", "<nop>", { silent = true, remap = false })
-vim.g.mapleader = " "
 
 -- capital U for redo
 remap("n", "U", "<c-r>")
@@ -51,4 +51,4 @@ remap("n", "<S-K>", "<cmd>bn<cr>")
 remap("n", "<c-g>", "<s-g>")
 
 -- Floaterminal
-remap({ "n", "t" }, "<leader>tt", "<cmd>Floaterminal<cr>")
+remap({ "n", "t" }, "<leader>tt", "<cmd>lua Snacks.terminal.toggle()<cr>")
