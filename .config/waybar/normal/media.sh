@@ -5,13 +5,16 @@ image(){
         artUrl=$(playerctl metadata | grep artUrl | awk '{print $3}' | sed 's|file://||')
         cache="/tmp/mediacache"
         thumbnail="/tmp/mediathumbnail"
+        fullthumb="/tmp/fullthumbnail"
         defaultone="$HOME/.config/waybar/normal/thumbnail.png"
         magick $artUrl -thumbnail 500x500^ -gravity center -extent 500x500 $cache
 
         if [[ "$thumbnail" != "$cache" ]]; then
+            cp -rf $artUrl $fullthumb
             cp -rf $cache $thumbnail
         fi
         if [ ! -f "$cache" ]; then
+            cp -rf $defaultone $fullthumb
             cp -rf $defaultone $thumbnail
         fi
         sleep 5

@@ -8,6 +8,7 @@
   "margin-bottom": 0,
   // "margin-left": -4,
   // "margin-right": -5,
+  "fixed-center": true,
 
   "modules-left": [ "clock", "hyprland/workspaces" ],
   "modules-center": [ "group/media" ],
@@ -246,12 +247,21 @@
       "transition-duration": 500,
       "transition-left-to-right": false
     },
-    "modules": ["custom/volume", "pulseaudio"],
+    "modules": ["pulseaudio#icon", "pulseaudio"],
     "on-scroll-up": "$HOME/.config/bash/volume --up",
     "on-scroll-down": "$HOME/.config/bash/volume --down"
   },
-  "custom/volume": {
-    "format": "",
+  "pulseaudio#icon": {
+    "format": "{icon}",
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""],
+    },
     "tooltip": false,
     "on-click": "pkill -x pavucontrol || pavucontrol"
   },

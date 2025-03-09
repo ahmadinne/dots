@@ -1,0 +1,32 @@
+@define-color background #191724;
+@define-color foreground #e0def4;
+@define-color module-bg #1f1d2e;
+@define-color module-hover alpha(@foreground, 0.2);
+@define-color very-dark-gray #1f1d2e;
+@define-color dark-gray #26233a;
+@define-color gray #6e6a86;
+@define-color light-gray #908caa;
+@define-color blue-lighter #31748f;
+@define-color muted-green #9ccfd8;
+@define-color muted-green-lighter #a6dae3;
+@define-color deep-brown #1f1d2e;
+@define-color deep-brown-lighter #c4a7e7;
+@define-color muted-red #eb6f92;
+@define-color white #e0def4;
+@define-color blues #31748f;
+@define-color light-blue #9ccfd8;
+@define-color light-cyan #ebbcba;
+@define-color light-red #eb6f92;
+@define-color light-green #31748f;
+@define-color light-yellow #f6c177;
+@define-color light-purple #c4a7e7;
+
+tooltip {
+    background-color: @background;
+    border: 2px solid @module-bg;
+    border-radius: 3;
+}
+tooltip label {
+    color: @white;
+    padding: 5;
+}

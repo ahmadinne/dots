@@ -175,10 +175,10 @@ window#waybar > box {
     background-color: @module-hover;
     border: 2px solid @module-hover;
 }
-#custom-volume {
+#pulseaudio.icon {
     background-color: inherit;
     color: @foreground;
-    padding: 7;
+    padding: 9;
 }
 #pulseaudio {
     color: @foreground;
