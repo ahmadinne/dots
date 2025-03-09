@@ -78,6 +78,7 @@
         "class<equibop>": "",
         "class<vesktop>": "",
         "class<telegram>": "",
+        "class<GDLauncher>": "󰍳",
         "title<.*pomodoro.*>": "",
         "title<.*solanum.*>": "",
         "title<.*youtube.*>": "󰗃",
@@ -227,6 +228,7 @@
   "group/trayer": {
     "orientation": "inherit",
     "drawer": {
+      "click-to-reveal": true,
       "transition-duration": 500,
       "transition-left-to-right": false,
     },
