@@ -228,7 +228,7 @@
   "group/trayer": {
     "orientation": "inherit",
     "drawer": {
-      "click-to-reveal": true,
+      // "click-to-reveal": true,
       "transition-duration": 500,
       "transition-left-to-right": false,
     },
