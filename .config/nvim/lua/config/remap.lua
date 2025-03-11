@@ -52,3 +52,6 @@ remap("n", "<c-g>", "<s-g>")
 
 -- Floaterminal
 remap({ "n", "t" }, "<leader>tt", "<cmd>lua Snacks.terminal.toggle()<cr>")
+
+-- Obfuscate nvim
+remap("n", "<leader>tf", require("obfuscate").toggle, { desc = "Toggle obfuscate", noremap = true, silent = true })

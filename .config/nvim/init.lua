@@ -3,8 +3,10 @@ local global = vim.g
 local setopt = vim.opt
 
 -- Leader Settings
-vim.g.mapleader = ","
-vim.g.maplocalleader = ","
+-- vim.g.mapleader = ","
+-- vim.g.maplocalleader = ","
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- Basic Settings
 setopt.mouse = "a"

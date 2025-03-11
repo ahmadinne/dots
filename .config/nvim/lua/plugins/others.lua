@@ -1,7 +1,24 @@
 return {
 	{ "lambdalisue/vim-suda" },
-	{ "windwp/nvim-autopairs" },
 	{ "brenoprata10/nvim-highlight-colors" },
+	{ "ck-zhang/obfuscate.nvim" },
+	{
+		"wurli/contextindent.nvim",
+		opts = { pattern = "*" },
+	},
+	{
+		"rachartier/tiny-glimmer.nvim",
+		event = "VeryLazy",
+		priority = 10,
+		opts = {
+			enabled = true,
+		},
+	},
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+	},
 	{
 		"letieu/btw.nvim",
 		config = function()
