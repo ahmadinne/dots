@@ -4,7 +4,6 @@
 # ---- Source ----
 # source $HOME/.config/bin/currento
 # source $HOME/.config/bashprompt
-source /usr/bin/currento
 
 # ---- Environments ----
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
