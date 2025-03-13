@@ -45,11 +45,11 @@ vim.opt_local.conceallevel = 2
 -- colorscheme then Lazy.nvim
 require("config.lazy")
 require("config.remap")
-vim.cmd([[
-	augroup transparentbackground
-	autocmd!
-	autocmd colorscheme * highlight nontext ctermbg=none guibg=none
-	autocmd colorscheme * highlight normal ctermbg=none guibg=none
-	augroup end
-    colorscheme evergarden
-]])
+-- vim.cmd([[
+-- 	augroup transparentbackground
+-- 	autocmd!
+-- 	autocmd colorscheme * highlight nontext ctermbg=none guibg=none
+-- 	autocmd colorscheme * highlight normal ctermbg=none guibg=none
+-- 	augroup end
+--     colorscheme evergarden
+-- ]])

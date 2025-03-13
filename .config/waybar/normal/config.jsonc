@@ -79,6 +79,8 @@
         "class<vesktop>": "",
         "class<telegram>": "",
         "class<GDLauncher>": "󰍳",
+        "class<org.prismlauncher.PrismLauncher>": "󰍳",
+        "title<.*Waydroid.*": "󰀲",
         "title<.*pomodoro.*>": "",
         "title<.*solanum.*>": "",
         "title<.*youtube.*>": "󰗃",
