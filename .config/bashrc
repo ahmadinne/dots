@@ -20,7 +20,6 @@ export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 # Evals
-eval "$(fzf --bash)"
 eval "$(starship init bash)"
 
 
@@ -69,35 +68,3 @@ alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | 
 
 # PROMPT_COMMAND='PS1_CMD1=$()'; PS1='\W\n; ${PS1_CMD1}'
 bunnyfetch
-
-
-# ---- Fzf Setup -----
-export FZF_DEFAULT_OPTS='
-  --color fg:#5d6466,bg:#1e2527
-  --color bg+:#ef7d7d,fg+:#2c2f30
-  --color hl:#dadada,hl+:#26292a,gutter:#1e2527
-  --color pointer:#373d49,info:#606672
-  --border
-  --color border:#1e2527
-  --height 13'
-export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git"
-export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
-export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
-_fzf_compgen_path() {
-    fd --hidden --exclude .git . "$1"
-}
-_fzf_compgen_dir() {
-    fd --type=d --hidden --exclude .git . "$1"
-}
-_fzf_comprun() {
-    local command=$1
-    shift
-    case "$command" in
-        cd)             fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
-        export|unset)   fzf --preview "eval 'echo \$' {}"       "$@" ;;
-        ssh)            fzf --preview 'dig {}'                  "$@" ;;
-        *)              fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
-    esac
-}
