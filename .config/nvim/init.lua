@@ -16,6 +16,7 @@ setopt.hidden = true
 setopt.syntax = "on"
 setopt.number = true
 setopt.relativenumber = true
+setopt.modelines = 1
 setopt.hlsearch = true
 setopt.laststatus = 2
 setopt.cursorline = true

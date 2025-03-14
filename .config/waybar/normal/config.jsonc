@@ -405,3 +405,5 @@
     "justify": true
   }
 }
+
+// vim: set ft=json5

@@ -1,10 +1,6 @@
 #!/bin/bash
 
 
-# ---- Source ----
-# source $HOME/.config/bin/currento
-# source $HOME/.config/bashprompt
-
 # ---- Environments ----
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config

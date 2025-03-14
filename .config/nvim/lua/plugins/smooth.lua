@@ -1,7 +1,7 @@
 return {
 	{
-		"sphamba/smear-cursor.nvim",
-		opts = {},
+		-- "sphamba/smear-cursor.nvim",
+		-- opts = {},
 
 		-- opts = { -- Default  Range
 		-- 	stiffness = 0.8, -- 0.6      [0, 1]
