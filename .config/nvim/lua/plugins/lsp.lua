@@ -1,27 +1,5 @@
 return {
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = { "saghen/blink.cmp" },
-        opts = { servers = { lua_ls = {} } },
-
-        config = function(_, opts)
-            local lspconfig = require('lspconfig')
-            for server, config in pairs(opts.servers) do
-                -- passing config.capabilities to blink.cmp merges with the capabilities in your
-                -- `opts[server].capabilities, if you've defined it
-                config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
-                lspconfig[server].setup(config)
-            end
-        end,
-
-        config = function()
-            local capabilities = require('blink.cmp').get_lsp_capabilities()
-            local lspconfig = require('lspconfig')
-
-            lspconfig['lua_ls'].setup({ capabilities = capabilities })
-        end,
-	},
-	{
 		"williamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
@@ -30,24 +8,53 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup()
-            require("mason-lspconfig").setup_handlers {
-                function (server_name) -- default handler (optional)
-                    require("lspconfig")[server_name].setup {}
-                end,
+			require("mason-lspconfig").setup({
+				ensure_installed = {
+					"bashls",
+					"lua_ls",
+					"rust_analyzer",
+					"biome",
+					"harper_ls",
+					-- "pkgbuild_language_server",
+				},
+			})
+		end,
+	},
+	{
+		"rshkarin/mason-nvim-lint",
+		dependencies = { "mfussenegger/nvim-lint" },
+		config = function()
+			require("mason-nvim-lint").setup({
+				ensure_installed = { "bash" },
+				-- ignore_install = {},
+			})
+		end,
+	},
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = { "saghen/blink.cmp" },
+		opts = {
+			servers = {
+				lua_ls = {},
+				bashls = {},
+			},
+		},
 
-				["lua_ls"] = function()
-					require("lspconfig").lua_ls.setup({
-						settings = {
-							Lua = {
-								diagnostics = {
-									globals = { "vim" },
-								},
-							},
-						},
-					})
-				end,
-			}
+		config = function(_, opts)
+			local lspconfig = require("lspconfig")
+			for server, config in pairs(opts.servers) do
+				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+
+			local capabilities = require("blink.cmp").get_lsp_capabilities()
+			lspconfig["lua_ls"].setup({ capabilities = capabilities })
+			lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { globals = { "vim" } } } } })
+			lspconfig.bashls.setup({})
+			lspconfig.rust_analyzer.setup({})
+			lspconfig.biome.setup({})
+			lspconfig.harper_ls.setup({})
+			-- lspconfig.pkgbuild_language_server.setup({})
 		end,
 	},
 }
