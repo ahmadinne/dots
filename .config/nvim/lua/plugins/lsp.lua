@@ -14,7 +14,7 @@ return {
 					"lua_ls",
 					"rust_analyzer",
 					"biome",
-					"harper_ls",
+					-- "harper_ls",
 					-- "pkgbuild_language_server",
 				},
 			})
