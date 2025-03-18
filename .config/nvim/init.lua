@@ -1,93 +1,169 @@
 ---- ahmadinne's neovim configurations ----
-
--- Plugins --
-require("paq")({
-    -- Main Plugins
-	"savq/paq-nvim",
-    "stevearc/oil.nvim",
-    "comfysage/evergarden",
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
-	"stevearc/conform.nvim",
-    "mbbill/undotree",
-    -- Others
-    "tpope/vim-surround",
-    "windwp/nvim-autopairs",
-    "folke/flash.nvim",
-    "rachartier/tiny-glimmer.nvim",
-    "lambdalisue/vim-suda",
-    "brenoprata10/nvim-highlight-colors",
-    "letieu/btw.nvim",
-    "wurli/contextindent.nvim",
-    "echasnovski/mini.splitjoin",
-    "echasnovski/mini.comment",
-    "echasnovski/mini.icons",
-    -- Obsidian.nvim
-    "epwalsh/obsidian.nvim",
-    "nvim-lua/plenary.nvim"
-})
-
-require("mason").setup()
-require("mason-lspconfig").setup({
-	ensure_installed = { "bashls", "lua_ls", "rust_analyzer", "biome", "pyright", "ruff" }
-})
-
-local lspconfig = require("lspconfig")
-local sure_installed = { "bashls", "lua_ls", "rust_analyzer", "biome", "pyright", "ruff" }
-for _, lsp in pairs(sure_installed) do
-	local setup = {}
-	lspconfig[lsp].setup(setup)
-end
-
-lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { globals = { "vim" } } } } })
-
-require("conform").setup({
-	formatters_by_ft = {
-		python = { "ruff_organize_imports", "ruff_format" },
-        lua = { "lua_ls" }
-	},
-	format_after_save = {},
-})
-
-require("oil").setup({
-    default_file_explorer = true,
-    columns = { "icon" },
-    delete_to_trash = true,
-    keymaps = {
-        ["q"] = { "actions.close", mode = "n" },
-        ["l"] = { "actions.select", mode = "n" },
-        ["h"] = { "actions.parent", mode = "n" },
-        ["."] = { "actions.toggle_hidden", mode = "n" }
-    },
-    view_options = { show_hidden = true }
-})
-vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory"} )
-
-require("flash").setup()
-vim.keymap.set("n", "f", function()
-    require("flash").jump({ search = { forward = true, wrap = false, multi_window = false }, remote_op = { restore = true, motion = nil }})
-end)
-vim.keymap.set("n", "F", function()
-    require("flash").jump({ search = { forward = false, wrap = false, multi_window = false }, remote_op = { restore = true, motion = nil }})
-end)
-
-require("btw").setup({ text = "I Use Neovim on Arch (BTW)"})
-require("contextindent").setup({ pattern = "*" })
-require("nvim-autopairs").setup()
-require("nvim-highlight-colors").setup()
-require("obsidian").setup({ workspaces = { { name = "Notes", path = "~/Notes" } } })
-require("mini.splitjoin").setup()
-require("mini.comment").setup()
-require("mini.icons").setup()
-
--- Options --
+--- Important ----
 local global = vim.g
 local setopt = vim.opt
-
 global.mapleader = " "
 global.maplocalleader = " "
 
+require("config.lazy")
+require("lazy").setup({
+	spec = {
+		{ "comfysage/evergarden" },
+		{ "mbbill/undotree" },
+		{ "tpope/vim-surround" },
+		{ "lambdalisue/vim-suda" },
+		{ "rachartier/tiny-glimmer.nvim" },
+		{ "williamboman/mason.nvim" },
+		{
+			"neovim/nvim-lspconfig",
+			opts = { servers = { lua_ls = {} } },
+			config = function(_, opts)
+				local lspconfig = require("lspconfig")
+				for server, config in pairs(opts.servers) do
+					config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+					lspconfig[server].setup(config)
+				end
+			end,
+		},
+		{
+			"williamboman/mason-lspconfig.nvim",
+			config = function()
+				local mason = require("mason")
+				local lspconfig = require("lspconfig")
+				local mspconfig = require("mason-lspconfig")
+				local sure_installed = { "bashls", "lua_ls", "rust_analyzer", "biome", "pyright", "ruff" }
+
+				mason.setup()
+				mspconfig.setup({
+					ensure_installed = sure_installed,
+				})
+				for _, lsp in pairs(sure_installed) do
+					local setup = {}
+					lspconfig[lsp].setup(setup)
+				end
+				lspconfig.lua_ls.setup({ settings = { Lua = { diagnostics = { globals = { "vim" } } } } })
+			end,
+		},
+		{
+			"stevearc/conform.nvim",
+			config = function()
+				require("conform").setup({
+					formatters_by_ft = {
+						python = { "ruff_organize_imports", "ruff_format" },
+						lua = { "stylua", "lua_ls" },
+					},
+					format_after_save = {},
+				})
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					pattern = "*",
+					callback = function(args)
+						require("conform").format({ bufnr = args.buf })
+					end,
+				})
+			end,
+		},
+		{
+			"saghen/blink.cmp",
+			build = "cargo build --release",
+			opts = {
+				keymap = { preset = "default" },
+				appearance = { nerd_font_variant = "mono" },
+				sources = {
+					default = { "lsp", "path", "snippets", "buffer" },
+				},
+			},
+			opts_extend = { "sources.default" },
+		},
+		{
+			"windwp/nvim-autopairs",
+			config = function()
+				require("nvim-autopairs").setup()
+			end,
+		},
+		{
+			"folke/flash.nvim",
+			config = function()
+				require("flash").setup()
+				vim.keymap.set("n", "f", function()
+					require("flash").jump({
+						search = { forward = true, wrap = false, multi_window = false },
+						remote_op = { restore = true, motion = nil },
+					})
+				end)
+				vim.keymap.set("n", "F", function()
+					require("flash").jump({
+						search = { forward = false, wrap = false, multi_window = false },
+						remote_op = { restore = true, motion = nil },
+					})
+				end)
+			end,
+		},
+		{
+			"stevearc/oil.nvim",
+			config = function()
+				require("oil").setup({
+					default_file_explorer = true,
+					columns = { "icon" },
+					delete_to_trash = true,
+					keymaps = {
+						["q"] = { "actions.close", mode = "n" },
+						["l"] = { "actions.select", mode = "n" },
+						["h"] = { "actions.parent", mode = "n" },
+						["."] = { "actions.toggle_hidden", mode = "n" },
+					},
+					view_options = { show_hidden = true },
+				})
+				vim.keymap.set("n", "-", "<cmd>Oil<cr>", { desc = "Open Parent Directory" })
+			end,
+		},
+		{
+			"brenoprata10/nvim-highlight-colors",
+			config = function()
+				require("nvim-highlight-colors").setup()
+			end,
+		},
+		{
+			"letieu/btw.nvim",
+			config = function()
+				require("btw").setup({ text = "I Use Neovim on Arch (BTW)" })
+			end,
+		},
+		{
+			"wurli/contextindent.nvim",
+			config = function()
+				require("contextindent").setup({ pattern = "*" })
+			end,
+		},
+		{
+			"echasnovski/mini.splitjoin",
+			config = function()
+				require("mini.splitjoin").setup()
+			end,
+		},
+		{
+			"echasnovski/mini.comment",
+			config = function()
+				require("mini.comment").setup()
+			end,
+		},
+		{
+			"echasnovski/mini.icons",
+			config = function()
+				require("mini.icons").setup()
+			end,
+		},
+		{
+			"epwalsh/obsidian.nvim",
+			dependencies = { "nvim-lua/plenary.nvim" },
+			config = function()
+				require("obsidian").setup({ workspaces = { { name = "Notes", path = "~/Notes" } } })
+			end,
+		},
+	},
+	checker = { enabled = true },
+})
+
+-- Options --
 setopt.wrap = true
 setopt.smarttab = true
 setopt.autoindent = true
@@ -126,7 +202,6 @@ vim.cmd([[
 	augroup end
     colorscheme evergarden
 ]])
-
 
 ---- Remaps ----
 local remap = vim.keymap.set
