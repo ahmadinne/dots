@@ -80,6 +80,7 @@
         "class<telegram>": "",
         "class<GDLauncher>": "󰍳",
         "class<org.prismlauncher.PrismLauncher>": "󰍳",
+        "class<lunarclient>": "",
         "title<.*Waydroid.*": "󰀲",
         "title<.*pomodoro.*>": "",
         "title<.*solanum.*>": "",

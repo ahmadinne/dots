@@ -1,5 +1,5 @@
 {
-  "blink.cmp": { "branch": "main", "commit": "fc527ecde55c2e852341ffde22ae5ce1da49c897" },
+  "blink.cmp": { "branch": "main", "commit": "0a56a2337dad26c78183ef2a83df5fcbcf59fd00" },
   "btw.nvim": { "branch": "master", "commit": "47f6419e90d3383987fd06e8f3e06a4bc032ac83" },
   "conform.nvim": { "branch": "master", "commit": "db8a4a9edb217067b1d7a2e0362c74bfe9cc944d" },
   "contextindent.nvim": { "branch": "main", "commit": "5a7a35700fd60deaf61c682f134e1ec31df181cd" },
@@ -12,7 +12,7 @@
   "mini.icons": { "branch": "main", "commit": "ec61af6e606fc89ee3b1d8f2f20166a3ca917a36" },
   "mini.splitjoin": { "branch": "main", "commit": "efe24ba54f9623cb05698355981ec05278976788" },
   "nvim-autopairs": { "branch": "master", "commit": "68f0e5c3dab23261a945272032ee6700af86227a" },
-  "nvim-highlight-colors": { "branch": "main", "commit": "b08479aaf715c96151171f01ea47fa6e0c6a612b" },
+  "nvim-highlight-colors": { "branch": "main", "commit": "d41a2211b8ba982c74bc190b40ba7686c2e3ffd0" },
   "nvim-lspconfig": { "branch": "master", "commit": "185b2af444b27d6541c02d662b5b68190e5cf0c4" },
   "obsidian.nvim": { "branch": "main", "commit": "14e0427bef6c55da0d63f9a313fd9941be3a2479" },
   "oil.nvim": { "branch": "master", "commit": "548587d68b55e632d8a69c92cefd981f360634fa" },
