@@ -79,6 +79,7 @@
         "class<vesktop>": "",
         "class<telegram>": "",
         "class<GDLauncher>": "󰍳",
+        "class<code-oss>": "",
         "class<org.prismlauncher.PrismLauncher>": "󰍳",
         "class<lunarclient>": "",
         "title<.*Waydroid.*": "󰀲",
