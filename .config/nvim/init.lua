@@ -13,6 +13,7 @@ require("lazy").setup({
 		{ "lambdalisue/vim-suda" },
 		{ "rachartier/tiny-glimmer.nvim" },
 		{ "williamboman/mason.nvim" },
+		{ "comfysage/twilight-moon" },
 		{
 			"comfysage/evergarden",
 			priority = 1000,
@@ -25,9 +26,6 @@ require("lazy").setup({
 					transparent_background = false,
 				},
 			},
-			-- config = function()
-			-- 	vim.cmd("colorscheme evergarden")
-			-- end,
 		},
 		{
 			"neovim/nvim-lspconfig",
