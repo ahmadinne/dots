@@ -1,4 +1,5 @@
 @define-color background #141b1e;
+/* @define-color background #1C2225; */
 @define-color foreground #dadada;
 @define-color module-bg #232a2d;
 @define-color module-hover alpha(@foreground, 0.2);

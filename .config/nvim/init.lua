@@ -8,12 +8,27 @@ global.maplocalleader = " "
 require("config.lazy")
 require("lazy").setup({
 	spec = {
-		{ "comfysage/evergarden" },
 		{ "mbbill/undotree" },
 		{ "tpope/vim-surround" },
 		{ "lambdalisue/vim-suda" },
 		{ "rachartier/tiny-glimmer.nvim" },
 		{ "williamboman/mason.nvim" },
+		{
+			"comfysage/evergarden",
+			priority = 1000,
+			opts = {
+				theme = {
+					variant = "summer",
+					accent = "green",
+				},
+				editor = {
+					transparent_background = false,
+				},
+			},
+			-- config = function()
+			-- 	vim.cmd("colorscheme evergarden")
+			-- end,
+		},
 		{
 			"neovim/nvim-lspconfig",
 			opts = { servers = { lua_ls = {} } },
@@ -64,6 +79,7 @@ require("lazy").setup({
 		},
 		{
 			"saghen/blink.cmp",
+			version = "*",
 			build = "cargo build --release",
 			opts = {
 				keymap = { preset = "default" },
@@ -195,11 +211,11 @@ setopt.splitright = true
 
 vim.opt_local.conceallevel = 2
 vim.cmd([[
-	augroup transparentbackground
-	autocmd!
-	autocmd colorscheme * highlight nontext ctermbg=none guibg=none
-	autocmd colorscheme * highlight normal ctermbg=none guibg=none
-	augroup end
+	" augroup transparentbackground
+	" autocmd!
+	" autocmd colorscheme * highlight nontext ctermbg=none guibg=none
+	" autocmd colorscheme * highlight normal ctermbg=none guibg=none
+	" augroup end
     colorscheme evergarden
 ]])
 

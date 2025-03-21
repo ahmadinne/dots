@@ -57,4 +57,7 @@ alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
 
 # PROMPT_COMMAND='PS1_CMD1=$()'; PS1='\W\n; ${PS1_CMD1}'
-bunnyfetch
+checkifitfirstornot=$(hyprctl clients | grep -oc kitty)
+if [ "$checkifitfirstornot" -lt 4 ]; then
+    bunnyfetch
+fi
