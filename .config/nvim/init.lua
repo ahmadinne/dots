@@ -14,12 +14,13 @@ require("lazy").setup({
 		{ "rachartier/tiny-glimmer.nvim" },
 		{ "williamboman/mason.nvim" },
 		{ "comfysage/twilight-moon" },
+		{ "everblush/nvim" },
 		{
 			"comfysage/evergarden",
 			priority = 1000,
 			opts = {
 				theme = {
-					variant = "summer",
+					variant = "winter",
 					accent = "green",
 				},
 				editor = {
