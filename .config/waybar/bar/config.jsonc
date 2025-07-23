@@ -1,6 +1,6 @@
 {
   "layer": "top",
-  "position": "bottom",
+  "position": "top",
   // "height": 767,
   //"width": 1031,
   "spacing": 0,
@@ -11,14 +11,10 @@
   "fixed-center": true,
 
   "modules-left": [ "clock", "hyprland/workspaces" ],
-  "modules-center": [ "group/media" ],
+  "modules-center": [],
   "modules-right": [
-    // "custom/mediabar",
-    "group/trayer",
-    "network",
-    "group/volume",
-    "custom/notification",
-    "battery",
+	"group/trayer",
+	"battery"
   ],
 
   // ---- Left / Top ----
@@ -315,6 +311,7 @@
   },
 
   "battery": {
+    "interval": 5,
     "states": {
       "good": 95,
       "warning": 30,

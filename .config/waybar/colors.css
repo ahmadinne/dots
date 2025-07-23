@@ -1,7 +1,7 @@
-@define-color background #141b1e;
+@define-color background alpha(#ffffff, 0.1);
 /* @define-color background #1C2225; */
 @define-color foreground #dadada;
-@define-color module-bg #232a2d;
+@define-color module-bg alpha(#ffffff, 0.05);
 @define-color module-hover alpha(@foreground, 0.2);
 @define-color very-dark-gray #101618;
 @define-color dark-gray #1C2224;

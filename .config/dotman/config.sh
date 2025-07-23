@@ -1,1 +1,1 @@
-path = /home/v/dotfiles
+path = /home/ahmadinne/dots
