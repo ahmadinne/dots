@@ -1,0 +1,34 @@
+@import "../waybar/colors.css";
+
+* {
+  font-size: 4px;
+}
+
+window#osd {
+  border-radius: 0px;
+  border: none;
+  background: @background; }
+  window#osd #container {
+    margin: 0px;
+    padding: 20px; }
+  window#osd image,
+  window#osd label {
+    color: @foreground; }
+  window#osd progressbar:disabled,
+  window#osd image:disabled {
+    opacity: 0.5; }
+  window#osd progressbar {
+    min-height: 6px;
+    border-radius: 0px;
+    background: transparent;
+    border: none; }
+  window#osd trough {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: alpha(@foreground, 0.5); }
+  window#osd progress {
+    min-height: inherit;
+    border-radius: inherit;
+    border: none;
+    background: @blue; }

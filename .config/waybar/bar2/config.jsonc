@@ -1,0 +1,13 @@
+{
+  "layer":              "bottom",
+  "position":           "bottom",
+  "exclusive":          false,
+  "height":             40,
+  "width":              0,
+  "spacing":            0,
+  "margin-bottom":      -40,
+
+  "modules-left":       [],
+  "modules-center":     [],
+  "modules-right":      []
+}

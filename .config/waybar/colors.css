@@ -1,26 +1,33 @@
-@define-color background alpha(#ffffff, 0.1);
-/* @define-color background #1C2225; */
-@define-color foreground #dadada;
-@define-color module-bg alpha(#ffffff, 0.05);
+* {
+    font-family: "Symbols Nerd Font", "Iosevka";
+    font-size: 11.5px;
+}
+
+@define-color background #151515;
+@define-color foreground #e8e3e3;
+@define-color satu #181818;
+@define-color dua #1F1F1F;
+@define-color empat #1C1C1C;
+@define-color module-bg alpha(@foreground, 0.05);
 @define-color module-hover alpha(@foreground, 0.2);
-@define-color very-dark-gray #101618;
-@define-color dark-gray #1C2224;
-@define-color gray #2D3133;
-@define-color light-gray #414749;
-@define-color blue-lighter #71baf2;
-@define-color muted-green #8ccf7e;
-@define-color muted-green-lighter #96d988;
-@define-color deep-brown #232a2d;
-@define-color deep-brown-lighter #b3b9b8;
-@define-color muted-red #e57474;
-@define-color white #dadada;
-@define-color blues #67B0E8; /* #67b0e8; Or #71baf2 if you prefer brighter */
-@define-color light-blue #71baf2;
-@define-color light-cyan #6cbfbf;  /* Or #67cbe7 if you prefer brighter */
-@define-color light-red #ef7e7e;
-@define-color light-green #8ccf7e;
-@define-color light-yellow #f4d67a;
-@define-color light-purple #ce89df;
+@define-color black #151515;
+@define-color gray #353535;
+@define-color white #e8e3e3;
+@define-color blue #8da3b9;
+@define-color cyan #8aa6a2;
+@define-color red #b66467;
+@define-color green #8c977d;
+@define-color yellow #d9bc8c;
+@define-color purple #a988b0;
+
+@define-color bright-black #424242;
+@define-color bright-red #b66467;
+@define-color bright-green #8c977d;
+@define-color bright-yellow #d9bc8c;
+@define-color bright-blue #8da3b9;
+@define-color bright-magenta #a988b0;
+@define-color bright-cyan #8aa6a2;
+@define-color bright-white #e8e3e3;
 
 tooltip {
     background-color: @background;

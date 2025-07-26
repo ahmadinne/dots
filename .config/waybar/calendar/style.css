@@ -21,7 +21,7 @@ window#waybar > box {
 
 #custom-month {
     background-color: @background;
-    color: @light-green;
+    color: @yellow;
     border-radius: 3 3 0 0;
     /* border-top: 2px solid @light-blue; */
     font-weight: bold;
@@ -69,7 +69,7 @@ window#waybar > box {
 
 #custom-sunday.today, #custom-monday.today, #custom-tuesday.today, #custom-wednesday.today, #custom-thursday.today, #custom-friday.today, #custom-saturday.today {
     /*background-color: @blue;*/
-    color: @light-green;
+    color: @yellow;
     border-radius: 3;
     font-weight: bold;
 }
@@ -94,7 +94,7 @@ window#waybar > box {
 #custom-fr1.today, #custom-fr2.today, #custom-fr3.today, #custom-fr4.today, #custom-fr5.today,
 #custom-sa1.today, #custom-sa2.today, #custom-sa3.today, #custom-sa4.today, #custom-sa5.today {
     /*background-color: @blue;*/
-    color: @light-green;
+    color: @yellow;
     border-radius: 3;
     font-weight: bold;
 }

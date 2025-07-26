@@ -1,0 +1,11 @@
+@import "../colors.css";
+
+/* Base (Window) */
+window#waybar {
+  background-color:     @background;
+  color:                @foreground;
+}
+window#waybar > box {
+  margin:               5px 5px;
+  padding:              0px 0px;
+}

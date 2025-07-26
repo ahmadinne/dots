@@ -30,7 +30,7 @@ HISTDUP=erase
 
 # ---- Alias ----
 alias cat='bat'
-alias ls='eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions -la'
+alias ls='eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions -a'
 alias grep='grep --color=auto'
 alias vi='nvim'
 alias neovim='nvim'
@@ -58,7 +58,8 @@ alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
 
 # PROMPT_COMMAND='PS1_CMD1=$()'; PS1='\W\n; ${PS1_CMD1}'
-checkifitfirstornot=$(hyprctl clients | grep -c "class: foot")
-if [ "$checkifitfirstornot" -lt 2 ]; then
-    bunnyfetch
-fi
+# checkifitfirstornot=$(hyprctl clients | grep -c "class: kitty")
+# if [ "$checkifitfirstornot" -lt 4 ]; then
+#     bunnyfetch
+# fi
+bunnyfetch

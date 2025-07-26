@@ -10,7 +10,7 @@
   // "margin-right": -5,
   "fixed-center": true,
 
-  "modules-left": [ "clock", "hyprland/workspaces" ],
+  "modules-left": [ "clock", "hyprland/workspaces", "river/tags" ],
   "modules-center": [],
   "modules-right": [
 	"group/trayer",
@@ -66,8 +66,11 @@
         "class<midori>": "",
         "class<firefox> title<.*github.*>": "",
         "class<kitty>": "",
+        "class<alacritty>": "",
         "class<foot>": "",
+        "class<thunar>": "",
         "class<pcmanfm>": "",
+        "class<org.gnome.Nautilus>": "",
         "class<vlc>": "󰕼",
         "class<org.gnome.gThumb>": "",
         "class<imv>": "",
@@ -102,6 +105,13 @@
     }
   },
 
+  "river/tags": {
+    "num-tags": 5,
+    "tag-labels": [],
+    "disable-click": false,
+    "expand": false,
+    "hide-vacant": false
+  },
   
   "group/brightness": {
     "orientation": "inherit",

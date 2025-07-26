@@ -1,9 +1,9 @@
 * {
-    font:           "MonaspiceNe Nerd Font 10";
-    background:     #141b1eFF;
-    background-alt: #232a2dFF;
-    foreground:     #dadadaff;
-    selected:       #71BAF2ff;
-    active:         #71BAF2ff;
-    urgent:         #ef7e7eff;
+    font:           "Iosevka 10";
+    background:     #151515;
+    background-alt: #181818;
+    foreground:     #e8e3e3;
+    selected:       #1f1f1f;
+    active:         #71BAF2;
+    urgent:         #ef7e7e;
 }

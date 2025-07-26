@@ -1,6 +1,6 @@
 * {
-    font-family: "Symbols Nerd Font", "Fira Code Nerd Font";
-    font-size: 12px;
+    font-family: "Symbols Nerd Font", "Iosevka";
+    font-size: 11.5px;
 }
 
 @import "../colors.css";
@@ -77,12 +77,15 @@ window#waybar > box {
     color: @foreground;
 }
 
+#tags,
 #workspaces {
     margin: 0;
     background-color: inherit; 
     border-radius: 3;
     padding: 0;
 }
+
+#tags button,
 #workspaces button {
     border-radius: 3;
     background-color: @module-bg;
@@ -94,10 +97,12 @@ window#waybar > box {
     padding: 0 8;
 }
 
+#tags button:hover,
 #workspaces button:hover {
     background-color: @module-hover;
 }
 
+#tags button.occupied,
 #workspaces button.persistent {
     color: alpha(@foreground, 0.666);
 }
@@ -106,7 +111,7 @@ window#waybar > box {
     color: alpha(@foreground, 0.1);
 }
 
-
+#tags button.focused,
 #workspaces button.active,
 #workspaces button.visible {
     /* font-weight: bold; */
@@ -114,10 +119,13 @@ window#waybar > box {
     background-color: @module-hover;
     transition: all 0.3s ease-in-out;
 }
+
+#tags button.focused:hover,
 #workspaces button.active:hover {
     background-color: @module-hover;
 }
 
+#tags button.urgent,
 #workspaces button.urgent {
     background-color: @muted-red;
 }

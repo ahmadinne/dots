@@ -1,0 +1,1 @@
+sudo pacman -Rnsc nautilus libnautilus-extension nautilus-image-converter nautilus-python seahorse-nautilus sushi
