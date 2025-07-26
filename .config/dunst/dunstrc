@@ -171,22 +171,22 @@
 
 
 [urgency_low]
-    background = "#232a2d"
-    foreground = "#dadada"
+    background = "#151515"
+    foreground = "#e8e3e3"
     timeout = 5
     default_icon = dialog-information
 
 [urgency_normal]
-    background = "#232a2d"
-    foreground = "#dadada"
+    background = "#151515"
+    foreground = "#e8e3e3"
     timeout = 5
     override_pause_level = 30
     default_icon = dialog-information
 
 [urgency_critical]
-    background = "#232a2d"
-    foreground = "#e57474"
-    frame_color = "#ff0000"
+    background = "#151515"
+    foreground = "#b66467"
+    frame_color = "#b66467"
     timeout = 10
     override_pause_level = 60
     default_icon = dialog-warning
