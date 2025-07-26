@@ -1,6 +1,14 @@
-# Waybarian
+<h1 align="center"> Waybarian </h1>
+
+<p align="center">
+  <a href="https://github.com/ahmadinne/dots/stargazers"><img src="https://img.shields.io/github/stars/ahmadinne/dots?colorA=151515&colorB=B66467&style=for-the-badge"></a>
+  <a href="https://github.com/ahmadinne/dots/issues"><img src="https://img.shields.io/github/issues/ahmadinne/dots?colorA=151515&colorB=8C977D&style=for-the-badge"></a>
+  <a href="https://github.com/ahmadinne/dots/network/members"><img src="https://img.shields.io/github/forks/ahmadinne/dots?colorA=151515&colorB=D9BC8C&style=for-the-badge"></a>
+  <img src="https://img.shields.io/static/v1?label=license&message=GPL-3.0&color=8DA3B9&labelColor=151515&style=for-the-badge">
+</p>
+
 **Hello there, thanks for the visit!** \
-This is my personal configuration files that forms the desktop you see below. \
+This is my personal configuration files that forms the desktop you see above. \
 <br/>
 Shout out to these beast!:
 + <b>OS:</b> Archlinux
