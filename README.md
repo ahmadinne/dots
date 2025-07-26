@@ -1,5 +1,5 @@
-<h1 align="center">Hypr-Wayb</h1>
-<b>Hello there, thanks for the visit!</b> \
+# Waybarian
+**Hello there, thanks for the visit!** \
 This is my personal configuration files that forms the desktop you see below. \
 <br/>
 Shout out to these beast!:
@@ -14,12 +14,10 @@ Shout out to these beast!:
 + <b>Launcher:</b> Rofi
 + <b>Browser:</b> Google-Chrome
 
-<br/>
-
 > [!CAUTION]
 > The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
 
-<h2>Installation</h2>
+## Installation
 The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> distros. \
 <br/>
 
@@ -33,7 +31,8 @@ The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> dis
     ./install.sh
     ```
 
-<h3>Keybindings</h3>
+## Keybindings
+These are the keybindings used in the dotfiles
 | Key                                | Action                                  |
 |------------------------------------|-----------------------------------------|
 | ```Alt + A```                      | Open Applauncher (Rofi)                 |
@@ -57,4 +56,3 @@ The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> dis
 | ```Alt + Shift + .```              | Raise Screen Brightness                 |
 | ```Alt + P```                      | Screenshot entire screen                |
 | ```Alt + Shift + P```              | Screenshot focused window               |
-
