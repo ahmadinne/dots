@@ -14,12 +14,13 @@ Shout out to these beast!:
 + <b>Launcher:</b> Rofi
 + <b>Browser:</b> Google-Chrome
 
-> [!CAUTION]
-> The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
+<br/>
 
 ## Installation
-The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> distros. \
-<br/>
+> [!NOTE]
+> The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> distros.
+> [!CAUTION]
+> The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
 
 1. Clone the repo
     ```
@@ -30,6 +31,9 @@ The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> dis
     ```
     ./install.sh
     ```
+
+<br/>
+<br/>
 
 ## Keybindings
 These are the keybindings used in the dotfiles
