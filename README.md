@@ -1,6 +1,8 @@
-<h3>Hyprwayb</h3>
+<h1>Hyprwayb</h1>
 <b>Hellou there, thanks for the visit!</b>
 This is my personal configuration files that forms the desktop you see below.
+
+<br>
 
 Shout out to these beast!:
 + <b>OS:</b> Archlinux
@@ -22,13 +24,16 @@ The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> dis
 
 > [!CAUTION]
 > The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
-> Need <b>Bash</b> to work.
 
 - Clone the repo
-```git clone https://github.com/ahmadinne/dots && cd dots```
+```
+git clone https://github.com/ahmadinne/dots && cd dots
+```
 
 - Run the Installation scripts
-```./install.sh```
+```
+./install.sh
+```
 
 <br>
 <br>
