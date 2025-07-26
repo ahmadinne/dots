@@ -19,6 +19,7 @@ Shout out to these beast!:
 ## Installation
 > [!NOTE]
 > The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> distros.
+
 > [!CAUTION]
 > The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
 
