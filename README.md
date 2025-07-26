@@ -7,6 +7,8 @@
   <img src="https://img.shields.io/static/v1?label=license&message=GPL-3.0&color=8DA3B9&labelColor=151515&style=for-the-badge">
 </p>
 
+![](./assets/preview.png)
+
 **Hello there, thanks for the visit!** \
 This is my personal configuration files that forms the desktop you see above. \
 <br/>
