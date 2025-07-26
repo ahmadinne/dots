@@ -1,8 +1,9 @@
-<h1>Hyprwayb</h1>
-<b>Hellou there, thanks for the visit!</b>
+<h1 align="center">Hypr-Wayb</h1>
+<b>Hello there, thanks for the visit!</b>
+<br/>
 This is my personal configuration files that forms the desktop you see below.
 
-<br>
+<br/>
 
 Shout out to these beast!:
 + <b>OS:</b> Archlinux
@@ -16,14 +17,10 @@ Shout out to these beast!:
 + <b>Launcher:</b> Rofi
 + <b>Browser:</b> Google-Chrome
 
-<br>
-<br>
+<br/>
 
 <h3>Installation</h3>
 The installation script only supports <b>Archlinux</b> and <b>Arch-based</b> distros.
-
-> [!CAUTION]
-> The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
 
 - Clone the repo
 ```
@@ -35,8 +32,10 @@ git clone https://github.com/ahmadinne/dots && cd dots
 ./install.sh
 ```
 
-<br>
-<br>
+> [!CAUTION]
+> The installation script will <b>REPLACE ALL DUPLICATE FILES</b>, please backup your data first.
+
+<br/>
 
 <h3>Keybindings</h3>
 |Key                                |Action                             |
@@ -45,7 +44,6 @@ git clone https://github.com/ahmadinne/dots && cd dots
 |```Alt + B```                      |Open Browser (Google-Chrome)       |
 |```Alt + T```                      |Open Terminal (Alacritty)          |
 |```Alt + E```                      |Open File Manager (Thunar)         |
-|                                   |                                   |
 |```Alt + Q```                      |Close Focused Window               |
 |```Alt + W```                      |Toggle Window Float/Tile           |
 |```Alt + F```                      |Toggle Fullscreen                  |
@@ -56,7 +54,6 @@ git clone https://github.com/ahmadinne/dots && cd dots
 |```Alt + Shift + [1-9]```          |Move Windows to another workspaces |
 |```Alt + Mouse Left Hold```        |Move Floating Window               |
 |```Alt + Mouse Right Hold```       |Resize Window                      |
-|                                   |                                   |
 |```Alt + O```                      |Switch Output Audio (Speaker/Headphone)|
 |```Alt + ,```                      |Lower Speaker Volume               |
 |```Alt + .```                      |Raise Speaker Volume               |
