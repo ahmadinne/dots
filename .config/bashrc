@@ -6,7 +6,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_SESSION_TYPE=wayland
-export EDITOR="nvim"
+export EDITOR="bob run nightly"
 export TERMINAL="kitty"
 export BROWSER="google-chrome-stable"
 export VISUAL="${EDITOR}"
@@ -32,14 +32,15 @@ HISTDUP=erase
 alias cat='bat'
 alias ls='eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions -a'
 alias grep='grep --color=auto'
-alias vi='nvim'
-alias neovim='nvim'
+alias vi='$EDITOR'
+alias vim='$EDITOR'
+alias nvim='$EDITOR'
+alias neovim='$EDITOR'
 alias bf='bunnyfetch'
 alias ff="fastfetch"
 alias boottime='systemd-analyze'
-alias grep='grep --color=auto'
-alias bashrc='nvim $HOME/.config/bashrc'
-alias init.lua='nvim $HOME/.config/nvim/init.lua'
+alias bashrc='$EDITOR $HOME/.config/bashrc'
+alias init.lua='$EDITOR $HOME/.config/nvim/init.lua'
 alias kanata-reload='sudo systemctl stop kanata; sudo systemctl start kanata; systemctl status kanata'
 alias publicip='curl https://ipinfo.io/ip'
 function y(){
@@ -51,15 +52,9 @@ function y(){
 	rm -f -- "$tmp"
 }
 alias yazi=y
-alias init.plugins=init.plugin
 
 alias mem='free --mega'
 alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
 
-# PROMPT_COMMAND='PS1_CMD1=$()'; PS1='\W\n; ${PS1_CMD1}'
-# checkifitfirstornot=$(hyprctl clients | grep -c "class: kitty")
-# if [ "$checkifitfirstornot" -lt 4 ]; then
-#     bunnyfetch
-# fi
 bunnyfetch

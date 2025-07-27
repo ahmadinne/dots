@@ -188,7 +188,7 @@
     foreground = "#b66467"
     frame_color = "#b66467"
     timeout = 10
-    override_pause_level = 60
+    override_pause_level = 30
     default_icon = dialog-warning
 
 # Every section that isn't one of the above is interpreted as a rules to
