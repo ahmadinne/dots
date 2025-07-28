@@ -33,7 +33,7 @@
 if true; then
     wbar=$(ps -ef | grep '[w]aybar -c' | grep base | awk '{print $2}')
     kill $wbar
-    killall dunst
+    killall mako
     notify-send --urgency=low --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9001 -t 2000
     waybar -c $HOME/.config/waybar/base/config.jsonc -s $HOME/.config/waybar/base/style.css
 fi
