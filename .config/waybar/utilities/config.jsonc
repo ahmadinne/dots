@@ -91,7 +91,7 @@
 	},
 	"network": {
 		"format": "{icon}",
-		"tooltip-format": "{ipname}",
+		"tooltip-format": "{ifname}",
 		"format-icons": [
 			"󰤯",
 			"󰤟",
@@ -105,7 +105,7 @@
 		"format-icons": [ " 󰂯 " ]
 	},
 	"custom/screenshot": {
-		"format": "󰹑",
+		"format": "",
 		"tooltip-format": "screenshot"
 	},
 
