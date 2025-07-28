@@ -4,7 +4,7 @@
 # ---- Config ----
 choice=$1
 format=$(date +'%Y.%m.%d_%A[%H:%M:%S].png')
-path="$HOME/PicturessScreenshots"
+path="$HOME/Pictures/Screenshots"
 
 # ---- Mission Starto -----
 if [ ! -d "$path" ]; then
@@ -29,9 +29,16 @@ elif [ "$choice" = "window" ]; then
     notify-send --urgency=low --transient "❗There's no Active Window!" -r 9005 -t 2000
   fi
 elif [ "$choice" = "bar" ]; then
-  barid=$(ps -ef | grep '[w]aybar -c' | grep power | awk '{print $2}')
+  barid=$(ps -ef | grep '[w]aybar -c' | grep utilities | awk '{print $2}')
   kill $barid
   sleep 0.5
+  grim $HOME/Pictures/Screenshots/${format}
+  if [ $? -eq 0 ]; then
+    notify-send --urgency=low --transient "📷Screenshot Captured!" -r 9005 -t 2000
+  else
+    echo "error"
+  fi
+elif [ "$choice" = "bar2" ]; then
   grim $HOME/Pictures/Screenshots/${format}
   if [ $? -eq 0 ]; then
     notify-send --urgency=low --transient "📷Screenshot Captured!" -r 9005 -t 2000

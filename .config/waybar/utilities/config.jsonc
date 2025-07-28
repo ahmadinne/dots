@@ -118,7 +118,8 @@
 	"custom/screenshot": {
 		"format": "    ",
 		"tooltip-format": "screenshot",
-		"on-click": "$HOME/.config/bash/screenshot bar"
+		"on-click": "$HOME/.config/bash/screenshot bar",
+		"on-click-right": "$HOME/.config/bash/screenshot bar2"
 	},
 	"custom/clipboard": {
 		"format": "    ",
@@ -127,7 +128,9 @@
 	},
 	"custom/colorpicker": {
 		"format": "    ",
-		"tooltip-format": "colorpicker"
+		"tooltip-format": "colorpicker",
+		"on-click": "$HOME/.config/bash/colorpicker pick",
+		"on-click-right": "$HOME/.config/bash/colorpicker pick2"
 	},
 	"custom/screenrecord": {
 		"format": "    ",
@@ -184,17 +187,9 @@
 		"align": "center",
 		"modules": [
 			"custom/prev",
-			"mpris#play",
+			"custom/play",
 			"custom/next"
 		]
-	},
-
-	"mpris#title": {
-		"format": "{title}",
-		"tooltip": false,
-		"justify": "center",
-		"title-len": 22,
-		"ellipsis": "..."
 	},
 
 	"custom/title": {
@@ -208,29 +203,20 @@
 	"custom/artist": {
 		"format": "{}",
 		"tooltip": false,
-		"exec": "playerctl metadata | grep artist | awk '{print $3}'"
+		"exec": "$HOME/.config/waybar/utilities/media.sh artist"
 	},
-
-    "mpris#artist": {
-        "format": "{artist}",
-		"tooltip": false,
-		"justify": "center",
-		"artist-len": 24,
-		"on-click": "",
-		"on-click-middle": "",
-		"on-click-right": ""
-    },
 
     "custom/prev": {
         "format": "    ",
         "tooltip": false,
         "on-click": "playerctl previous"
     },
-    "mpris#play": {
-        "format": "{status_icon}",
-		"format-playing": "    ",
-		"format-paused": "    ",
+    "custom/play": {
+        "format": "    ",
         "tooltip": false,
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/utilities/media.sh button",
+		"on-click": "playerctl play-pause"
     },
     "custom/next": {
         "format": "    ",

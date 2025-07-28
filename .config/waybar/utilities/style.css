@@ -58,6 +58,7 @@ window#waybar > box {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 16px;
+	transition: .1s ease-in-out;
 }
 #network {
 	background-image: url('/home/ahmadinne/.config/waybar/svg/wifi.svg');
@@ -83,6 +84,14 @@ window#waybar > box {
 	background-image: url('/home/ahmadinne/.config/waybar/svg/video.svg');
 }
 
+#network:hover,
+#bluetooth:hover,
+#custom-screenshot:hover,
+#custom-clipboard:hover,
+#custom-colorpicker:hover,
+#custom-screenrecord:hover {
+	background-color: alpha(@foreground, 0.1);
+}
 
 #slider {
 	background-color: @module-bg;
@@ -185,27 +194,27 @@ window#waybar > box {
   color: @foreground;
 }
 
-#mpris.play {
-  color: alpha(@foreground, 0.7);
-  transition: all 0.3s ease-in-out;
-  padding: 0 15;
+#custom-play {
+	color: alpha(@foreground, 0.7);
+	transition: all 0.3s ease-in-out;
+	padding: 0 15;
 	background-image: url('/home/ahmadinne/.config/waybar/svg/play.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 14px;
 }
-#mpris.paused {
+#custom-play.paused {
 	background-image: url('/home/ahmadinne/.config/waybar/svg/play.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 14px;
 }
-#mpris.playing {
+#custom-play.playing {
 	background-image: url('/home/ahmadinne/.config/waybar/svg/pause.svg');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 14px;
 }
-#mpris.play:hover {
+#custom-play:hover {
   color: @foreground;
 }
