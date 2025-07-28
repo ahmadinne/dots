@@ -178,7 +178,7 @@ window#waybar > box {
 
 /* buttons */
 #button {
-	margin: 10 0 0 13;
+	margin: 10 0 0 18;
 }
 
 #custom-prev,
@@ -207,7 +207,7 @@ window#waybar > box {
 #custom-play {
 	color: alpha(@foreground, 0.7);
 	transition: all 0.3s ease-in-out;
-	padding: 0 15;
+	padding: 0 20;
 	background-image: url('/home/ahmadinne/.config/waybar/svg/play.svg');
 	background-position: center;
 	background-repeat: no-repeat;

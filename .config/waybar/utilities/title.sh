@@ -5,7 +5,7 @@
             teks="Nothing played right now"
         fi
         hitung=$(echo "$teks" | wc -m)
-        max_len=18
+        max_len=20
 
         if [ "$hitung" -gt "$max_len" ]; then
             teks_gabung="${teks} ${teks}"
