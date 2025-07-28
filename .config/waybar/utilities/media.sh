@@ -20,17 +20,49 @@ function image() {
 	done
 }
 
-function artist() {
-	while true; do
-		status=$(playerctl status)
-		artistname=$(playerctl metadata | grep artist | awk '{print $3}')
-		if [[ "$status" == "No players found" ]]; then
-			echo $(whoami)
-		else
-			echo $artistname
-		fi
-		sleep 5
-	done
+function metadata(){
+    while true; do
+        status=$(playerctl status)
+        if [[ "$status" == Playing ]]; then
+            artist=$(playerctl metadata | grep artist | grep -oP 'artist\s+\K.*')
+            title=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
+            text="You're Listening to..."
+
+            case $1 in
+                title)
+                    echo "{\"text\": \"${title}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+                artist)
+                    echo "{\"text\": \"${artist}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+                text)
+                    echo "{\"text\": \"${text}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+            esac
+        else
+			artist="unknown"
+            title="Nothin'"
+            text="You're listening?"
+
+            case $1 in
+                title)
+                    echo "{\"text\": \"${title}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+                artist)
+                    echo "{\"text\": \"${artist}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+                text)
+                    echo "{\"text\": \"${text}\", \"class\": \"normal\"}" | jq --unbuffered --compact-output .
+                    ;;
+            esac
+        fi
+        sleep 1
+    done
+}
+
+function wmname() {
+wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+echo $wmname
 }
 
 function button() {
@@ -46,6 +78,7 @@ function button() {
 
 case $1 in
 	image) image ;;
-	artist) artist ;;
+	artist) metadata artist ;;
 	button) button ;;
+	wmname) wmname ;;
 esac

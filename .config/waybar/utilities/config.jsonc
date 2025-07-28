@@ -27,9 +27,9 @@
 	"group/left": {
 		"orientation": "vertical",
 		"modules": [
+			"group/profile",
 			"group/slider",
-			"group/boxes",
-			"group/profile"
+			"group/boxes"
 		]
 	},
 
@@ -134,37 +134,54 @@
 	},
 	"custom/screenrecord": {
 		"format": "    ",
-		"tooltip-format": "screenrecord"
+		"tooltip-format": "screenrecord",
+		"on-click": "$HOME/.config/bash/screenrecord record",
+		"on-click-right": "$HOME/.config/bash/screenrecord record2"
 	},
 
 
 	"group/profile": {
 		"orientation": "horizontal",
 		"modules": [
-			"custom/pfp",
-			"custom/username"
+			"image#pfp",
+			"group/username"
 		]
 	},
-	"custom/pfp": {
-		"format": "    ",
-		"tooltip": false
+	"image#pfp": {
+		"tooltip": false,
+        "path": "/home/ahmadinne/.config/waybar/svg/images.jpeg",
+        "size": 52
+	},
+	"group/username": {
+		"orientation": "vertical",
+		"modules": [
+			"custom/username",
+			"custom/wmname"
+		]
 	},
 	"custom/username": {
-		"format": "hi, ahmadinne\n archlinux",
+		"format": "{}",
 		"tooltip": false,
-		"justify": "center"
+		"justify": "center",
+		"exec": "echo $(whoami)"
+	},
+	"custom/wmname": {
+		"format": "{}",
+		"tooltip": false,
+		"justify": "center",
+		"exec": "$HOME/.config/waybar/utilities/media.sh wmname"
 	},
 
 
 	"group/music": {
 		"orientation": "vertical",
 		"modules": [
-			"image",
+			"image#thumbnail",
 			"group/text"
 		]
 	},
 
-    "image": {
+    "image#thumbnail": {
         "path": "/tmp/mediathumbnail",
         "size": 128,
         "signal": 4,
@@ -203,6 +220,7 @@
 	"custom/artist": {
 		"format": "{}",
 		"tooltip": false,
+		"return-type": "json",
 		"exec": "$HOME/.config/waybar/utilities/media.sh artist"
 	},
 

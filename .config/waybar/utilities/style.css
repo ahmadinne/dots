@@ -21,16 +21,17 @@ window#waybar > box {
 
 #boxes {
 	background-color: @module-bg;
-	padding:  0 10 10 10;
+	padding:  10 10 10 10;
+	margin: 10 0 0 0;
 }
 #boxtengah {
 	margin: 11 0 1 0;
 }
 
 #profile {
-	background-color: @module-bg;
-	padding: 10 10;
-	margin: 10 0 0 0;
+	/* background-color: @module-bg; */
+	/* padding: 10 10; */
+	/* margin: 10 0 0 0; */
 }
 #custom-pfp {
 	font-size: 24px;
@@ -42,8 +43,13 @@ window#waybar > box {
 #custom-pfp:hover {
 	background-color: alpha(@foreground, 0.1);
 }
-#custom-username {
+#username {
+	background-color: @module-bg;
+	padding: 10 21;
 	font-weight: bold;
+}
+#custom-wmname {
+	color: alpha(@foreground, 0.5)
 }
 
 #network,
@@ -96,6 +102,7 @@ window#waybar > box {
 #slider {
 	background-color: @module-bg;
 	padding: 3 8;
+	margin: 10 0 0 0;
 }
 
 #brightness {
@@ -145,8 +152,11 @@ window#waybar > box {
 	padding: 10;
 }
 
-#image {
+#image.thumbnail {
   border-radius: 10;
+}
+#image.pfp {
+	border-radius: 0;
 }
 
 #text {
