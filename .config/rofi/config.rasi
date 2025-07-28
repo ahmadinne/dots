@@ -120,7 +120,7 @@ entry {
     enabled:                     true;
     background-color:            inherit;
     text-color:                  inherit;
-    font-type:                 "bold";
+    font-type:                   "bold";
     cursor:                      text;
     placeholder:                 "Esc to close..";
     placeholder-color:           inherit;
@@ -154,16 +154,16 @@ case-indicator {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       6;
+    lines:                       7;
     cycle:                       true;
     dynamic:                     true;
-    scrollbar:                   false;
+    scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
     
-    spacing:                     10px;
+    spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
     border:                      0px solid;
@@ -174,9 +174,9 @@ listview {
     cursor:                      "default";
 }
 scrollbar {
-    handle-width:                5px ;
-    handle-color:                @handle-colour;
-    border-radius:               8px;
+    handle-width:                8px ;
+    handle-color:                var(selected-normal-background);
+    border-radius:               0px;
     background-color:            @alternate-background;
 }
 
