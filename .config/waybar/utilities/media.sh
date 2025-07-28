@@ -23,7 +23,7 @@ function image() {
 function metadata(){
     while true; do
         status=$(playerctl status)
-        if [[ "$status" != "No players detected" ]]; then
+        if [[ "$status" == Playing ]] || [[ "$status" == Paused ]]; then
             artist=$(playerctl metadata | grep artist | grep -oP 'artist\s+\K.*')
             title=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
             text="You're Listening to..."
