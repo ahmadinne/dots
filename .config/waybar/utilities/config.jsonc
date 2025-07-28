@@ -48,7 +48,7 @@
 		]
 	},
 	"custom/audio": {
-		"format": "󰎇",
+		"format": "    ",
 		"tooltip": false
 	},
 	"pulseaudio/slider": {
@@ -65,7 +65,7 @@
 		]
 	},
 	"custom/brightness": {
-		"format": "",
+		"format": "    ",
 		"tooltip": false
 	},
 	"backlight/slider": {
@@ -78,7 +78,8 @@
 	"group/boxes": {
 		"orientation": "vertical",
 		"modules": [
-			"group/boxatas"
+			"group/boxatas",
+			"group/boxtengah"
 		]
 	},
 	"group/boxatas": {
@@ -89,24 +90,45 @@
 			"custom/screenshot"
 		]
 	},
-	"network": {
-		"format": "{icon}",
-		"tooltip-format": "{ifname}",
-		"format-icons": [
-			"󰤯",
-			"󰤟",
-			"󰤢",
-			"󰤥",
-			"󰤨"
+	"group/boxtengah": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/clipboard",
+			"custom/colorpicker",
+			"custom/screenrecord"
 		]
 	},
+
+	"network": {
+		"format": "    ",
+		"tooltip-format": "{ifname}",
+		// "format-icons": [
+		// 	"󰤯",
+		// 	"󰤟",
+		// 	"󰤢",
+		// 	"󰤥",
+		// 	"󰤨"
+		// ]
+	},
 	"bluetooth": {
-		"format": "{icon}",
-		"format-icons": [ " 󰂯 " ]
+		"format": "    ",
+		// "format-icons": [ "    " ]
 	},
 	"custom/screenshot": {
-		"format": "",
+		"format": "    ",
 		"tooltip-format": "screenshot"
+	},
+	"custom/clipboard": {
+		"format": "    ",
+		"tooltip-format": "clipboard"
+	},
+	"custom/colorpicker": {
+		"format": "    ",
+		"tooltip-format": "colorpicker"
+	},
+	"custom/screenrecord": {
+		"format": "    ",
+		"tooltip-format": "screenrecord"
 	},
 
 
@@ -130,7 +152,7 @@
         "orientation": "vertical",
         "modules": [
             "custom/title",
-            "mpris#artist",
+            "custom/artist",
 			"custom/progress",
 			"group/button"
         ]
@@ -162,6 +184,12 @@
 		"justify": "center"
 	},
 
+	"custom/artist": {
+		"format": "{}",
+		"tooltip": false,
+		"exec": "playerctl metadata | grep artist | awk '{print $3}'"
+	},
+
     "mpris#artist": {
         "format": "{artist}",
 		"tooltip": false,
@@ -173,20 +201,20 @@
     },
 
     "custom/prev": {
-        "format": "󰒮",
+        "format": "    ",
         "tooltip": false,
         "on-click": "playerctl previous"
     },
     "mpris#play": {
         "format": "{status_icon}",
 		"status-icons": {
-			"paused": "▶",
-			"playing": "⏸"
+			"paused": "    ",
+			"playing": "    "
 		},
         "tooltip": false,
     },
     "custom/next": {
-        "format": "󰒭",
+        "format": "    ",
         "tooltip": false,
         "on-click": "playerctl next"
     }

@@ -25,11 +25,23 @@ window#waybar > box {
 }
 
 /* Things */
-#custom-split { color:  @module-hover; }
-#custom-utilities,
+#custom-split { color:  @module-hover; } 
+
+#custom-utilities {
+	background-image: url("/home/ahmadinne/.config/waybar/svg/leaf.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 12px;
+	transition:		all 0.3s ease-in-out;
+	padding: 0 4px
+}
 #custom-launcher { 
-  padding: 		0 12; 
-  transition:		all 0.3s ease-in-out;
+	background-image: url("/home/ahmadinne/.config/waybar/svg/search.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 12px;
+	transition:		all 0.3s ease-in-out;
+	padding: 0 4px;
 }
 
 #custom-workspace,
@@ -47,6 +59,13 @@ window#waybar > box {
 #clock:hover,
 #trayer:hover {
   background-color:     @module-hover;
+}
+#custom-tray {
+	font-size: 6px;
+	background-image: url("/home/ahmadinne/.config/waybar/svg/chevron-left.svg");
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: contain;
 }
 #tray { margin: 0 10; }
 #tray > widget { padding: 0 10;}

@@ -75,12 +75,12 @@
 
   // Custom Area
   "custom/utilities": {
-    "format": "󰌪",
+    "format": "    ",
     "tooltip-format": "Utilities",
     "on-click": "bash $HOME/.config/waybar/utilities/toggle.sh"
   },
   "custom/launcher": {
-    "format": "",
+    "format": "    ",
     "tooltip-format": "App Launcher",
     "on-click": "pkill -x rofi || rofi -show drun"
   },
@@ -88,7 +88,10 @@
   // Group Right
 
 
-  "custom/tray": {      "format": "",            "tooltip": false},
+  "custom/tray": {  
+	  "format": "    ",
+	  "tooltip": false
+  },
   "custom/split": {     "format": "┃",            "tooltip": false },
 
   "tray": {             "icon-size": 12,          "spacing": 3 },
