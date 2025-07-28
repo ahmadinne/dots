@@ -24,7 +24,26 @@ window#waybar > box {
 	padding:  0 10 10 10;
 }
 #boxtengah {
-	margin-top: 10
+	margin: 11 0 1 0;
+}
+
+#profile {
+	background-color: @module-bg;
+	padding: 10 10;
+	margin: 10 0 0 0;
+}
+#custom-pfp {
+	font-size: 24px;
+	background-image: url('/home/ahmadinne/.config/waybar/svg/pfp.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 24px;
+}
+#custom-pfp:hover {
+	background-color: alpha(@foreground, 0.1);
+}
+#custom-username {
+	font-weight: bold;
 }
 
 #network,
@@ -67,9 +86,12 @@ window#waybar > box {
 
 #slider {
 	background-color: @module-bg;
-	padding: 8;
+	padding: 3 8;
 }
 
+#brightness {
+	margin: -5 0 0 0;
+}
 #custom-audio,
 #custom-brightness {
 	margin: 0 5 0 0;
@@ -166,6 +188,10 @@ window#waybar > box {
   color: alpha(@foreground, 0.7);
   transition: all 0.3s ease-in-out;
   padding: 0 15;
+	background-image: url('/home/ahmadinne/.config/waybar/svg/play.svg');
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 14px;
 }
 #mpris.paused {
 	background-image: url('/home/ahmadinne/.config/waybar/svg/play.svg');

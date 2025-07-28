@@ -28,7 +28,8 @@
 		"orientation": "vertical",
 		"modules": [
 			"group/slider",
-			"group/boxes"
+			"group/boxes",
+			"group/profile"
 		]
 	},
 
@@ -134,6 +135,24 @@
 	},
 
 
+	"group/profile": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/pfp",
+			"custom/username"
+		]
+	},
+	"custom/pfp": {
+		"format": "    ",
+		"tooltip": false
+	},
+	"custom/username": {
+		"format": "hi, ahmadinne\n archlinux",
+		"tooltip": false,
+		"justify": "center"
+	},
+
+
 	"group/music": {
 		"orientation": "vertical",
 		"modules": [
@@ -209,10 +228,8 @@
     },
     "mpris#play": {
         "format": "{status_icon}",
-		"status-icons": {
-			"paused": "    ",
-			"playing": "    "
-		},
+		"format-playing": "    ",
+		"format-paused": "    ",
         "tooltip": false,
     },
     "custom/next": {
