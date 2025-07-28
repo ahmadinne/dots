@@ -61,8 +61,19 @@ function metadata(){
 }
 
 function wmname() {
-wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
-echo $wmname
+	wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+	echo $wmname
+}
+
+function screenrecord() {
+	while true; do
+		check=$(ps -ef | grep '[w]f-recorder'| awk '{print $2}')
+		if [[ "$check" ]]; then
+			echo "{\"class\": \"recording\"}" | jq --unbuffered --compact-output .
+		else
+			echo "{\"class\": \"default\"}" | jq --unbuffered --compact-output .
+		fi
+	done
 }
 
 function button() {
@@ -81,4 +92,5 @@ case $1 in
 	artist) metadata artist ;;
 	button) button ;;
 	wmname) wmname ;;
+	screenrecord) screenrecord ;;
 esac
