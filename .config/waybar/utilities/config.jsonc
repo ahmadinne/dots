@@ -116,11 +116,13 @@
 	},
 	"custom/screenshot": {
 		"format": "    ",
-		"tooltip-format": "screenshot"
+		"tooltip-format": "screenshot",
+		"on-click": "$HOME/.config/bash/screenshot bar"
 	},
 	"custom/clipboard": {
 		"format": "    ",
-		"tooltip-format": "clipboard"
+		"tooltip-format": "clipboard",
+		"on-click": "$HOME/.config/bash/clipboard"
 	},
 	"custom/colorpicker": {
 		"format": "    ",
