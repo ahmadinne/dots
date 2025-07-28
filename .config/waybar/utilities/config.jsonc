@@ -1,0 +1,193 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "exclusive": false,
+    // "margin-top": 5,
+    "spacing": 0,
+    // "height": 50,
+    "width": 300,
+	"expand-center": true,
+	// "expand-left": true,
+	// "expand-right": true,
+
+    "modules-left": [],
+    "modules-center": [
+		"custom/empty",
+		"group/left",
+		"group/music"
+	],
+    "modules-right": [],
+
+    "custom/empty": {
+        "format": "{}",
+        "tooltip": false,
+        "exec": "$HOME/.config/waybar/utilities/media.sh image"
+    },
+
+	"group/left": {
+		"orientation": "vertical",
+		"modules": [
+			"group/slider",
+			"group/boxes"
+		]
+	},
+
+	"group/slider": {
+		"orientation": "vertical",
+		"modules": [
+			"group/audio",
+			"group/brightness"
+		]
+	},
+
+	"group/audio": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/audio",
+			"pulseaudio/slider"
+		]
+	},
+	"custom/audio": {
+		"format": "󰎇",
+		"tooltip": false
+	},
+	"pulseaudio/slider": {
+		"min": 0,
+		"max": 100,
+		"orientation": "horizontal"
+	},
+
+	"group/brightness": {
+		"orientation": "horizontal",
+		"modules": [
+			"custom/brightness",
+			"backlight/slider"
+		]
+	},
+	"custom/brightness": {
+		"format": "",
+		"tooltip": false
+	},
+	"backlight/slider": {
+		"min": 0,
+		"max": 100,
+		"orientation": "horizontal"
+	},
+
+
+	"group/boxes": {
+		"orientation": "vertical",
+		"modules": [
+			"group/boxatas"
+		]
+	},
+	"group/boxatas": {
+		"orientation": "horizontal",
+		"modules": [
+			"network",
+			"bluetooth",
+			"custom/screenshot"
+		]
+	},
+	"network": {
+		"format": "{icon}",
+		"tooltip-format": "{ipname}",
+		"format-icons": [
+			"󰤯",
+			"󰤟",
+			"󰤢",
+			"󰤥",
+			"󰤨"
+		]
+	},
+	"bluetooth": {
+		"format": "{icon}",
+		"format-icons": [ " 󰂯 " ]
+	},
+	"custom/screenshot": {
+		"format": "󰹑",
+		"tooltip-format": "screenshot"
+	},
+
+
+	"group/music": {
+		"orientation": "vertical",
+		"modules": [
+			"image",
+			"group/text"
+		]
+	},
+
+    "image": {
+        "path": "/tmp/mediathumbnail",
+        "size": 128,
+        "signal": 4,
+        "interval": 5,
+        "on-click": "gthumb /tmp/mediathumbnail"
+    },
+
+    "group/text": {
+        "orientation": "vertical",
+        "modules": [
+            "custom/title",
+            "mpris#artist",
+			"custom/progress",
+			"group/button"
+        ]
+    },
+
+	"group/button": {
+		"orientation": "horizontal",
+		"align": "center",
+		"modules": [
+			"custom/prev",
+			"mpris#play",
+			"custom/next"
+		]
+	},
+
+	"mpris#title": {
+		"format": "{title}",
+		"tooltip": false,
+		"justify": "center",
+		"title-len": 22,
+		"ellipsis": "..."
+	},
+
+	"custom/title": {
+		"format": "{}",
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/utilities/title.sh",
+		"tooltip": false,
+		"justify": "center"
+	},
+
+    "mpris#artist": {
+        "format": "{artist}",
+		"tooltip": false,
+		"justify": "center",
+		"artist-len": 24,
+		"on-click": "",
+		"on-click-middle": "",
+		"on-click-right": ""
+    },
+
+    "custom/prev": {
+        "format": "󰒮",
+        "tooltip": false,
+        "on-click": "playerctl previous"
+    },
+    "mpris#play": {
+        "format": "{status_icon}",
+		"status-icons": {
+			"paused": "▶",
+			"playing": "⏸"
+		},
+        "tooltip": false,
+    },
+    "custom/next": {
+        "format": "󰒭",
+        "tooltip": false,
+        "on-click": "playerctl next"
+    }
+}

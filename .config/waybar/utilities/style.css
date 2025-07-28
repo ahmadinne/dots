@@ -1,0 +1,115 @@
+* {
+  font-size: 11px;
+}
+
+@import "../colors.css";
+
+window#waybar {
+  background-color: transparent;
+  color: @foreground;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+}
+window#waybar > box {
+  background-color: @background;
+  padding: 10 10;
+}
+
+#left {
+	margin: 0 10 0 0;
+}
+
+#boxes {
+	background-color: @module-bg;
+	padding: 10;
+}
+#network,
+#bluetooth,
+#custom-screenshot {
+	background-color: alpha(@foreground, 0.05);
+	padding: 15;
+	margin: 0 10 0 0;
+}
+#custom-screenshot {
+	margin-right: 0;
+}
+
+#slider {
+	background-color: @module-bg;
+	padding: 10;
+}
+#custom-audio,
+#custom-brightness {
+	margin: 0 10 0 0;
+}
+
+#pulseaudio-slider slider,
+#backlight-slider slider {
+	min-height: 0px;
+	min-width: 0px;
+	opacity: 0;
+}
+#pulseaudio-slider trough,
+#backlight-slider trough {
+	min-height: 15px;
+	min-width: 125px;
+	background-color: alpha(@foreground, 0.05);
+}
+#pulseaudio-slider highlight,
+#backlight-slider highlight {
+	min-width: 0px;
+	border-radius: 0px;
+	background-color: @foreground;
+}
+
+#music {
+	background-color: @module-bg;
+	padding: 10;
+}
+
+#image {
+  border-radius: 10;
+}
+
+#text {
+  color: @foreground;
+  padding: 5 0;
+  margin-top: 10;
+}
+#custom-title {
+	color: @foreground;
+  font-weight: bold;
+}
+#mpris.artist {
+  color: alpha(@foreground, 0.5);
+  font-weight: bold;
+  margin: 5 0;
+}
+
+
+/* buttons */
+#button {
+	margin: 5 0;
+}
+
+#custom-prev,
+#custom-next {
+  color: alpha(@foreground, 0.3);
+  transition: all 0.3s ease-in-out;
+  margin: 0 20;
+}
+#custom-prev:hover,
+#custom-next:hover {
+  /* background-color: @module-bg; */
+  color: @foreground;
+}
+
+#mpris.play {
+  color: alpha(@foreground, 0.7);
+  transition: all 0.3s ease-in-out;
+  padding: 0;
+  margin: 0 10;
+}
+#mpris.play:hover {
+  color: @foreground;
+}

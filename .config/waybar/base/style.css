@@ -20,7 +20,7 @@ window#waybar > box {
 #top,
 #center,
 #right {
-  background-color:     @satu;
+  background-color:     @background; /* @module-bg */
   padding:              0 0;
 }
 
@@ -46,7 +46,7 @@ window#waybar > box {
 #battery:hover,
 #clock:hover,
 #trayer:hover {
-  background-color:     @dua;
+  background-color:     @module-hover;
 }
 #tray { margin: 0 10; }
 #tray > widget { padding: 0 10;}

@@ -8,8 +8,6 @@
 @define-color satu #181818;
 @define-color dua #1F1F1F;
 @define-color empat #1C1C1C;
-@define-color module-bg alpha(@foreground, 0.05);
-@define-color module-hover alpha(@foreground, 0.2);
 @define-color black #151515;
 @define-color gray #353535;
 @define-color white #e8e3e3;
@@ -19,6 +17,9 @@
 @define-color green #8c977d;
 @define-color yellow #d9bc8c;
 @define-color purple #a988b0;
+
+@define-color module-bg @dua;
+@define-color module-hover alpha(@foreground, 0.1);
 
 @define-color bright-black #424242;
 @define-color bright-red #b66467;

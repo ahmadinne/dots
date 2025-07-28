@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 
 id=$(ps -ef | grep '[w]aybar -c' | grep power | awk '{print $2}')
 
