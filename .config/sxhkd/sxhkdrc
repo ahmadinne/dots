@@ -1,0 +1,88 @@
+#! /bin/bash
+# ---- Ahmadinne's sxhkd config ----
+
+
+# ---- Programs ----
+alt + t			#Terminal
+	alacritty
+alt + e			#FileManager
+	thunar
+alt + a			#Appmenu
+	rofi -show drun
+alt + b			#Browser
+	google-chrome-stable
+alt + v			#Clipboard
+	$HOME/.config/bash/clipboard
+alt + /			#Emoji
+	$HOME/.config/bash/rofimoji
+alt + c			#Calculator
+	rofi -show calc -modi calc -no-show-match -no-sort
+alt + shift + r	#Refresh
+	$HOME/.config/bash/refresh
+alt + shift + c	#ColorPicker
+	hyprpicker -a
+alt + shift + w	#ChangeWallpaper
+	$HOME/.config/bash/wallpaper-launcher
+alt + p			#Screenshot Entire Screen
+	$HOME/.config/bash/screenshot screen
+alt + shift + p	#Screenshot Focused Windows
+	$HOME/.config/bash/screenshot screen
+
+
+# ---- Bspwm ----
+alt + shift + delete			#quit/restart bspwm
+	bspc quit
+alt + {_,shift + }q			#close and kill
+	bspc node -{c,k}
+# alt + @space				#alternate between the tiled and monocle layout
+# 	bspc desktop -l next
+alt + y						#send the newest marked node to the newest preselected node
+	bspc node newest.marked.local -n newest.!automatic.local
+alt + g						# swap the current node and the biggest window
+	bspc node -s biggest.window
+
+
+# ---- state/flags ----
+alt + {w,shift + w,f}			# set the window state
+	bspc node -t {tiled,floating,fullscreen}
+alt + ctrl + {m,x,y,z}		# set the node flags
+	bspc node -g {marked,locked,sticky,private}
+
+
+# ---- focus/swap ----
+alt + {_,shift + }{h,j,k,l}	# focus the node in the given direction
+	bspc node -{f,s} {west,south,north,east}
+alt + {p,b,comma,period}		# focus the node for the given path jump
+	bspc node -f @{parent,brother,first,second}
+alt + {_,shift + }c			# focus the next/previous window in the current desktop
+	bspc node -f {next,prev}.local.!hidden.window
+alt + bracket{left,right}		# focus the next/previous desktop in the current monitor
+	bspc desktop -f {prev,next}.local
+alt + {grave,Tab}				# focus the last node/desktop
+	bspc {node,desktop} -f last
+alt + {o,i}					# focus the older or newer node in the focus history
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+alt + {_,shift + }{1-9,0}		# focus or send to the given desktop
+	bspc {desktop -f,node -d} '^{1-9,10}'
+
+
+# ---- preselect ----
+# alt + ctrl + {h,j,k,l}		# preselect the direction
+# 	bspc node -p {west,south,north,east}
+# alt + ctrl + {1-9}			# preselect the ratio
+# 	bspc node -o 0.{1-9}
+# alt + ctrl + space			# cancel the preselection for the focused node
+# 	bspc node -p cancel
+# alt + ctrl + shift + space	# cancel the preselection for the focused desktop
+# 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+
+# ---- move/resize ----
+alt + ctrl + {h,j,k,l}			# expand a window by moving one of its side outward
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+alt + ctrl + shift + {h,j,k,l}	# contract a window by moving one of its side inward
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+alt + {Left,Down,Up,Right}	# move a floating window
+	bspc node -v {-20 0,0 20,0 -20,20 0}

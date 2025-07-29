@@ -6,6 +6,7 @@ x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 image/png=userapp-mpv -UJFMA3.desktop
 image/jpeg=userapp-mpv-L3W792.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 image/png=mpv.desktop;
