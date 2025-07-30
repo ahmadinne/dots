@@ -46,4 +46,19 @@ alias mem='free --mega'
 alias memory='free --mega'
 alias disk='echo -e "Filesystem      Size  Used Avail Use% Mounted on"; df -h | grep /boot; df -h | grep /home'
 
+function lf (){
+	blue="\033[1;34m"
+	black="\033[0;30m"
+	none="\033[0m"
+	for isi in $(ls -la $(pwd) | awk 'NR >= 4 {print $9}'); do
+		if [ -d "$isi" ]; then
+			echo -e "${black}-- ${blue} ${isi}"
+		elif [ -f "$isi" ]; then
+			echo -e "${black}-- ${none} ${isi}"
+		else
+			echo $isi
+		fi
+	done
+}
+
 bunnyfetch
