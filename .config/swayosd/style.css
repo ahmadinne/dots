@@ -4,6 +4,7 @@
   font-size: 11px; }
 
 #container > image {
+	margin: -20;
     -gtk-icon-transform: scale(0.5); }
 
 window#osd {
@@ -12,11 +13,7 @@ window#osd {
 	background: @background; }
 window#osd #container {
 	margin: 0px;
-	padding: 20px; }
-window#osd image {
-	font-size: 2px;
-	min-height: 4px;
-}
+	padding: 10px 21px 10px 10px; }
 window#osd image,
 window#osd label {
 	color: @foreground; }
