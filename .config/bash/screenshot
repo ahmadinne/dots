@@ -15,7 +15,7 @@ fi
 if [ "$choice" = "screen" ]; then
   grim $HOME/Pictures/Screenshots/${format}
   if [ $? -eq 0 ]; then
-    notify-send --urgency=low --transient "📷Screenshot Captured!" -r 9005 -t 2000
+    notify-send --urgency=low --transient "📷 Screenshot Captured!" -r 9005 -t 2000
   else
     echo "error"
   fi
@@ -24,7 +24,7 @@ elif [ "$choice" = "window" ]; then
   activewindow2=$(hyprctl activewindow | grep size: | awk '{print $2}' | sed 's/,/x/')
   grim -g "$activewindow1 $activewindow2" $HOME/Pictures/Screenshots/Region-${format}
   if [ $? -eq 0 ]; then
-    notify-send --urgency=low --transient "📷Windowshot Captured!" -r 9005 -t 2000
+    notify-send --urgency=low --transient "📷 Windowshot Captured!" -r 9005 -t 2000
   else
     notify-send --urgency=low --transient "❗There's no Active Window!" -r 9005 -t 2000
   fi
@@ -34,14 +34,14 @@ elif [ "$choice" = "bar" ]; then
   sleep 0.5
   grim $HOME/Pictures/Screenshots/${format}
   if [ $? -eq 0 ]; then
-    notify-send --urgency=low --transient "📷Screenshot Captured!" -r 9005 -t 2000
+    notify-send --urgency=low --transient "📷 Screenshot Captured!" -r 9005 -t 2000
   else
     echo "error"
   fi
 elif [ "$choice" = "bar2" ]; then
   grim $HOME/Pictures/Screenshots/${format}
   if [ $? -eq 0 ]; then
-    notify-send --urgency=low --transient "📷Screenshot Captured!" -r 9005 -t 2000
+    notify-send --urgency=low --transient "📷 Screenshot Captured!" -r 9005 -t 2000
   else
     echo "error"
   fi
