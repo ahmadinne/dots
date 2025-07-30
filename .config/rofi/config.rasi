@@ -51,11 +51,11 @@ window {
     /* properties for window widget */
     transparency:                "real";
     location:                    center;
-    anchor:                      center;
+    anchor:                      northwest;
     fullscreen:                  false;
     width:                       330px;
-    x-offset:                    0px;
-    y-offset:                    0px;
+    // x-offset:                    -10px;
+    // y-offset:                    -10px;
 
     /* properties for all widgets */
     enabled:                     true;

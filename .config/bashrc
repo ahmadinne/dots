@@ -2,19 +2,18 @@
 
 
 # ---- Environments ----
-export DISPLAY=:0
 export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.config/bin:/usr/local/bin:$PATH
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_SESSION_TYPE=wayland
 export EDITOR="bob run nightly"
-export TERMINAL="kitty"
+export TERMINAL="alacritty"
 export BROWSER="google-chrome-stable"
 export VISUAL="${EDITOR}"
 export WLR_NO_HARDWARE_CURSORS=1
 export ACCESSIBILITY_ENABLED=1
 export QT_ACCESSIBILITY=1
-# export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORM=wayland
 export QT_QPA_PLATFORMTHEME=qt6ct
 export QT_LINUX_ACCESSIBILITY_ALWAYS_ON=1
 # Evals
@@ -30,8 +29,8 @@ HISTDUP=erase
 
 
 # ---- Alias ----
-alias cat='bat'
-alias ls='eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions -a'
+# alias cat='bat'
+# alias ls='eza --color=always --git --no-filesize --icons=always --no-time --no-user --no-permissions -a'
 alias grep='grep --color=auto'
 alias vi='$EDITOR'
 alias vim='$EDITOR'
@@ -42,17 +41,6 @@ alias ff="fastfetch"
 alias boottime='systemd-analyze'
 alias bashrc='$EDITOR $HOME/.config/bashrc'
 alias init.lua='$EDITOR $HOME/.config/nvim/init.lua'
-alias kanata-reload='sudo systemctl stop kanata; sudo systemctl start kanata; systemctl status kanata'
-alias publicip='curl https://ipinfo.io/ip'
-function y(){
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		builtin cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
-}
-alias yazi=y
 
 alias mem='free --mega'
 alias memory='free --mega'

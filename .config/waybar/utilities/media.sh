@@ -87,10 +87,21 @@ function button() {
 	done
 }
 
+function autobar() {
+    activeworkspace=$(hyprctl activeworkspace | grep "workspace ID" | awk '{print $3}')
+    windowstatus=$(hyprctl clients -j | jq ".[] | select(.workspace.id == ${activeworkspace})" | grep -c '"floating": false')
+	if [ "$windowstatus" -lt 1 ]; then
+		echo "{\"class\": \"invisible\"}" | jq --unbuffered --compact-output .
+	else
+		echo "{\"class\": \"visible\"}" | jq --unbuffered --compact-output .
+	fi
+}
+
 case $1 in
 	image) image ;;
 	artist) metadata artist ;;
 	button) button ;;
 	wmname) wmname ;;
 	screenrecord) screenrecord ;;
+	autobar) autobar ;;
 esac

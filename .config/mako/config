@@ -32,3 +32,4 @@ ignore-timeout=1
 max-visible=5
 layer=overlay
 anchor=top-right
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message.oga
