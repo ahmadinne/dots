@@ -9,6 +9,9 @@
 
 ![](./assets/preview.png)
 
+> [!CAUTION]
+> The Dots is still WIP, do not try to install, or it'll break!.
+
 **Hello there, thanks for the visit!** \
 This is my personal configuration files that forms the desktop you see above. \
 <br/>
@@ -16,7 +19,7 @@ Shout out to these beast!:
 + <b>OS:</b> Archlinux
 + <b>WM:</b> Hyprland
 + <b>Widgets:</b> Waybar <3
-+ <b>Notifs:</b> Dunst
++ <b>Notifs:</b> Mako
 + <b>Shell:</b> Bash
 + <b>Terminal:</b> Alacritty
 + <b>Editor:</b> Neovim
