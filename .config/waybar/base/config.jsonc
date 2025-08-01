@@ -7,11 +7,16 @@
   "margin-top":         0,
   "fixed-center":       true,
 
-  "modules-left":       [ "group/top" ],
+  "modules-left":       [ "custom/empty", "group/top" ],
   "modules-center":     [ "group/center" ],
   "modules-right":      [ "group/right" ],
 
   // Main Group Area
+	"custom/empty": {
+		"format": "{}",
+		"tooltip": false,
+		"exec": "$HOME/.config/waybar/utilities/media.sh image"
+	},
   "group/top": {
     "orientation":      "inherit",
     "modules":          [ "clock", "custom/split", "group/workspaces" ]

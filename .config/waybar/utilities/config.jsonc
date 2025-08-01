@@ -12,7 +12,7 @@
 
     "modules-left": [],
     "modules-center": [
-		"custom/empty",
+		// "custom/empty",
 		"group/left",
 		"group/music"
 	],

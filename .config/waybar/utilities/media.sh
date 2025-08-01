@@ -7,11 +7,13 @@ function image() {
 		fullthumb="/tmp/fullthumbnail"
 		defaultone="$HOME/.config/waybar/utilities/thumbnail.png"
 		mask="$HOME/.config/waybar/utilities/mask.png"
-		magick $artUrl -thumbnail 720x720^ -gravity center -extent 720x720 $cache
 
+		# DIFFERENCE=$(magick compare -metric RMSE "$thumbnail" "$cache" null: 2>&1 | awk '{print $1}')
+		# if (( $(echo "$DIFFERENCE > 0.0" | bc -l) )); then
 		# if [[ "$thumbnail" != "$cache" ]]; then
-		if [[ "$(md5sum "$thumbnail" | awk '{print $1}')" != "$(md5sum "$cache" | awk '{print $1}')" ]]; then
+		if [[ "$(md5sum "$artUrl" | awk '{print $1}')" != "$(md5sum "$fullthumb" | awk '{print $1}')" ]]; then
 			cp -rf $artUrl $fullthumb
+			magick $artUrl -thumbnail 720x720^ -gravity center -extent 720x720 $cache
 			# cp -rf $cache $thumbnail
 			magick $cache -matte $mask -compose DstIn -composite $thumbnail
 		fi
@@ -19,6 +21,7 @@ function image() {
 			cp -rf $defaultone $fullthumb
 			cp -rf $defaultone $thumbnail
 		fi
+		sleep 1
 	done
 }
 
