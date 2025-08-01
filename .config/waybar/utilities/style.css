@@ -58,7 +58,7 @@ window#waybar > box {
 #custom-clipboard,
 #custom-colorpicker,
 #custom-screenrecord {
-	background-color: alpha(@foreground, 0.05);
+	background-color: @tiga;
 	padding: 12 8;
 	margin: 0 10 0 0;
 	background-position: center;

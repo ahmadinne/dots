@@ -2,7 +2,7 @@
     while true; do
         teks=$(playerctl metadata | grep title | grep -oP 'title\s+\K.*')
         if [ ! "$teks" ]; then
-            teks="Nothing played right now"
+            teks="Nothing played rn."
         fi
         hitung=$(echo "$teks" | wc -m)
         max_len=20
@@ -15,7 +15,7 @@
                 sleep 1
             done
         else
-            echo "{\"text\": \"$(printf "%-25s" "$teks")\", \"class\": \"\"}" | jq --unbuffered --compact-output .
+            echo "{\"text\": \"$(echo "$teks")\", \"class\": \"\"}" | jq --unbuffered --compact-output .
             sleep 2
         fi
     done
