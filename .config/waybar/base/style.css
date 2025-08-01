@@ -12,8 +12,8 @@ window#waybar {
   color:                @foreground;
 }
 window#waybar > box {
-  margin:               5 5;
-  padding:              0 0;
+  /* margin:               5 5; */
+  padding:              0 5;
 }
 
 /* Main Group */

@@ -13,7 +13,7 @@ window#waybar {
 }
 
 window#waybar > box {
-    border-radius: 3;
+    /* border-radius: 3; */
     background-color: transparent;
     margin-left: 5;
     margin-top: 5;
@@ -22,7 +22,7 @@ window#waybar > box {
 #custom-month {
     background-color: @background;
     color: @yellow;
-    border-radius: 3 3 0 0;
+    /* border-radius: 3 3 0 0; */
     /* border-top: 2px solid @light-blue; */
     font-weight: bold;
     padding: 25 0 10 0;
@@ -41,14 +41,14 @@ window#waybar > box {
 
 #dates {
     background: @background;
-    border-radius: 0 0 3 3;
+    /* border-radius: 0 0 3 3; */
     /* border-bottom: 2px solid @light-blue; */
     padding: 0 20 31 20;
 }
 
 #custom-sunday {
     /*background-color: @module-bg;*/
-    border-radius: 3 0 0 3;
+    /* border-radius: 3 0 0 3; */
     padding: 5;
     font-size: 12;
     font-weight: bold;
@@ -61,7 +61,7 @@ window#waybar > box {
 }
 #custom-saturday {
     /*background-color: @module-bg;*/
-    border-radius: 0 3 3 0;
+    /* border-radius: 0 3 3 0; */
     padding: 5;
     font-size: 12;
     font-weight: bold;
@@ -70,7 +70,7 @@ window#waybar > box {
 #custom-sunday.today, #custom-monday.today, #custom-tuesday.today, #custom-wednesday.today, #custom-thursday.today, #custom-friday.today, #custom-saturday.today {
     /*background-color: @blue;*/
     color: @yellow;
-    border-radius: 3;
+    /* border-radius: 3; */
     font-weight: bold;
 }
 
@@ -95,7 +95,7 @@ window#waybar > box {
 #custom-sa1.today, #custom-sa2.today, #custom-sa3.today, #custom-sa4.today, #custom-sa5.today {
     /*background-color: @blue;*/
     color: @yellow;
-    border-radius: 3;
+    /* border-radius: 3; */
     font-weight: bold;
 }
 

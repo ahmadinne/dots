@@ -3,6 +3,7 @@
     "position": "left",
     "exclusive": false,
     "spacing": 0,
+	"margin-bottom": 5,
 
     "modules-left": [],
     "modules-center": [],

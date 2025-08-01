@@ -6,11 +6,14 @@ function image() {
 		thumbnail="/tmp/mediathumbnail"
 		fullthumb="/tmp/fullthumbnail"
 		defaultone="$HOME/.config/waybar/utilities/thumbnail.png"
+		mask="$HOME/.config/waybar/utilities/mask.png"
 		magick $artUrl -thumbnail 720x720^ -gravity center -extent 720x720 $cache
 
-		if [[ "$thumbnail" != "$cache" ]]; then
+		# if [[ "$thumbnail" != "$cache" ]]; then
+		if [[ "$(md5sum "$thumbnail" | awk '{print $1}')" != "$(md5sum "$cache" | awk '{print $1}')" ]]; then
 			cp -rf $artUrl $fullthumb
-			cp -rf $cache $thumbnail
+			# cp -rf $cache $thumbnail
+			magick $cache -matte $mask -compose DstIn -composite $thumbnail
 		fi
 		if [ ! -f "$cache" ]; then
 			cp -rf $defaultone $fullthumb
