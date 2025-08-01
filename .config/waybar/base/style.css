@@ -8,7 +8,7 @@
 
 /* Base (Window) */
 window#waybar {
-  background-color:     transparent;
+  background-color:     @background;
   color:                @foreground;
 }
 window#waybar > box {

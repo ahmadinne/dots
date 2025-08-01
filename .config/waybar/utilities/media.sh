@@ -16,7 +16,6 @@ function image() {
 			cp -rf $defaultone $fullthumb
 			cp -rf $defaultone $thumbnail
 		fi
-		sleep 1
 	done
 }
 
@@ -60,6 +59,18 @@ function metadata(){
     done
 }
 
+function artist() {
+	while true; do
+		check=$(playerctl status)
+		names=$(playerctl metadata | grep artist | grep -oP 'artist\s+\K.*')
+		if [[ "$check" == Playing ]]; then
+			echo "${names}"
+		else
+			echo "Unknown"
+		fi
+	done
+}
+
 function wmname() {
 	wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
 	echo $wmname
@@ -99,7 +110,7 @@ function autobar() {
 
 case $1 in
 	image) image ;;
-	artist) metadata artist ;;
+	artist) artist ;;
 	button) button ;;
 	wmname) wmname ;;
 	screenrecord) screenrecord ;;

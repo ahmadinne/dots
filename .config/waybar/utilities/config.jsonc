@@ -222,7 +222,6 @@
 	"custom/artist": {
 		"format": "{}",
 		"tooltip": false,
-		"return-type": "json",
 		"exec": "$HOME/.config/waybar/utilities/media.sh artist"
 	},
 
