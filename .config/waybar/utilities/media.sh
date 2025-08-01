@@ -74,6 +74,7 @@ function artist() {
 		else
 			echo "Unknown"
 		fi
+		sleep 1
 	done
 }
 

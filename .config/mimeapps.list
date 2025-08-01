@@ -7,8 +7,10 @@ x-scheme-handler/unknown=google-chrome.desktop
 image/png=org.gnome.gThumb.desktop
 image/jpeg=org.gnome.gThumb.desktop
 x-scheme-handler/discord=vesktop.desktop
+image/svg+xml=org.gnome.gThumb.desktop
 
 [Added Associations]
 image/png=org.gnome.gThumb.desktop;
 image/jpeg=org.gnome.gThumb.desktop;
 image/jpg=org.gnome.gThumb.desktop;
+image/svg+xml=org.gnome.gThumb.desktop;

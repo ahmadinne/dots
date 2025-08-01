@@ -1,6 +1,9 @@
 * {
-  font-family: "Symbols Nerd Font", "Iosevka Medium";
-  font-size: 11;
+	font-family: "Symbols Nerd Font", "Iosevka Medium";
+	font-size: 11px;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 16px;
 }
 
 @import "../colors.css";
@@ -14,179 +17,93 @@ window#waybar {
 
 window#waybar > box {
     background-color: transparent;
-    border-radius: 3;
-    margin: 5;
+    margin: 5px;
 }
 
 .modules-right {
-    background-color: @background;
-    border-radius: 3;
-    /*border: 1px solid @module-bg;*/
-    /* box-shadow: 1 1 2 2 alpha(@foreground, 0.2); */
-    padding: 5px;
+	background-color: @background;
+	border-radius: 6px;
+	padding: 5px;
 }
 
-/* Left Modules */
-#left {
-    background-color: @module-bg;
-    border-radius: 3;
-    padding: 5;
-    margin-right: 5;
+/* MIDDLE GROUPS */
+#middle {
+	background-color: @module-bg;
+	border-radius: 4px;
+	padding: 5px;
+	margin: 5px;
 }
 
-#wifies {
-    background-color: inherit;
-    padding: 5;
-    border-radius: 3;
-    transition: all .3s ease-in-out;
-}
-#wifies:hover {
-    background-color: @module-hover;
-}
-#network {
-    background-color: @background;
-    border-radius: 3;
-    padding: 5;
-    margin-right: 5;
+#cpu,
+#temperature,
+#memory,
+#disk {
+	padding: 5px;
 }
 
-#bluetoothies {
-    background-color: inherit;
-    padding: 5;
-    border-radius: 3;
-    transition: all .3s ease-in-out;
-}
-#bluetoothies:hover {
-    background-color: @module-hover;
-}
-#bluetooth {
-    background-color: @background;
-    border-radius: 3;
-    padding: 5;
-    margin-right: 5;
+#custom-cpu,
+#custom-temperature,
+#memory.logo,
+#disk.logo {
+	background-color: @empat;
+	padding: 20px;
+	border-radius: 3 3 0 0px;
 }
 
-#audiooutput {
-    background-color: inherit;
-    padding: 5;
-    border-radius: 3;
-    transition: all .3s ease-in-out;
-}
-#audiooutput:hover {
-    background-color: @module-hover;
-}
-#custom-audiologo {
-    background-color: @background;
-    border-radius: 3;
-    padding: 5;
-    margin-right: 5;
+#cpu.text,
+#temperature.text,
+#memory.text,
+#disk.text {
+	background-color: @tiga;
+	font-weight: bold;
+	padding: 2 0px;
+	border-radius: 0 0 3 3px;
 }
 
-#wifies, #bluetoothies, #audiooutput {
-    margin: 2.5 0;
+#custom-cpu { 
+	background-image: url('/home/ahmadinne/.config/waybar/svg/cpu.svg');
+}
+#custom-temperature { 
+	background-image: url('/home/ahmadinne/.config/waybar/svg/temperature.svg');
+}
+#memory.logo {
+	background-image: url('/home/ahmadinne/.config/waybar/svg/memory.svg');
+}
+#disk.logo {
+	background-image: url('/home/ahmadinne/.config/waybar/svg/hard-drives.svg');
 }
 
+#custom-cpu.default,
+#custom-temperature.default { background-color: @blue; }
 
-/* Middle Modules */
-#mid {}
-#midtop {
-    background-color: @module-bg;
-    border-radius: 3;
-    padding: 6 15;
-}
-/* #batterybox { */
-/*     background-color: @module-bg; */
-/*     border-radius: 3; */
-/*     padding: 5 15; */
-/* } */
-#custom-batkosong {
-    padding: 0 40;
-    margin: -5 0;
-    color: transparent;
-}
-#battery {
-    font-size: 32;
-    margin: 0 0 0 12;
-    /* background-color: @module-hover; */
-    /* padding: 0 10; */
-}
-#custom-batpercentage {
-    padding: 5 0 0 0;
-    margin: 0 0 0 15;
-    font-size: 26;
-    font-weight: bold;
-}
+#custom-cpu.mid,
+#custom-temperature.mid { background-color: @green; }
 
-#screenshot, #screencapt {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 0;
-    padding: 11 12;
-    transition: all 0.3s ease-in-out;
-}
-#screencapt { margin: 5 0 0 5; }
-#custom-ssicon, #custom-scicon {
-    font-size: 24;
-    margin-bottom: 10;
-}
-#custom-sstext, #custom-sstexts, #custom-sctext, #custom-sctexts {
-    font-size: 11;
-}
+#custom-cpu.warning,
+#custom-temperature.warning { background-color: @yellow; }
 
-#screenshot:hover {
-    background-color: @module-hover;
-    transition: all 0.3s ease-in-out;
-}
+#custom-cpu.critical,
+#custom-temperature.critical { background-color: @red; }
 
 
-/* memory box */
-#custom-memkosong {
-    margin: -5 0;
-    padding: 1 30;
-    color: transparent;
-}
-#memorys {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 5;
-}
-#memorys:hover {
-    background-color: @module-hover;
-    transition: all 0.3s ease-in-out;
-}
-#disks {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 5 0 0 5;
-}
-#disks:hover {
-    background-color: @module-hover;
-    transition: all 0.3s ease-in-out;
-}
 
-/* button */
-#custom-lock,
-#custom-suspend,
-#custom-reboot,
-#custom-logout {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 0 0 5 5;
-    padding: 10 15;
-    transition: all 0.3s ease-in-out;
+#bottom {
+	background-color: @module-bg;
+	border-radius: 4px;
+	padding: 10px;
+	margin: 5px;
 }
-#custom-poweroff {
-    background-color: @module-bg;
-    border-radius: 3;
-    margin: 0 0 0 5;
-    padding: 12 15;
-    transition: all 0.3s ease-in-out;
+#custom-pptext {
+	margin-top: 10px;
+	font-weight: bold;
 }
-
-#custom-lock:hover,
-#custom-suspend:hover,
-#custom-reboot:hover,
-#custom-logout:hover,
-#custom-poweroff:hover {
-    background-color: @module-hover;
+#power-profiles-daemon.powersaver,
+#power-profiles-daemon.balanced,
+#power-profiles-daemon.performance {
+	background-color: @tiga;
+	border-radius: 4px;
+	padding: 12px;
+}
+#power-profiles-daemon.balanced {
+	margin: 0 10px;
 }

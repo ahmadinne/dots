@@ -1,284 +1,132 @@
 {
     "layer": "top",
     "exclusive": false,
-    "position": "bottom",
+    "position": "right",
     "spacing": 0,
 
-    "modules-left": [
-    ],
+    "modules-left": [],
     "modules-center": [],
     "modules-right": [
-        "group/left",
-        "group/mid",
-        "group/right"
+		"group/middle",
+        "group/bottom"
     ],
 
-    // Groups
-    "group/left": {
-        "orientation": "vertical",
-        "modules": [
-	    "group/wifies",
-	    "group/bluetoothies",
-	    "group/audiooutput"
-        ]
-    },
 
-    "group/mid": {
-        "orientation": "vertical",
-        "modules": [
-            "group/midtop",
-            "group/midbot"
-        ]
-    },
+	// Groups
+	"group/middle": {
+		"orientation": "inherit",
+		"modules": [
+			"group/middleone",
+			"group/middletwo"
+		]
+	},
+	"group/middleone": {
+		"orientation": "horizontal",
+		"modules": [
+			"group/cpu",
+			"group/temperature"
+		]
+	},
+	"group/middletwo": {
+		"orientation": "horizontal",
+		"modules": [
+			"group/memory",
+			"group/disk"
+		]
+	},
 
-    "group/right": {
-        "orientation": "vertical",
-        "modules": [
-            "custom/lock",
-            // "custom/suspend",
-            "custom/reboot",
-            "custom/logout",
-            "custom/poweroff"
-        ]
-    },
+	"group/cpu": {
+		"orientation": "vertical",
+		"modules": [
+			"custom/cpu",
+			"cpu#text"
+		]
+	},
+	"custom/cpu": {
+		"format": "    ",
+		"tooltip": false,
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/power/cpu.sh"
+	},
+	"cpu#text": {
+		"interval": 1,
+		"format": "{usage}%"
+	},
 
-    // Left Modules
-    "group/wifies": {
-	"orientation": "horizontal",
-	"modules": [
-	    "network", "group/wifitext"
-	]
-    },
-    "network": {
-	"format": "Wf"
-    },
-    "group/wifitext": {
-	"orientation": "vertical",
-	"modules": [
-	    "custom/wifitext1",
-	    "custom/wifitext2"
-	]
-    },
-    "custom/wifitext1": {
-	"format": "Wi-Fi",
-	"align": 0
-    },
-    "custom/wifitext2": {
-	"format": "Nama Wifi-nya",
-	"align": 0
-    },
+	"group/temperature": {
+		"orientation": "vertical",
+		"modules": [
+			"custom/temperature",
+			"temperature#text"
+		]
+	},
+	"custom/temperature": {
+		"format": "    ",
+		"tooltips": false,
+		"return-type": "json",
+		"exec": "$HOME/.config/waybar/power/temp.sh"
+	},
+	"temperature#text": {
+		"format": "{temperatureC}°C"
+	},
 
-    "group/bluetoothies": {
-	"orientation": "horizontal",
-	"modules": [
-	    "bluetooth", "group/bttext"
-	]
-    },
-    "bluetooth": {
-	"format": "Bt"
-    },
-    "group/bttext": {
-	"orientation": "vertical",
-	"modules": [
-	    "custom/bttext1",
-	    "custom/bttext2"
-	]
-    },
-    "custom/bttext1": {
-	"align": 0,
-	"format": "Bluetooth"
-    },
-    "custom/bttext2": {
-	"align": 0,
-	"format": "Nama Bluetooth-nya"
-    },
+	"group/memory": {
+		"orientation": "vertical",
+		"modules": [
+			"memory#logo",
+			"memory#text"
+		]
+	},
+	"memory#logo": {
+		"format": "    ",
+		"tooltips": false
+	},
+	"memory#text": {
+		"format": "{percentage}%"
+	},
 
-    "group/audiooutput": {
-	"orientation": "horizontal",
-	"modules": [
-	    "custom/audiologo", "group/audiotext"
-	]
-    },
-    "custom/audiologo": {
-	"format": "Ao"
-    },
-    "group/audiotext": {
-	"orientation": "vertical",
-	"modules": [
-	    "custom/audiotext1",
-	    "custom/audiotext2"
-	]
-    },
-    "custom/audiotext1": {
-	"align": 0,
-	"format": "Audio Output"
-    },
-    "custom/audiotext2": {
-	"align": 0,
-	"format": "Output audio-nya"
-    },
+	"group/disk": {
+		"orientation": "vertical",
+		"modules": [
+			"disk#logo",
+			"disk#text"
+		]
+	},
+	"disk#logo": {
+		"format": "    ",
+		"tooltips": false
+	},
+	"disk#text": {
+		"format": "{percentage_used}%"
+	},
 
-    // Battery Widget
-    "group/midtop": {
-        "orientation": "inherit",
-        "modules": [
-            "custom/batkosong",
-            "group/batterybox",
-            "custom/batkosong"
-        ]
-    },
-    "group/batterybox": {
-        "orientation": "horizontal",
-        "modules": [
-            "battery",
-            "custom/batpercentage"
-        ]
-    },
+	
 
-    "custom/batkosong": {
-        "format": "o.o",
-        "tooltip": false
-    },
-
-    "custom/batpercentage": {
-        "format": "{}",
-        "tooltip": false,
-        "return-type": "bash",
-        "exec": "$HOME/.config/waybar/power/batpercentage.sh"
-    },
-
-    "battery": {
-        "format": "{icon}",
-        "tooltip": false,
-        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
-    },
-
-    "group/midbot": {
-        "orientation": "horizontal",
-        "modules": [
-            "group/screenshot",
-            "group/screencapt"
-        ]
-    },
-
-    "group/screenshot": {
-        "orientation": "vertical",
-        "modules": [
-            "custom/ssicon",
-            "custom/sstext",
-            "custom/sstexts"
-        ]
-    },
-    "custom/ssicon": {
-        "format": "",
-        "tooltip": false,
-	"on-click": "$HOME/.config/bash/screenshot bar"
-    },
-    "custom/sstext": {
-        "format": "Screen",
-        "tooltip": false,
-	"on-click": "$HOME/.config/bash/screenshot bar"
-    },
-    "custom/sstexts": {
-        "format": "Shot",
-        "tooltip": false,
-	"on-click": "$HOME/.config/bash/screenshot bar"
-    },
-
-    "group/screencapt": {
-        "orientation": "vertical",
-        "modules": [
-            "custom/scicon",
-            "custom/sctext",
-            "custom/sctexts"
-        ]
-    },
-    "custom/scicon": {
-        "format": "",
-        "tooltip": false
-    },
-    "custom/sctext": {
-        "format": "Screen",
-        "tooltip": false
-    },
-    "custom/sctexts": {
-        "format": "Record",
-        "tooltip": false
-    },
-
-    // Memory Widget
-    "group/memorybox": {
-        "orientation": "vertical",
-        "modules": [
-            "group/memorys",
-            "group/disks"
-        ]
-    },
-    "custom/memkosong": {
-        "format": "o.o",
-        "tooltip": false
-    },
-    "group/memorys": {
-        "orientation": "vertical",
-        "modules": [
-            "custom/memkosong",
-            "memory",
-            "custom/memkosong"
-        ]
-    },
-    "memory": {
-        "format": "{used}Gib",
-        "tooltip-format": "{used}Gib / {total}Gib\n\n{percentage}% Memory is used" 
-    },
-
-    "group/disks": {
-        "orientation": "vertical",
-        "modules": [
-            "custom/memkosong",
-            "disk",
-            "custom/memkosong"
-        ]
-    },
-    "disk": {
-        "format": "{used}",
-        "tooltip-format": "Used: {used} / {total}\nFree: {free} / {total}\n\n{percentage_used}% Disk space used"
-    },
-
-    // Power button
-    "group/pbutton": {
-        "orientation": "horizontal",
-        "modules": [
-            "custom/lock",
-            // "custom/suspend",
-            "custom/reboot",
-            "custom/logout",
-            "custom/poweroff"
-        ]
-    },
-
-    "custom/lock": {
-        "format": "",
-        "tooltip-format": "lockscreen",
-        "on-click": "$HOME/.config/waybar/power/exec.sh lock"
-    },
-    "custom/suspend": {
-        "format": "",
-        "tooltip-format": "suspend",
-        "on-click": "$HOME/.config/waybar/power/confirm.sh suspend"
-    },
-    "custom/reboot": {
-        "format": "",
-        "tooltip-format": "reboot",
-        "on-click": "$HOME/.config/waybar/power/confirm.sh reboot"
-    },
-    "custom/logout": {
-        "format": "",
-        "tooltip-format": "logout",
-        "on-click": "$HOME/.config/waybar/power/confirm.sh logout"
-    },
-    "custom/poweroff": {
-        "format": "",
-        "tooltip-format": "poweroff",
-        "on-click": "$HOME/.config/waybar/power/confirm.sh poweroff"
-    }
+	"group/bottom": {
+		"orientation": "inherit",
+		"modules": [ 
+			"group/powerprofiles",
+			"custom/pptext"
+		]
+	},
+	"group/powerprofiles": {
+		"orientation": "horizontal",
+		"modules": [
+			"power-profiles-daemon#powersaver",
+			"power-profiles-daemon#balanced",
+			"power-profiles-daemon#performance"
+		]
+	},
+	"custom/pptext": {
+		"format": "power profiles"
+	},
+	"power-profiles-daemon#powersaver": {
+		"format": "PS"
+	},
+	"power-profiles-daemon#balanced": {
+		"format": "BL"
+	},
+	"power-profiles-daemon#performance": {
+		"format": "PF"
+	}
 }
