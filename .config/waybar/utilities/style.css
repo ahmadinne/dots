@@ -12,6 +12,7 @@ window#waybar {
 }
 window#waybar > box {
   background-color: @background;
+  border-radius: 6;
   padding: 5;
 }
 
@@ -20,10 +21,19 @@ window#waybar > box {
 }
 
 #profile {
+	background-color: @module-bg;
+	border-radius: 3;
+	padding: 10 0;
 	margin: 5;
+	font-weight: bold;
 }
+#custom-wmname {
+	color: alpha(@foreground, 0.5)
+}
+
 #boxes {
 	background-color: @module-bg;
+	border-radius: 3;
 	padding:  10;
 	margin: 5;
 }
@@ -40,14 +50,6 @@ window#waybar > box {
 }
 #custom-pfp:hover {
 	background-color: alpha(@foreground, 0.1);
-}
-#username {
-	background-color: @module-bg;
-	padding: 10 21;
-	font-weight: bold;
-}
-#custom-wmname {
-	color: alpha(@foreground, 0.5)
 }
 
 #network,
@@ -109,6 +111,7 @@ window#waybar > box {
 
 #slider {
 	background-color: @module-bg;
+	border-radius: 3;
 	padding: 3 8;
 	margin: 5;
 }
@@ -157,6 +160,7 @@ window#waybar > box {
 
 #music {
 	background-color: @module-bg;
+	border-radius: 3;
 	padding: 10;
 	margin: 5;
 }

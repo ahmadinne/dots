@@ -143,18 +143,6 @@
 
 
 	"group/profile": {
-		"orientation": "horizontal",
-		"modules": [
-			"image#pfp",
-			"group/username"
-		]
-	},
-	"image#pfp": {
-		"tooltip": false,
-        "path": "/home/ahmadinne/.config/waybar/svg/images.jpeg",
-        "size": 52
-	},
-	"group/username": {
 		"orientation": "vertical",
 		"modules": [
 			"custom/username",
