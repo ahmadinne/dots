@@ -59,6 +59,7 @@ window#waybar > box {
 #custom-colorpicker,
 #custom-screenrecord {
 	background-color: @tiga;
+	border-radius: 4;
 	padding: 12 8;
 	margin: 0 10 0 0;
 	background-position: center;
@@ -148,13 +149,13 @@ window#waybar > box {
 #backlight-slider trough {
 	min-height: 15px;
 	min-width: 113px;
-	border-radius: 0px;
+	border-radius: 4px;
 	background-color: alpha(@foreground, 0.05);
 }
 #pulseaudio-slider highlight,
 #backlight-slider highlight {
 	min-width: 0px;
-	border-radius: 0px;
+	border-radius: 4px;
 	background-color: @foreground;
 }
 

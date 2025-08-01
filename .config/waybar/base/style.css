@@ -27,22 +27,16 @@ window#waybar > box {
 /* Things */
 #custom-split { color:  @module-hover; } 
 
-#custom-utilities {
-	background-image: url("/home/ahmadinne/.config/waybar/svg/leaf.svg");
+#custom-utilities,
+#custom-launcher {
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 12px;
 	transition:		all 0.3s ease-in-out;
-	padding: 0 4px
+	padding: 0 8px
 }
-#custom-launcher { 
-	background-image: url("/home/ahmadinne/.config/waybar/svg/search.svg");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: 12px;
-	transition:		all 0.3s ease-in-out;
-	padding: 0 4px;
-}
+#custom-utilities { background-image: url("/home/ahmadinne/.config/waybar/svg/leaf.svg"); }
+#custom-launcher { background-image: url("/home/ahmadinne/.config/waybar/svg/search.svg"); }
 
 #custom-workspace,
 #battery,
