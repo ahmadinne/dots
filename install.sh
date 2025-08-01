@@ -75,7 +75,6 @@ greetdsetup (){
 systemdsetup (){
 	pekeji=(
 		greetd
-		swayosd-libinput-backend
 		)
 	for pekejis in ${pekeji[@]}; do
 		if [[ $(systemctl status $pekejis | grep -c enabled) -gt 0 ]]; then
