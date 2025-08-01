@@ -4,11 +4,11 @@ x-scheme-handler/http=google-chrome.desktop
 x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
-image/png=imv.desktop
-image/jpeg=userapp-mpv-L3W792.desktop
+image/png=org.gnome.gThumb.desktop
+image/jpeg=org.gnome.gThumb.desktop
 x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
-image/png=mpv.desktop;imv.desktop;
-image/jpeg=mpv.desktop;
-image/jpg=mpv.desktop;
+image/png=org.gnome.gThumb.desktop;
+image/jpeg=org.gnome.gThumb.desktop;
+image/jpg=org.gnome.gThumb.desktop;

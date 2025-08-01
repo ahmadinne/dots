@@ -188,7 +188,7 @@
         "size": 148,
         "signal": 4,
         "interval": 5,
-        "on-click": "gthumb /tmp/mediathumbnail"
+        "on-click": "gthumb /tmp/fullthumbnail"
     },
 
     "group/text": {
