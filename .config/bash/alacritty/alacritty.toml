@@ -54,7 +54,6 @@ style = "bold"
 style = "italic"
 
 [font.normal]
-# family = "banana"
 family = "Iosevka Term Medium"
 
 [font.offset]

@@ -35,8 +35,8 @@ else
 	kernelver=$kernel
 fi
 
-# r=rs
-# resolution="$(hyprctl monitors | grep availableModes | awk '{print $2}' | sed 's/@.*//')"
+r=rs
+resolution="$(hyprctl monitors | grep availableModes | awk '{print $2}' | sed 's/@.*//')"
 
 sh=sh
 shell=$(basename $SHELL)

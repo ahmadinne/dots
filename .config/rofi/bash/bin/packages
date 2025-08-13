@@ -1,0 +1,105 @@
+#!/bin/bash
+pkgs=(
+        base-devel
+        bat
+        bc
+        brightnessctl
+        cliphist
+        eza
+        fd
+        file-roller
+        foot
+        fzf
+        git
+        github-cli
+        greetd
+        grim
+        gthumb
+        gvfs
+        hypridle
+        hyprland
+        hyprlock
+        hyprpicker
+        hyprpolkitagent
+        imagemagick
+        jq
+        less
+        libnotify
+        man-db
+        neovim
+        noto-fonts
+        noto-fonts-cjk
+        noto-fonts-emoji
+        noto-fonts-extra
+        npm
+        nwg-look
+        otf-monaspace-nerd
+        papirus-icon-theme
+        pavucontrol
+        pcmanfm-gtk3
+        qt6ct
+        ripgrep
+        rofi-wayland
+        slurp
+        starship
+        swaync
+        swww
+        ttf-font-awesome
+        ttf-indic-otf
+        unzip
+        vlc
+        waybar
+        xdg-desktop-portal-hyprland
+        yazi
+        yt-dlp
+)
+
+# variables
+choice=$1
+
+# Install function
+function linkstart(){
+    for pkg in ${pkgs[@]}; do
+        sudo pacman -Q $pkg &>/dev/null
+        if [ $? -eq 1 ]; then
+            paru -S --noconfirm $pkg &>/dev/null
+            if [ $? -eq 0 ]; then
+                "installed $pkg"
+            else
+                "failed to install $pkg"
+            fi
+        fi
+    done
+}
+
+# check for Aur Helper and then install the packages if already installed
+sudo pacman -Qe | grep paru &>/dev/null
+if [[ $? -eq 0 ]]; then
+    echo "options:  
+'packages install' to install all the package on the list
+'packages edit' to edit list of the packages"
+else
+    sudo pacman -S --noconfirm base-devel
+    git clone https://aur.archlinux.org/paru-bin
+    cd paru-bin
+    makepkg -si
+    if [ $? -eq 0 ]; then
+        cd ..
+        rm -rf paru-bin
+	echo ""
+        echo "Paru as Aur Helper has installed"
+	read -p "Continue installing the packages on list? [Y/n]" answer
+	case $answer in
+	    [yY]) linkstart ;;
+	    [nN]) exit ;;
+	    *) linkstart ;;
+	esac
+    else
+        echo "Failed when installing Paru for Aur Helper"
+    fi
+fi
+
+case $choice in
+	install) linkstart ;;
+	edit) nvim $HOME/.config/bin/packages ;;
+esac

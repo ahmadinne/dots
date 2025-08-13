@@ -22,14 +22,11 @@
 # Set some variables
 wall_dir="${HOME}/Wallpaper"
 cacheDir="${HOME}/.cache/jp/"
-imageDir="${HOME}/Wallpaper/active"
-useImage="${imageDir}/rn"
 rofi_command="rofi -x11 -dmenu -theme ${HOME}/.config/rofi/wallSelect.rasi -theme-str ${rofi_override}"
 
 # Create cache dir if not exists
 if [ ! -d "${cacheDir}" ] ; then
     mkdir -p "${cacheDir}"
-	mkdir -p "${imageDir}"
 fi
 
 physical_monitor_size=24
@@ -55,11 +52,8 @@ wall_selection=$(find "${wall_dir}"  -maxdepth 1  -type f \( -iname "*.jpg" -o -
 
 # Set the wallpaper
 [[ -n "$wall_selection" ]] || exit 1
-# swww img ${wall_dir}/${wall_selection} --transition-type grow --transition-pos left --transition-fps 60 --transition-step 60 --transition-duration 1
-# hellwal -i ${wall_dir}/${wall_selection}
-cp -rf "${wall_dir}/${wall_selection}" "${useImage}"
-pkill -x swaybg; sleep 0.5
-swaybg -i ${useImage}
+swww img ${wall_dir}/${wall_selection} --transition-type grow --transition-pos left --transition-fps 60 --transition-step 60 --transition-duration 1
+hellwal -i ${wall_dir}/${wall_selection}
 
 exit 0
 
