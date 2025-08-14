@@ -2,6 +2,7 @@
 choice=$1
 if [ -n "$choice" ]; then
     lastcommit=$(git show --summary | awk 'NR==5' | sed 's/    //')
+	lastbranch=$(git status | grep On | awk '{print $3}')
     git add $choice || exit
     echo ""
     echo "[Last Commit]"
@@ -22,7 +23,7 @@ if [ -n "$choice" ]; then
     if [ -n "$branches" ]; then
         git push -u origin $branches
     else
-        git push -u origin main
+        git push -u origin $lastbranch
     fi
 else
     echo "Please include files you want to add, or type '.' for all"

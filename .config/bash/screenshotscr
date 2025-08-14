@@ -1,0 +1,20 @@
+#!/bin/bash
+
+
+# ---- Config ----
+choice=$1
+format=$(date +'%Y.%m.%d_%A[%H:%M:%S].png')
+path="$HOME/Pictures/Screenshots"
+
+# ---- Mission Starto -----
+if [ ! -d "$path" ]; then
+  mkdir -p $HOME/Pictures/Screenshots
+fi
+
+
+grim $HOME/Pictures/Screenshots/${format}
+if [ $? -eq 0 ]; then
+	notify-send --urgency=low --transient "📷 Screenshot Captured!" -r 9005 -t 2000
+else
+	echo "error"
+fi
