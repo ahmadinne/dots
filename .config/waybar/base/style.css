@@ -71,6 +71,18 @@ window#waybar > box {
   transition:           all 0.3s ease-in-out;
 }
 
-#tags button { color: alpha(@foreground, 0.1) }
-#tags button.occupied { color: alpha(@foreground, 0.75) }
-#tags button.focused { color: @blue }
+#tags button { 
+	color: @background;
+	margin: -5;
+	padding: 0;
+}
+#tags button.occupied { 
+	color: alpha(@foreground, 0.3);
+	margin: 0;
+	padding: 0 10;
+}
+#tags button.focused { 
+	color: @blue;
+	margin: 0;
+	padding: 0 10;
+}
