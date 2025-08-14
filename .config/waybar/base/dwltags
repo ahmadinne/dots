@@ -1,0 +1,19 @@
+#!/bin/bash
+# focused_tag=$(dwlmsg -gt | grep -Po '(?<=tag )\d+(?= 1)')
+
+while true; do
+	focused_tag=$(dwlmsg -gt | grep 'tag [0-9] 1' | awk '{print $3}')
+	last_tag=$(dwlmsg -gt | grep "tag [0-9] [0-1] [1-9]" | tail -n1 | awk '{print $3}')
+	floating_windows=$(dwlmsg -gf | awk '{print $3}')
+	total_windows=$(dwlmsg -gt | grep 'tag [0-9] 1' | awk '{print $5}')
+
+	first=$(( ${focused_tag} + 1 ))
+	second=$(( ${last_tag} + 1 ))
+
+	if [ "$first" -gt "$second" ]; then
+		echo ${first}/${first}
+	else
+		echo "${first}"/"${second}"
+	fi
+done
+

@@ -19,7 +19,7 @@
 	},
   "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "custom/workspace" ]
+    "modules":          [ "custom/workspace", "dwl/tags" ]
   },
   "group/center": {
     "orientation":      "inherit",
@@ -48,12 +48,12 @@
     }
   },
 
-  "custom/workspace": {
-    "format":           "{}",
-    "return-type":      "bash",
-    "tooltip":          false,
-    "exec":             "bash $HOME/.config/waybar/base/dwltags"
-  },
+  // "custom/workspace": {
+  //   "format":           "{}",
+  //   "return-type":      "bash",
+  //   "tooltip":          false,
+  //   "exec":             "bash $HOME/.config/waybar/base/workspaces.sh"
+  // },
 
   "dwl/tags": {
 	  "num-tags": 9
@@ -91,6 +91,10 @@
     "format": "    ",
     "tooltip-format": "App Launcher",
     "on-click": "pkill -x rofi || rofi -show drun"
+  },
+  "custom/workspace": {
+    "format": "    ",
+	"tooltip": false
   },
 
   // Group Right

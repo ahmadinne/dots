@@ -39,6 +39,7 @@ window#waybar > box {
 #custom-utilities { background-image: url("/home/ahmadinne/.config/waybar/svg/leaf.svg"); }
 #custom-launcher { background-image: url("/home/ahmadinne/.config/waybar/svg/search.svg"); }
 
+
 #custom-workspace,
 #battery,
 #clock,
@@ -70,8 +71,11 @@ window#waybar > box {
   transition:           all 0.3s ease-in-out;
 }
 
+#tags {}
+
 #tags button { 
-	color: @background;
+	/* color: @background; */
+	color: transparent;
 	margin: -5;
 	padding: 0;
 }
