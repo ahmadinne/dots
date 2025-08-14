@@ -1,13 +1,13 @@
 {
   "layer":              "top",
   "position":           "bottom",
-  "height":             40,
+  "height":             45,
   "width":              0,
   "spacing":            0,
   "margin-top":         0,
   "fixed-center":       true,
 
-  "modules-left":       [ "custom/empty", "group/top" ],
+  "modules-left":       [ "custom/empty", "group/left" ],
   "modules-center":     [ "group/center" ],
   "modules-right":      [ "group/right" ],
 
@@ -17,9 +17,9 @@
 		"tooltip": false,
 		"exec": "$HOME/.config/waybar/utilities/media.sh image"
 	},
-  "group/top": {
+  "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "clock", "custom/split", "group/workspaces" ]
+    "modules":          [ "dwl/tags" ]
   },
   "group/center": {
     "orientation":      "inherit",
@@ -27,7 +27,7 @@
   },
   "group/right": {
     "orientation":      "inherit",
-    "modules":          [ "group/trayer", "custom/split", "battery" ]
+    "modules":          [ "group/trayer", "custom/split", "battery", "custom/split", "clock" ]
   },
 
   // Secondary Group Area
@@ -55,6 +55,10 @@
     "exec":             "bash $HOME/.config/waybar/base/workspaces.sh"
   },
 
+  "dwl/tags": {
+	  "num-tags": 9
+  },
+
   "hyprland/workspaces": {
     "disable-scroll":   true,
     "format":           "{windows}",
@@ -72,7 +76,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity} %",
+    "format": "{capacity}%",
 	"tooltip": false,
     "on-click": "bash $HOME/.config/waybar/power/toggle.sh"
   },
