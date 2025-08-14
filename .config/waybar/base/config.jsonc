@@ -19,7 +19,7 @@
 	},
   "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "battery", "custom/split", "custom/workspace" ]
+    "modules":          [ "battery", "custom/split", "group/workspaces" ]
   },
   "group/center": {
     "orientation":      "inherit",
@@ -41,7 +41,7 @@
   },
   "group/workspaces": {
     "orientation":      "inherit",
-    "modules":          [ "custom/workspace", "hyprland/workspaces" ],
+    "modules":          [ "custom/workspace", "dwl/tags" ],
     "drawer": {
       "transition-duration": 500,
       "transition-left-to-right": true
