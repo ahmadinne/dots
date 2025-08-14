@@ -1,7 +1,7 @@
 {
   "layer":              "top",
   "position":           "bottom",
-  "height":             40,
+  "height":             30,
   "width":              0,
   "spacing":            0,
   "margin-top":         0,
@@ -19,7 +19,7 @@
 	},
   "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "custom/workspace" ]
+    "modules":          [ "battery", "custom/split", "custom/workspace" ]
   },
   "group/center": {
     "orientation":      "inherit",
@@ -27,7 +27,7 @@
   },
   "group/right": {
     "orientation":      "inherit",
-    "modules":          [ "group/trayer", "custom/split", "clock", "custom/split", "battery" ]
+    "modules":          [ "group/trayer", "custom/split", "clock" ]
   },
 
   // Secondary Group Area
@@ -76,7 +76,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity} %",
+    "format": "{capacity}%",
 	"tooltip": false,
     "on-click": "bash $HOME/.config/waybar/power/toggle.sh"
   },

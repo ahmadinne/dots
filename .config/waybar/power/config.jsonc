@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "exclusive": false,
-    "position": "right",
+    "position": "left",
     "spacing": 0,
 
     "modules-left": [],
