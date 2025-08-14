@@ -76,7 +76,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}%",
+    "format": "{capacity} %",
 	"tooltip": false,
     "on-click": "bash $HOME/.config/waybar/power/toggle.sh"
   },
