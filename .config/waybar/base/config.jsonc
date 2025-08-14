@@ -19,7 +19,7 @@
 	},
   "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "dwl/tags" ]
+    "modules":          [ "clock", "custom/split", "dwl/tags" ]
   },
   "group/center": {
     "orientation":      "inherit",
@@ -27,7 +27,7 @@
   },
   "group/right": {
     "orientation":      "inherit",
-    "modules":          [ "group/trayer", "custom/split", "battery", "custom/split", "clock" ]
+    "modules":          [ "group/trayer", "custom/split", "battery", "custom/split" ]
   },
 
   // Secondary Group Area

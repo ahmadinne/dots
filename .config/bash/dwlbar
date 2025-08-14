@@ -1,0 +1,36 @@
+#!/bin/bash
+# focused_tag=$(dwlmsg -gt | grep -Po '(?<=tag )\d+(?= 1)')
+
+tempat="/tmp/dwlbarstatus"
+printf "" > $tempat
+
+while true; do
+    running="$(cat $tempat)"
+    id=$(ps -ef | grep '[w]aybar -c' | grep bar2 | awk '{print $2}')
+	focused_tag=$(dwlmsg -gt | grep 'tag [0-9] 1' | awk '{print $3}')
+	floating_windows=$(dwlmsg -gf | awk '{print $3}')
+	total_windows=$(dwlmsg -gt | grep 'tag [0-9] 1' | awk '{print $5}')
+
+	if [[ "$total_windows" == 0 ]] && [[ "$floating_windows" == 0 ]]; then
+		if [ "$running" != 0 ]; then
+			kill $id
+			printf 0 > $tempat
+		fi
+	fi
+
+	if [[ "$total_windows" -gt 0 ]] && [[ "$floating_windows" == "$total_windows" ]]; then
+		if [ "$running" != 0 ]; then
+			kill $id
+			printf 0 > $tempat
+		fi
+	fi
+
+	if [[ "$total_windows" -gt 0 ]] && [[ "$floating_windows" -lt "$total_windows" ]]; then
+		if [ "$running" != 1 ]; then
+			waybar -c $HOME/.config/waybar/bar2/config.jsonc -s $HOME/.config/waybar/bar2/style.css &
+			printf 1 > $tempat
+		fi
+	fi
+
+done
+

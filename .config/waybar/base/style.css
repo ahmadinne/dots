@@ -8,13 +8,13 @@
 
 /* Base (Window) */
 window#waybar {
-  background-color:     @background;
-  /* background-color:		transparent; */
+  /* background-color:     @background; */
+  background-color:		transparent;
   color:                @foreground;
 }
 window#waybar > box {
-  /* margin:               5 5; */
-  padding:              0 5;
+  margin:               5 5;
+  /* padding:              0 5; */
 }
 
 /* Main Group */
@@ -40,7 +40,6 @@ window#waybar > box {
 #custom-launcher { background-image: url("/home/ahmadinne/.config/waybar/svg/search.svg"); }
 
 #custom-workspace,
-#tags button,
 #battery,
 #clock,
 #trayer {
