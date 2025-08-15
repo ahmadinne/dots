@@ -34,7 +34,7 @@ window#waybar > box {
 	margin: 5px;
 }
 
-#cpu,
+#cpus,
 #temperature,
 #memory,
 #disk {

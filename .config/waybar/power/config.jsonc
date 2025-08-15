@@ -5,7 +5,7 @@
     "spacing": 0,
 
     "modules-left": [],
-    "modules-center": [],
+    "modules-center": [ "custom/launchcpu" ],
     "modules-right": [
 		"group/middle",
         "group/bottom"
@@ -23,7 +23,7 @@
 	"group/middleone": {
 		"orientation": "horizontal",
 		"modules": [
-			"group/cpu",
+			"group/cpus",
 			"group/temperature"
 		]
 	},
@@ -35,7 +35,7 @@
 		]
 	},
 
-	"group/cpu": {
+	"group/cpus": {
 		"orientation": "vertical",
 		"modules": [
 			"custom/cpu",
@@ -49,8 +49,11 @@
 		"exec": "$HOME/.config/waybar/power/cpu.sh"
 	},
 	"cpu#text": {
-		"interval": 1,
+		"interval": 3,
 		"format": "{usage}%"
+	},
+	"custom/launchcpu": {
+		"exec": "$HOME/.config/waybar/power/cpu-usage.sh"
 	},
 
 	"group/temperature": {

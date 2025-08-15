@@ -2,13 +2,19 @@
 
 # get stuff
 while true; do
-	load=$(echo $[100-$(vmstat 1 2|awk 'END {print $15}')])
+	# load=$(echo $[100-$(vmstat 1 2|awk 'END {print $15}')])
+	# needs sysstat package for command below
+	# raw=$(mpstat | grep all | awk '{print $4}')
+	# load=$(printf "%.0f\n" $raw)
+	load=$(cat /tmp/cpu-usage.txt)
+
 	# temp=$(sensors -f | grep "id 0" | awk '{print $4}' | sed 's/+//' | sed 's/\..*//')
 	# uptime=$(awk '{m=$1/60; h=m/60; printf "%sd%sh", int(h/24), int(h%24), int(m%60), int($1%60) }' /proc/uptime)
 	# tc=$(ps ax -o %cpu,comm --no-headers | sort -k1 | tail -n3 | sed 's/\.[0-9]//' | sort -rnk1 | awk '{print $1"% -> "$2"\r"}')
 	# tooltip='<big>Top Republicans</big>\r '$tc'\r'$load'% <small>/</small> '$temp'° <small>/</small> '$uptime''
 	 
 	# do stuff
+	echo $load
 	if [ "$load" -le 25 ]; then
 		echo "{\"text\": \"    \", \"class\":\"default\"}" | jq --unbuffered --compact-output
 	elif [ "$load" -gt 25 ] && [ "$load" -lt 60 ]; then 
@@ -18,5 +24,5 @@ while true; do
 	elif [ "$load" -ge 80 ]; then
 		echo "{\"text\": \"    \", \"class\":\"critical\"}" | jq --unbuffered --compact-output
 	fi
-	sleep 1
+	sleep 3
 done
