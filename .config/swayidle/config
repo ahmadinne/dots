@@ -1,0 +1,9 @@
+timeout 10 'makoctl mode -s idle' resume 'makoctl mode -s default'
+
+timeout 150 'brightnessctl -s set 10 && brightnessctl -sd rgb:kbd_backlight set 0' resume 'brightnessctl -r && brightnessctl -rd rgb:kbd_backlight'
+
+timeout 280 'hyprlock'
+
+timeout 300 'brightnessctl -s set 1 && brightnessctl -sd rgb:kbd_backlight set 0' resume 'brightnessctl -r && brightnessctl -rd rgb:kbd_backlight'
+
+timeout 320 'wlr-randr --output eDP-1 --off' resume 'wlr-randr --output eDP-1 --on'

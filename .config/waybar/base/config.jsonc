@@ -19,7 +19,7 @@
 	},
   "group/left": {
     "orientation":      "inherit",
-    "modules":          [ "battery", "custom/split", "group/workspaces" ]
+    "modules":          [ "battery", "custom/split", "dwl/tags" ]
   },
   "group/center": {
     "orientation":      "inherit",

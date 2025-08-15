@@ -52,6 +52,11 @@ vim.pack.add({
 	{ src = "https://github.com/rrethy/base16-nvim" }, -- Dependencies for paradise.nvim
 	{ src = "https://github.com/ahmadinne/paradise.nvim" },
 
+	-- Notetaking Plugins
+	{ src = "https://github.com/obsidian-nvim/obsidian.nvim"},
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter"}, -- obsidian.nvim dependencies
+	{ src = "https://github.com/OXY2DEV/markview.nvim"}, -- obsidian.nvim dependencies
+
 	-- Others Plugins
 	{ src = "https://github.com/saghen/blink.cmp" },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" }, -- blink.cmp dependencies
@@ -82,6 +87,17 @@ require "oil".setup({
 		["<leader><cr>"] = { "actions.select", opts = { vertical = true } }
 	}
 })
+
+require "obsidian".setup({
+	legacy_commands = false,
+	workspaces = {
+		{
+			name = "personal",
+			path = "~/obsidian",
+		},
+	},
+})
+
 require "blink.cmp".setup({
 	keymap = {
 		preset = "default",
