@@ -1,0 +1,4 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap d\nunmap u\nunmap x\nunmap X\n\nmap <c-d> scrollPageDown\nmap <c-u> scrollPageUp\nmap d removeTab\nmap u restoreTab",
+  "settingsVersion": "2.3"
+}
