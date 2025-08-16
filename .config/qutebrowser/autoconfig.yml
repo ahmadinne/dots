@@ -6,6 +6,15 @@
 
 config_version: 2
 settings:
+  auto_save.session:
+    global: true
+  bindings.commands:
+    global:
+      normal:
+        h: scroll left
+        j: scroll down
+        k: scroll up
+        l: scroll right
   colors.webpage.darkmode.enabled:
     global: true
   scrolling.smooth:
@@ -15,3 +24,5 @@ settings:
       DEFAULT: https://google.com/search?q={}
   url.start_pages:
     global: https://google.com/search
+  window.title_format:
+    global: '{current_title}'
