@@ -1,6 +1,6 @@
 #!/bin/bash
 
-path="$HOME/Notes"
+path="$HOME/obsidian"
 ls $path &>/dev/null || mkdir -p $path &>/dev/null
 choice=$1
 second=$2

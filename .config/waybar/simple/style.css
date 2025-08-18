@@ -1,0 +1,57 @@
+* {
+    font-family: "Symbols Nerd Font", "gg sans Medium", "Iosevka Medium";
+    font-weight: bold;
+    font-size: 12px;
+}
+
+@import "../colors.css";
+
+/* Base (Window) */
+window#waybar {
+  background-color:     @background;
+  /* background-color:		transparent; */
+  color:                @foreground;
+}
+window#waybar > box {
+  /* margin:               5 5; */
+  padding:              0 5;
+}
+
+/* Things */
+#battery,
+#clock,
+#tray {
+  padding:              0 10; 
+  transition:           all 0.3s ease-in-out;
+}
+
+#battery:hover,
+#clock:hover {
+  background-color:     @module-hover;
+}
+#tray { margin: 0 10; }
+#tray > widget { padding: 0 10;}
+
+#workspaces {
+  padding: 		0 0;
+  transition:           all 0.3s ease-in-out;
+}
+
+#tags {}
+
+#tags button { 
+	/* color: @background; */
+	color: transparent;
+	margin: -10;
+	padding: 0;
+}
+#tags button.occupied { 
+	color: alpha(@foreground, 0.3);
+	margin: 0;
+	padding: 0 10;
+}
+#tags button.focused { 
+	color: @blue;
+	margin: 0;
+	padding: 0 10;
+}

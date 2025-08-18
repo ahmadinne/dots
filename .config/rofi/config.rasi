@@ -2,10 +2,10 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,window";
+	modi:                       "drun,window,calc";
     show-icons:                 true;
-	  drun-display-format:        "{name}";
-	  window-format:              "{w} · {c} · {t}";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
     kb-row-up:                  "Up,Control+k";
     kb-row-down:                "Down,Control+j";
     kb-accept-entry:            "Control+m,Return";

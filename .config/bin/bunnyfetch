@@ -15,14 +15,16 @@ v=$'\e[7m'
 l=$'\033[1m'
 
 # Items
-sep=
-s=$d$f0$sep$t
+tmp="/tmp/wmname"
+if [ -f "$tmp" ]; then
+	h=wm
+	wmname=$(cat $tmp)
+else
+	thename="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
+	echo $thename > $tmp
+fi
 
-h=wm
-wmname="$(xprop -id $(xprop -root -notype | awk '$1=="_NET_SUPPORTING_WM_CHECK:"{print $5}') -notype -f _NET_WM_NAME 8t | grep "WM_NAME" | cut -f2 -d \")"
 
-pkg=pk
-pkgs=$(pacman -Q | wc -l)
 
 k=kr
 kernel="$(uname -r | cut -d '-' -f1)"
@@ -35,11 +37,14 @@ else
 	kernelver=$kernel
 fi
 
-# r=rs
-# resolution="$(hyprctl monitors | grep availableModes | awk '{print $2}' | sed 's/@.*//')"
-
 sh=sh
 shell=$(basename $SHELL)
+
+pkg=pk
+pkgs=$(pacman -Q | wc -l)
+
+# r=rs
+# resolution="$(hyprctl monitors | grep availableModes | awk '{print $2}' | sed 's/@.*//')"
 
 
 # (\ /)

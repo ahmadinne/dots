@@ -57,7 +57,9 @@ style = "italic"
 
 [font.normal]
 # family = "banana"
-family = "Iosevka Term Medium"
+# family = "Iosevka Term Medium"
+family = "Liberation Mono"
+# family = "Monospace"
 
 [font.offset]
 y = 0

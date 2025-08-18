@@ -14,6 +14,7 @@ vim.o.shiftwidth = 4
 vim.o.swapfile = false
 vim.o.winborder = "rounded"
 vim.o.autochdir = true
+vim.o.undofile = true
 vim.schedule(function()
 	vim.o.clipboard = "unnamedplus"
 end)
@@ -22,6 +23,7 @@ end)
 -- Keymaps
 vim.keymap.set('n', '<leader>so', ':update<CR> :source<CR>')
 vim.keymap.set('n', '<leader>lf', vim.lsp.buf.format)
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 vim.keymap.set('n', '<leader>b', '<CMD>bnext<CR>')
 vim.keymap.set('n', '<leader>B', '<CMD>bprevious<CR>')
@@ -67,6 +69,7 @@ vim.pack.add({
 	{ src = "https://github.com/lambdalisue/vim-suda" },
 	{ src = "https://github.com/echasnovski/mini.pick" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/mbbill/undotree" },
 })
 
 
@@ -183,7 +186,7 @@ vim.keymap.set('n', '<leader>f', ':Pick files<CR>')
 vim.keymap.set('n', '<leader>h', ':Pick help<CR>')
 vim.keymap.set('n', 'f',
 	function() require("flash").jump({ search = { forward = true, wrap = false, multi_window = false } }) end)
-vim.keymap.set('n', 'F',
+vim.keymap.set('n', 't',
 	function() require("flash").jump({ search = { forward = false, wrap = false, multi_window = false } }) end)
 vim.keymap.set('n', 's', function() require("flash").jump() end)
 vim.keymap.set('n', 'S', function() require("flash").treesitter() end)

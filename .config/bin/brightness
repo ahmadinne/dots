@@ -1,0 +1,40 @@
+#!/bin/bash
+# Needs sudo to use.
+# example: 
+#
+# sudo ./brightness set 20
+#
+
+device=$(ls /sys/class/backlight | head -n1)
+
+max_br_location="/sys/class/backlight/${device}/max_brightness"
+max_br=$(cat $max_br_location)
+
+now_br_location="/sys/class/backlight/${device}/brightness"
+now_br=$(cat $now_br_location)
+
+choice=$1
+number=$2
+
+set_brightness (){
+	max_br=$(( max_br / 100 ))
+	set_num=$(( number * max_br )) 
+
+	echo $set_num > $now_br_location
+}
+
+get_brightness (){
+	num_one=$(( now_br * 10 ))
+	num_two=$(( max_br / 10 ))
+	get_num=$(( num_one / num_two ))
+
+	echo "${get_num} %"
+}
+
+
+case $choice in
+	set) set_brightness ;;
+	get) get_brightness ;;
+	*) get_brightness ;;
+esac
+
