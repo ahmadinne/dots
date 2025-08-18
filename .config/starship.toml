@@ -1,9 +1,28 @@
-format = "$all"
+add_newline = true
+format = "$all$character"
+right_format = "$battery$time"
 
 [character]
 success_symbol = "[;](bold green)"
 error_symbol = "[x](bold red)"
 vimcmd_symbol = "[:](bold green)"
+
+[time]
+disabled = false
+# time_format = "%H:%M"
+time_format = "%T"
+
+[directory]
+read_only = " 󰌾"
+read_only_style = "red bold"
+truncation_length = 10
+truncate_to_repo = false
+use_logical_path = true
+repo_root_style = "purple bold underline dimmed"
+
+[battery]
+[[battery.display]]
+threshold=100
 
 [aws]
 symbol = "  "
@@ -25,9 +44,6 @@ symbol = " "
 
 [dart]
 symbol = " "
-
-[directory]
-read_only = " 󰌾"
 
 [docker_context]
 symbol = " "
