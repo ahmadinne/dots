@@ -12,23 +12,24 @@ window#waybar {
   color:                @foreground;
 }
 window#waybar > box {
-  margin:               5 5;
+  margin:               5px 5px;
 }
 
 .modules-center,
 .modules-right,
 .modules-left {
-	background: alpha(@bg, 0.7);
-	border-radius: 8px;
-	border-color: transparent;
+	background:			alpha(@bg, 0.8);
+	border-radius:		8px;
+	border-color:		transparent;
+	padding:            7px 13px; 
+	transition:         all 0.3s ease-in-out;
 }
 
 /* Things */
-#clock {
-  padding:              7px 13px; 
-  transition:           all 0.3s ease-in-out;
-}
+#battery,
+#clock {}
 
+#battery:hover,
 #clock:hover {
   background-color:     @module-hover;
 }

@@ -3,14 +3,14 @@
   "position":           "top",
   "height":             31,
   "width":              0,
-  "spacing":            0,
+  "spacing":            10,
   "margin-top":         0,
   "fixed-center":       true,
   "passthrough":		true,
   "exclusive":			false,
 
   "modules-left":       [],
-  "modules-center":     [ "clock" ],
+  "modules-center":     [ "battery", "clock" ],
   "modules-right":      [],
 
   // Starto
