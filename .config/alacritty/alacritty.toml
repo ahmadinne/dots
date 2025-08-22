@@ -4,7 +4,9 @@ general.live_config_reload = true
 [keyboard]
 bindings = [
   { key = "Escape", chars = "~", mods = "Shift" },
-  { key = "Space", action = "ToggleViMode", mode = "~Search", mods = "Control" },
+  { key = "Space", action = "ToggleViMode", mode = "~Search", mods = "Alt" },
+  { key = "Q", action = "ToggleViMode", mode = "Vi" },
+  { key = "Escape", action = "ToggleViMode", mode = "Vi" },
   { key = "Y", action = "Copy", mode = "Vi|~Search", mods = "Shift" },
   { key = "Insert", action = "Paste", mods = "Shift" },
   { key = "H", action = "High", mode = "Vi|~Search", mods = "Shift" },
@@ -54,7 +56,10 @@ style = "bold"
 style = "italic"
 
 [font.normal]
-family = "Iosevka Term Medium"
+# family = "banana"
+# family = "Iosevka Term Medium"
+family = "Liberation Mono"
+# family = "Monospace"
 
 [font.offset]
 y = 0
