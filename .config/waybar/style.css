@@ -20,6 +20,7 @@ window#waybar > box {
 .modules-left {
 	background: alpha(@bg, 0.7);
 	border-radius: 8px;
+	border-color: transparent;
 }
 
 /* Things */

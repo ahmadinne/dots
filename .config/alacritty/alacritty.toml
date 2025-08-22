@@ -1,4 +1,4 @@
-general.import = ["colors.toml"]
+general.import = ["onedark.toml"]
 general.live_config_reload = true
 
 [keyboard]
