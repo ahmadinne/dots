@@ -1,0 +1,24 @@
+{
+  "layer":              "top",
+  "position":           "top",
+  "height":             31,
+  "width":              0,
+  "spacing":            0,
+  "margin-top":         0,
+  "fixed-center":       true,
+  "passthrough":		true,
+  "exclusive":			false,
+
+  "modules-left":       [],
+  "modules-center":     [ "clock" ],
+  "modules-right":      [],
+
+  // Starto
+  "clock": {            
+	"format": "{:%A, %H:%M}",
+	"tooltip": false,
+	"on-click":	"bash $HOME/.config/waybar/calendar/exec.sh"
+  }
+},
+
+

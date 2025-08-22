@@ -1,0 +1,33 @@
+* {
+    font-family: "gg sans Medium";
+    font-weight: bold;
+    font-size: 12px;
+}
+
+@import "colors.css";
+
+/* Base (Window) */
+window#waybar {
+  background-color:		transparent;
+  color:                @foreground;
+}
+window#waybar > box {
+  margin:               5 5;
+}
+
+.modules-center,
+.modules-right,
+.modules-left {
+	background: alpha(@bg, 0.7);
+	border-radius: 8px;
+}
+
+/* Things */
+#clock {
+  padding:              7px 13px; 
+  transition:           all 0.3s ease-in-out;
+}
+
+#clock:hover {
+  background-color:     @module-hover;
+}
