@@ -2,7 +2,7 @@
 
 choice=$1
 checks=$(ps -ef | grep waybar)
-sleeps=1
+sleeps=0.5
 
 if [ $choice = switch ]; then 
 	hyprctl dispatch workspace $2 > /dev/null 2>&1
