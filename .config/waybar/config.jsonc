@@ -4,20 +4,31 @@
   "height":             31,
   "width":              0,
   "spacing":            10,
-  "margin-top":         0,
+  "margin":				0,
   "fixed-center":       true,
   "passthrough":		true,
-  "exclusive":			false,
+  "exclusive":			true,
 
-  "modules-left":       [],
-  "modules-center":     [ "battery", "clock" ],
-  "modules-right":      [],
+  "modules-left":       [ "custom/workspace", "hyprland/window" ],
+  "modules-center":     [ "clock" ],
+  "modules-right":      [ "battery" ],
 
   // Starto
   "clock": {            
 	"format": "{:%A, %H:%M}",
 	"tooltip": false,
 	"on-click":	"bash $HOME/.config/waybar/calendar/exec.sh"
+  },
+
+  "custom/workspace": {
+	  "format": "{}",
+	  "return-type": "bash",
+	  "tooltip": false,
+	  "exec": "~/.config/waybar/workspaces.sh"
+  },
+
+  "hyprland/window": {
+	  "max-length": 31
   }
 },
 

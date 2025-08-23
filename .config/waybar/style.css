@@ -1,26 +1,34 @@
 * {
-    font-family: "gg sans Medium";
-    font-weight: bold;
-    font-size: 12px;
+    font-family:		"";
+    font-weight:		bold;
+    font-size:			12px;
 }
 
 @import "colors.css";
 
 /* Base (Window) */
 window#waybar {
-  background-color:		transparent;
+  background-color:		@background;
   color:                @foreground;
 }
+window#waybar.empty,
+window#waybar.floating,
 window#waybar > box {
-  margin:               5px 5px;
+	background:			transparent;
+	margin:				5px;
+}
+window#waybar.solo {}
+window#waybar.fullscreen {}
+window#waybar.swallowing {}
+window#waybar.empty #window {
+	background:			transparent;
 }
 
+.modules-left,
 .modules-center,
-.modules-right,
-.modules-left {
-	background:			alpha(@bg, 0.8);
-	border-radius:		8px;
-	border-color:		transparent;
+.modules-right {
+	background:			@background;
+	border-radius:		4px;
 	padding:            7px 13px; 
 	transition:         all 0.3s ease-in-out;
 }
@@ -33,3 +41,5 @@ window#waybar > box {
 #clock:hover {
   background-color:     @module-hover;
 }
+
+#custom-workspace {}
