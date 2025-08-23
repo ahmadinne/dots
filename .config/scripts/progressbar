@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+
+BATCHSIZE=1
+
+progress-bar() {
+	local current=$1
+	local length=$2
+
+	local bar_char='#'
+	local bar_empt='-'
+	local perc_length=50
+	local perc_done=$((current * 100 / length))
+	local num_bars=$((perc_done * perc_length / 100))
+
+	local i
+	local s='['
+	for ((i = 0; i < num_bars; i++)); do
+		s+=$bar_char
+	done
+	for ((i = num_bars; i < perc_length; i++)); do
+		s+=$bar_empt
+	done
+	s+=']'
+
+	echo -ne "$s $current/$length ($perc_done%)\r"
+}
+
+process-files() {
+	local files=("$@")
+
+	# echo rm "${files[@]}"
+	# sleep .01
+}
+
+shopt -s globstar nullglob
+
+echo 'finding files'
+files=(./**/*cache)
+length=${#files[@]}
+echo "found $length files"
+
+# i=0
+# for file in "${files[@]}"; do
+# 	progress-bar "$((i+1))" "$length"
+# 	process-file "$file"
+#
+# 	((i++))
+# done
+
+for ((i = 0; i < length; i += BATCHSIZE)); do
+	progress-bar "$((i+1))" "$length"
+	process-files "${files[@]:i:BATCHSIZE}"
+done
+progress-bar "$length" "$length"

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if true; then
+	if [[ $(ps -ef | grep waybar) ]]; then pkill -x waybar; fi
+    killall dunst
+    notify-send --urgency=low --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9000
+    notify-send --urgency=normal --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9001
+    notify-send --urgency=critical --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9002 -t 4000
+	# hyprctl reload
+    waybar
+fi

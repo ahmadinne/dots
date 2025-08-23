@@ -1,0 +1,23 @@
+#!/bin/bash
+
+choice=$1
+checks=$(ps -ef | grep waybar)
+sleeps=1
+
+if [ $choice = switch ]; then 
+	hyprctl dispatch workspace $2 > /dev/null 2>&1
+	waybar \
+		-c ~/.config/waybar/awhile/config.jsonc \
+		-s ~/.config/waybar/awhile/style.css & disown \
+		&& sleep $sleeps \
+		&& kill $!
+fi
+if [ $choice = moveto ]; then 
+	hyprctl dispatch movetoworkspace $2 > /dev/null 2>&1
+	waybar \
+		-c ~/.config/waybar/awhile/config.jsonc \
+		-s ~/.config/waybar/awhile/style.css & disown \
+		&& sleep $sleeps \
+		&& kill $!
+fi
+if [ $choice = toggle ]; then pkill -x waybar || waybar > /dev/null 2>&1 & disown; fi
