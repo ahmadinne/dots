@@ -9,7 +9,6 @@ else
 	sleeps=0.5
 fi
 
-
 spawnbar(){
 	waybar \
 		-c ~/.config/waybar/awhile/config.jsonc \
@@ -36,4 +35,8 @@ if [ $choice = longer ]; then
 fi
 
 # toggle
-if [ $choice = toggle ]; then pkill -x waybar || waybar > /dev/null 2>&1 & disown; fi
+if [ $choice = toggle ]; then 
+	pkill -x waybar || waybar \
+		-c ~/.config/waybar/normal/config.jsonc \
+		-s ~/.config/waybar/normal/style.css & disown
+fi

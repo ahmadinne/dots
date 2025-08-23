@@ -9,7 +9,7 @@
   "passthrough":		true,
   "exclusive":			true,
 
-  "modules-left":       [ "custom/workspace", "hyprland/window" ],
+  "modules-left":       [ "hyprland/window" ],
   "modules-center":     [ "clock" ],
   "modules-right":      [ "battery" ],
 

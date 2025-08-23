@@ -24,13 +24,12 @@ window#waybar.empty #window {
 	background:			transparent;
 }
 
-.modules-left,
+#window,
 .modules-center,
 .modules-right {
 	background:			@background;
 	border-radius:		4px;
 	padding:            7px 13px; 
-	transition:         all 0.3s ease-in-out;
 }
 
 /* Things */
