@@ -20,25 +20,17 @@ window#waybar > box {
 window#waybar.solo {}
 window#waybar.fullscreen {}
 window#waybar.swallowing {}
+
+window#waybar.empty #battery,
 window#waybar.empty #window {
 	background:			transparent;
+	color:				@green;
 }
 
 #window,
-.modules-center,
-.modules-right {
+#battery,
+.modules-center {
 	background:			@background;
 	border-radius:		4px;
 	padding:            7px 13px; 
 }
-
-/* Things */
-#battery,
-#clock {}
-
-#battery:hover,
-#clock:hover {
-  background-color:     @module-hover;
-}
-
-#custom-workspace {}
