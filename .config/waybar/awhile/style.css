@@ -4,7 +4,7 @@
     font-size:			12px;
 }
 
-@import "colors.css";
+@import "../colors.css";
 
 /* Base (Window) */
 window#waybar {

@@ -23,7 +23,7 @@
 	  "format": "{}",
 	  "return-type": "bash",
 	  "tooltip": false,
-	  "exec": "~/.config/waybar/workspaces.sh"
+	  "exec": "~/.config/waybar/awhile/workspaces.sh"
   }
 },
 
