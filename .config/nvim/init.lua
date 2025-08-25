@@ -78,11 +78,12 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim", tag = '0.1.8',
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = { "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
 		config = function()
 			local actions = require("telescope.actions")
 			require('telescope').setup{
 				defaults = {
+					sorting_strategy = "ascending",
 					file_ignore_patterns = {
 						".git/*",
 						".cache/*",
@@ -92,18 +93,6 @@ require("lazy").setup({
 					mappings = {
 						n = {
 							["q"] = actions.close,
-							-- ["l"] = actions.select_default,
-							-- ["h"] = function(prompt_bufnr)
-							-- 	local current_picker = require('telescope.actions.state').get_current_picker(prompt_bufnr)
-							-- 	local cwd = current_picker.cwd and tostring(current_picker.cwd) or vim.loop.cwd()
-							-- 	local parent_dir = vim.fs.dirname(cwd)
-							--
-							-- 	require('telescope.actions').close(prompt_bufnr)
-							-- 	require('telescope.builtin').find_files {
-							-- 		prompt_title = vim.fs.basename(parent_dir),
-							-- 		cwd = parent_dir,
-							-- 	}
-							-- end,
 						}
 					}
 				}
@@ -112,7 +101,7 @@ require("lazy").setup({
 	},
 	{
 		"stevearc/oil.nvim",
-		dependencies = { { "echasnovski/mini.icons", opts = {} } },
+		dependencies = { { "nvim-tree/nvim-web-devicons", opts = {} } },
 		lazy = false,
 		config = function()
 			require("oil").setup({
