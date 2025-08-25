@@ -36,7 +36,8 @@ fi
 
 # toggle
 if [ $choice = toggle ]; then 
-	pkill -x waybar || waybar \
+	barid=$(ps -ef|grep '[w]aybar -c'|grep normal|awk '{print $2}')
+	[[ $barid ]]; kill $barid || waybar \
 		-c ~/.config/waybar/normal/config.jsonc \
 		-s ~/.config/waybar/normal/style.css & disown
 fi

@@ -24,6 +24,10 @@ window#waybar > box {
 }
 
 /* Starto */
+#backlight {
+	font-weight: bold;
+}
+
 #backlight-slider slider {
 	min-height: 0px;
 	min-width: 0px;

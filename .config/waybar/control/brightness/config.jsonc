@@ -10,7 +10,7 @@
 	"exclusive":		false,
 
 	"modules-left":     [],
-	"modules-center":   [ "backlight/slider" ],
+	"modules-center":   [ "backlight" ],
 	"modules-right":    [],
 
 	// Starto

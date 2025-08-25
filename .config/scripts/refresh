@@ -1,7 +1,10 @@
 #!/bin/bash
 
 if true; then
-	if [[ $(ps -ef | grep waybar) ]]; then pkill -x waybar; fi
+	pkill -x waybar
+	waybar \
+		-c ~/.config/waybar/normal/config.jsonc \
+		-s ~/.config/waybar/normal/style.css
     killall dunst
     notify-send --urgency=low --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9000
     notify-send --urgency=normal --transient "Bar refreshed!" "Alt+Shift+R to refresh!" -r 9001
