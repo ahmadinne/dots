@@ -3,9 +3,9 @@ format = "$all$character"
 right_format = "$battery$time"
 
 [character]
-success_symbol = "[;](bold green)"
-error_symbol = "[x](bold red)"
-vimcmd_symbol = "[:](bold green)"
+success_symbol = "[i](bold green)"
+error_symbol = "[e](bold red)"
+vimcmd_symbol = "[v](bold yellow)"
 
 [time]
 disabled = false
@@ -13,12 +13,13 @@ disabled = false
 time_format = "%T"
 
 [directory]
+format = '[$path]($style)'
 read_only = " 󰌾"
 read_only_style = "red bold"
 truncation_length = 10
 truncate_to_repo = false
 use_logical_path = true
-repo_root_style = "purple bold underline dimmed"
+repo_root_style = "purple bold"
 
 [battery]
 [[battery.display]]
