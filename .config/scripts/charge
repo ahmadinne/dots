@@ -1,0 +1,13 @@
+#!/bin/sh
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+
+STATE=$1
+LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
+
+if [ $STATE -eq 1 ]; then
+	/usr/bin/notify-send "Charging" "${LEVEL}% of battery charged" --transient -u low -i "/usr/share/icons/Papirus-Dark/128x128/apps/thunderbolt.svg"
+elif [ $STATE -eq 0 ]; then
+	/usr/bin/notify-send "Discharging" "${LEVEL}% of battery remaining" --transient -u low -i "/usr/share/icons/Papirus-Dark/128x128/devices/battery.svg"
+fi
