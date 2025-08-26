@@ -1,0 +1,37 @@
+#!/bin/bash
+
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+notify (){
+	notify-send --urgency=critical -i "$ICON" "$TEXT" "$TEXTS"
+}
+
+while [ true ]; do
+	BATTERY_STATS=$(cat /sys/class/power_supply/BAT0/status | grep -c "Discharging")
+	BATTERY_LEVEL=$(cat /sys/class/power_supply/BAT0/capacity)
+	if   [ "$BATTERY_STATS" -eq 1 ] && [ "$BATTERY_LEVEL" -lt 5 ]; then
+		ICON="battery-caution"
+		TEXT="BATTERY IS VERY LOW (5%)"
+		TEXTS="Device will put on sleep in 1 Minutes!"
+		notify; sleep 60
+		systemctl suspend
+	elif [ "$BATTERY_STATS" -eq 1 ] && [ "$BATTERY_LEVEL" -lt 10 ]; then
+		ICON="battery-low"
+		TEXT="Battery is at 10%"
+		notify
+	elif [ "$BATTERY_STATS" -eq 1 ] && [ "$BATTERY_LEVEL" -lt 15 ]; then
+		ICON="battery-low"
+		TEXT="Battery is at 15%"
+		notify
+	elif [ "$BATTERY_STATS" -eq 1 ] && [ "$BATTERY_LEVEL" -lt 20 ]; then
+		ICON="battery-low"
+		TEXT="Battery is at 20%"
+		notify
+	elif [ "$BATTERY_STATS" -eq 0 ] && [ "$BATTERY_LEVEL" -gt 99 ]; then
+		ICON="battery-full-charging"
+		TEXT="Battery is Full"
+		TEXTS= " Please remove the charger"
+		notify
+	fi
+	sleep 300
+done

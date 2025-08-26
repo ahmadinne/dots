@@ -13,7 +13,7 @@ disabled = false
 time_format = "%T"
 
 [directory]
-format = '[$path]($style)'
+format = "[$path]($style) "
 read_only = " 󰌾"
 read_only_style = "red bold"
 truncation_length = 10
